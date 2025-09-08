@@ -1,55 +1,73 @@
-# React + TypeScript + Vite
+![Dario Benitez](./public/banner.svg)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 💻 Dario Benitez — Fullstack Developer
 
-Currently, two official plugins are available:
+Bienvenido a mi portfolio personal construido con **React + TypeScript + Vite + Tailwind CSS**.  
+Creo aplicaciones web modernas, escalables y orientadas a resultados, con foco en arquitectura, DX y calidad.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Stack principal
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+-   ⚛️ **React** · ⚡ **Vite** · 🟦 **TypeScript**
+-   🖌️ **Tailwind CSS** · 🔌 **Node.js / Express**
+-   🗄️ **PostgreSQL / MySQL** · **Sequelize / Prisma**
+-   🔐 **Auth** (Firebase, OAuth) · 🔔 **Socket.IO** · 💳 **Stripe**
+-   🧰 Git, Postman, Scrum, Figma
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 🚀 Proyectos destacados
+
+### HelloFlatmate — Fullstack Developer (Ago 2024 – Abr 2025, remoto · ES)
+
+Plataforma web de alquiler de habitaciones:
+
+-   Backend con **Node.js + Sequelize + PostgreSQL**
+-   Chat y **notificaciones en tiempo real con Socket.IO**
+-   **Autenticación** (Firebase: Google, Facebook, email/password)
+-   **Contratos e invoices en PDF**, **Storage** en Firebase
+-   Frontend con **React + Next.js + Tailwind CSS**
+-   Middleware, i18n y despliegue  
+    🔗 **Live**: www.helloflatmate.com  
+    🔗 **Stack**: React, Next.js, Node, Sequelize, PostgreSQL, Socket.IO, Firebase, Tailwind
+
+### Viaje Seguro — Fullstack Developer (Abr 2025 – May 2025, remoto · ES)
+
+Sistema de reservas de viajes y alquiler de vehículos:
+
+-   **OAuth** (NestJS + Prisma), registro con Google/email y confirmación por correo
+-   Dashboards para **usuarios** y **administración**
+-   **Reservas de asiento**, pagos con **Stripe**
+-   Frontend con **React + Next.js + TypeScript**  
+    🔗 **Estado**: en proceso de lanzamiento
+
+## 🧠 Sobre mí
+
+Desarrollador **fullstack** con experiencia en producción (JS/TS y Java).  
+Me especializo en **arquitecturas robustas**, **lógica de negocio** e **interfaces modernas**.  
+Proactivo, comunicación clara y foco en resolver problemas de forma autónoma o en equipo.  
+Busco consolidarme como **backend o fullstack** aportando soluciones **eficientes y escalables**. :contentReference[oaicite:1]{index=1}
+
+---
+
+## 🎓 Educación
+
+-   **UTN – Tecnicatura Universitaria en Programación** (2024 – actual, 3°/4 cuatrimestres)
+-   **Fundación Formar (2023–2024)** · **MindHub LA (2023)**
+-   **Técnico en Equipos e Instalaciones Electromecánicas – E.P.E.T. N°1** :contentReference[oaicite:2]{index=2}
+
+---
+
+## 🔗 Enlaces
+
+-   🌐 Portfolio: _(enlace del deploy si corresponde)_
+-   🐙 GitHub: **https://github.com/DDarioBenitez**
+-   💼 LinkedIn: **https://www.linkedin.com/in/darío-damián-benítez/**
+-   ✉️ Email: **benitez_trabaja@hotmail.com** :contentReference[oaicite:3]{index=3}
+
+---
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
 ```
-# portfolio

@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+/* Variantes personalizadas según data-theme */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant light (&:where([data-theme=light], [data-theme=light] *));
+
+/* =========================
+   Base
+   ========================= */
+html {
+    font-family: "Inter", sans-serif;
+}
+* {
+    box-sizing: border-box;
+}
+
+/* =========================
+   Base tokens (solo los usados)
+   ========================= */
+:root {
+    /* Neutros / grises */
+    --c-athens-gray: rgb(236 254 255);
+    --c-athens-gray-50: rgba(229, 231, 235, 0.5);
+    --c-mischka: rgb(209 213 219);
+    --c-gray-chateau: rgb(156 163 175);
+    --c-pale-sky: rgb(107 114 128);
+    --c-river-bed: rgb(75 85 99);
+
+    --c-ebony: rgb(17 24 39);
+    --c-ebony-80: rgba(17, 24, 39, 0.8);
+    --c-ebony-clay-50: rgba(31, 41, 55, 0.5);
+    --c-oxford-blue-50: rgba(55, 65, 81, 0.5);
+
+    /* Accents usados */
+    --c-royal-blue: rgb(79 70 229);
+    --c-heliotrope: rgb(168 85 247);
+    --c-heliotrope-50: rgba(168, 85, 247, 0.5);
+    --c-dodger-blue-10: rgba(59, 130, 246, 0.1);
+    --c-malibu-50: rgba(96, 165, 250, 0.5);
+    --c-electric-violet-20: rgba(147, 51, 234, 0.2);
+
+    /* Blancos utilitarios */
+    --c-white: rgb(255 255 255);
+    --c-white-80: rgba(209, 213, 219, 0.8);
+    --c-white-70: rgba(255, 255, 255, 0.7);
+    --c-white-50: rgba(255, 255, 255, 0.5);
+    --c-white-border-tech-card: rgba(229, 231, 235, 0.5);
+}
+
+/* =========================
+   THEME: LIGHT (solo lo usado)
+   ========================= */
+:root[data-theme="light"],
+[data-theme="light"] {
+    --bg-nav: rgba(255, 255, 255, 0.9);
+    --bg-form: var(--c-white-70);
+    --bg-input: var(--c-white-50);
+
+    --text-primary: var(--c-ebony);
+    --text-secondary: var(--c-river-bed);
+    --text-muted: var(--c-pale-sky);
+    --text-proyect-card: var(--c-ebony-80);
+    --text-input: var(--c-ebony);
+    --text-label: var(--c-ebony);
+
+    --border-primary: var(--c-mischka);
+    --border-secondary: var(--c-athens-gray-50);
+    --border-input: var(--c-white-80);
+
+    /* Hovers & accents usados */
+    --hover-tech-card: var(--c-athens-gray-50); /* FIX: antes apuntaba a var inexistente */
+    --hover-proyect-card-border: var(--c-malibu-50);
+    --hover-theme-btn-accent: var(--c-dodger-blue-10);
+    --hover-menu-btn-accent: var(--c-royal-blue);
+
+    --accent-secondary: var(--c-royal-blue);
+
+    /* Cards */
+    --bg-tech-card: var(--c-white);
+    --bg-proyect-card: var(--c-white);
+    --border-proyect-card: var(--c-white-border-tech-card);
+}
+
+/* =========================
+   THEME: DARK (solo lo usado)
+   ========================= */
+:root[data-theme="dark"],
+[data-theme="dark"] {
+    --bg-nav: #181933;
+    --bg-input: var(--c-ebony-clay-50);
+
+    --text-primary: var(--c-white);
+    --text-secondary: var(--c-mischka);
+    --text-muted: var(--c-gray-chateau);
+    --text-proyect-card: var(--c-athens-gray);
+    --text-input: var(--c-white);
+    --text-label: var(--c-gray-chateau);
+
+    --border-primary: var(--c-oxford-blue-50);
+    --border-input: var(--c-river-bed);
+
+    /* Hovers & accents usados */
+    --hover-tech-card: var(--c-oxford-blue-50);
+    --hover-proyect-card-border: var(--c-heliotrope-50);
+    --hover-theme-btn-accent: var(--c-electric-violet-20);
+    --hover-menu-btn-accent: var(--c-heliotrope);
+
+    --accent-secondary: var(--c-heliotrope);
+
+    /* Cards */
+    --bg-tech-card: var(--c-ebony-clay-50);
+    --bg-proyect-card: var(--c-ebony-clay-50);
+    --border-proyect-card: var(--c-oxford-blue-50);
+}
+
+/* =========================
+   Exponer tokens a Tailwind (solo los usados)
+   ========================= */
+@theme {
+    /* Backgrounds / Surfaces */
+    --color-bg-nav: var(--bg-nav);
+    --color-bg-tech-card: var(--bg-tech-card);
+    --color-bg-proyect-card: var(--bg-proyect-card);
+    --color-bg-input: var(--bg-input);
+    --color-bg-form: var(--bg-form);
+
+    /* Text */
+    --color-text-primary: var(--text-primary);
+    --color-text-secondary: var(--text-secondary);
+    --color-text-muted: var(--text-muted);
+    --color-text-proyect-card: var(--text-proyect-card);
+    --color-text-input: var(--text-input);
+    --color-text-label: var(--text-label);
+
+    /* Borders */
+    --color-border-primary: var(--border-primary);
+    --color-border-secondary: var(--border-secondary);
+    --color-border-proyect-card: var(--border-proyect-card);
+    --color-border-input: var(--border-input);
+
+    /* Accents / Hovers */
+    --color-accent-secondary: var(--accent-secondary);
+    --color-hover-theme-btn-accent: var(--hover-theme-btn-accent);
+    --color-hover-menu-btn-accent: var(--hover-menu-btn-accent);
+    --color-hover-tech-card: var(--hover-tech-card);
+    --color-hover-proyect-card-border: var(--hover-proyect-card-border);
+}
+
+/* scroll suave y padding superior igual a la altura del header */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px; /* ~ header (80px) + margen de respiro */
+}
