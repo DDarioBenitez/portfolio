@@ -1,0 +1,91 @@
+{
+    "languages": [
+        {
+            "name": "JavaScript",
+            "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg",
+            "color": "from-yellow-400 to-amber-500"
+        },
+        {
+            "name": "TypeScript",
+            "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg",
+            "color": "from-blue-400 to-blue-600"
+        },
+        {
+            "name": "Java",
+            "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg",
+            "color": "from-red-500 to-orange-500"
+        }
+    ],
+    "technologies": [
+        {
+            "name": "React",
+            "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg",
+            "color": "from-cyan-400 to-blue-500"
+        },
+        {
+            "name": "Angular",
+            "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original.svg",
+            "color": "from-red-500 to-pink-500"
+        },
+        {
+            "name": "Next.js",
+            "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg",
+            "color": "from-gray-700 to-gray-900"
+        },
+        {
+            "name": "NestJS",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg",
+            "color": "from-pink-500 to-rose-600"
+        },
+        {
+            "name": "Spring Boot",
+            "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original.svg",
+            "color": "from-green-400 to-emerald-500"
+        },
+        {
+            "name": "Node.js",
+            "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg",
+            "color": "from-green-500 to-lime-500"
+        },
+        {
+            "name": "PostgreSQL",
+            "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg",
+            "color": "from-sky-500 to-blue-700"
+        },
+        {
+            "name": "MySQL",
+            "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg",
+            "color": "from-orange-400 to-amber-600"
+        },
+        {
+            "name": "MongoDB",
+            "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg",
+            "color": "from-emerald-500 to-green-700"
+        },
+        {
+            "name": "Firebase",
+            "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/firebase/firebase-plain.svg",
+            "color": "from-yellow-400 to-orange-500"
+        },
+        {
+            "name": "Tailwind CSS",
+            "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg",
+            "color": "from-cyan-400 to-teal-500"
+        },
+        {
+            "name": "Git",
+            "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg",
+            "color": "from-orange-500 to-red-600"
+        },
+        {
+            "name": "GitHub",
+            "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg",
+            "color": "from-gray-600 to-gray-900"
+        },
+        {
+            "name": "Postman",
+            "icon": "https://raw.githubusercontent.com/devicons/devicon/master/icons/postman/postman-original.svg",
+            "color": "from-orange-400 to-red-500"
+        }
+    ]
+}

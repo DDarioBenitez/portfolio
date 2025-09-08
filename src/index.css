@@ -149,5 +149,5 @@ html {
 /* scroll suave y padding superior igual a la altura del header */
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 88px; /* ~ header (80px) + margen de respiro */
+    /* scroll-padding-top: 88px; ~ header (80px) + margen de respiro */
 }
