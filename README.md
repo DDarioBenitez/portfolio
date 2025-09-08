@@ -18,7 +18,7 @@ Busco consolidarme como **backend o fullstack** aportando soluciones **eficiente
 
 ## ✨ Stack principal
 
--   🟨**JavaScript** · ⚛️ **React** · 🟦 **TypeScript**
+-   🟨 **JavaScript** · ⚛️ **React** · 🟦 **TypeScript**
 -   ☕ **Java + Spring Boot**
 -   🖌️ **Tailwind CSS** · 🔌 **Node.js / Express**
 -   🗄️ **PostgreSQL / MySQL** · **Sequelize / Prisma**

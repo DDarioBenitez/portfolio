@@ -3,9 +3,41 @@
 import { useEffect, useState } from "react";
 import { Menu as MenuIcon, X } from "lucide-react";
 
+type Lang = "es" | "en";
+
+function LangSelect({
+    value,
+    onChange,
+    className = "",
+    id = "lang-select",
+}: {
+    value: "es" | "en";
+    onChange: (l: "es" | "en") => void;
+    className?: string;
+    id?: string;
+}) {
+    return (
+        <div className={`inline-flex ${className}`}>
+            <select
+                id={id}
+                aria-label="Language"
+                value={value}
+                onChange={(e) => onChange(e.target.value as "es" | "en")}
+                onClick={(e) => e.stopPropagation()}
+                onTouchStart={(e) => e.stopPropagation()}
+                className="cursor-pointer border border-border-primary text-text-secondary bg-bg-nav rounded-md px-3 py-2 focus:outline-none focus:ring-0"
+            >
+                <option value="es">Español</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+    );
+}
+
 export default function Header() {
     const [theme, setTheme] = useState<"light" | "dark">("light");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [lang, setLang] = useState<Lang>("es");
 
     // Detecta tema preferido
     useEffect(() => {
@@ -60,9 +92,14 @@ export default function Header() {
         document.documentElement.setAttribute("data-theme", newTheme);
     };
 
+    const handleLang = (l: Lang) => {
+        setLang(l);
+        console.log("🌐 Idioma seleccionado:", l);
+    };
+
     return (
         <header className="sticky top-0 z-50 bg-bg-nav/70 border-b border-border-primary backdrop-blur-md transition-all duration-300">
-            <div className="px-6 py-4 flex items-center justify-between lg:mx-[10rem]">
+            <div className="px-6 py-4 flex items-center justify-between lg:grid lg:grid-cols-3">
                 {/* Logo */}
                 {theme === "dark" ? (
                     <img src="/logo_dario_negro_resized.png" alt="Dario Benitez" className="h-10 w-auto transition-opacity duration-300" />
@@ -74,7 +111,7 @@ export default function Header() {
                 <div className="flex items-center gap-3">
                     <button
                         onClick={toggleTheme}
-                        className="bg-border-secondary rounded-full p-2 h-12 w-12 hover:bg-hover-theme-btn-accent transition-all duration-300 cursor-pointer hover:scale-110"
+                        className="bg-border-secondary mx-auto rounded-full p-2 h-12 w-12 hover:bg-hover-theme-btn-accent transition-all duration-300 cursor-pointer hover:scale-110"
                     >
                         {theme === "dark" ? (
                             <img src="/sun_icon.svg" alt="Cambiar a modo claro" className="h-8 w-8" />
@@ -102,7 +139,7 @@ export default function Header() {
                 </div>
 
                 {/* Nav desktop */}
-                <nav className="hidden lg:flex gap-6">
+                <nav className="hidden lg:flex gap-6 items-center">
                     <a
                         href="#home"
                         className="text-lg font-semibold cursor-pointer text-text-secondary transition-colors hover:text-accent-secondary"
@@ -118,6 +155,7 @@ export default function Header() {
                     <a href="#contact" className="text-lg font-semibold cursor-pointer text-text-secondary transition-colors hover:text-emerald-500">
                         Contact
                     </a>
+                    <LangSelect value={lang} onChange={handleLang} className="ml-4 hidden lg:inline-flex" />
                 </nav>
             </div>
 
@@ -167,6 +205,7 @@ export default function Header() {
                         >
                             Contact
                         </a>
+                        <LangSelect value={lang} onChange={handleLang} id="lang-select-mobile" className="mt-3 mx-auto inline-flex lg:hidden" />
                     </nav>
                 </div>
             )}

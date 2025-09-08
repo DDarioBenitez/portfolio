@@ -1,0 +1,35 @@
+[
+    {
+        "title": "HelloFlatmate",
+        "description": "Plataforma web para alquiler de habitaciones, con backend en Node.js, chat y notificaciones en tiempo real, autenticación con Firebase, generación de contratos y facturas en PDF, y frontend en React + Next.js + Tailwind CSS.",
+        "techStack": ["Node.js", "Sequelize", "PostgreSQL", "Socket.IO", "Firebase Auth", "Firebase Storage", "React", "Next.js", "Tailwind CSS"],
+        "liveLink": "https://www.helloflatmate.com",
+        "status": "prod",
+        "colorTop": "from-purple-500 to-pink-500",
+        "gradientDark": "group-hover:from-[#A855F7] group-hover:to-[#A855F7]",
+        "gradientLight": "group-hover:from-[#A855F7] group-hover:to-[#ec4899]",
+        "githubLink": ""
+    },
+    {
+        "title": "Viaje Seguro",
+        "description": "Sistema de reservas de viajes y alquiler de vehículos con login y autenticación mediante OAuth, dashboards para usuarios y administradores, registro con Google/email, confirmación por correo, reservas de asiento, pagos con Stripe y frontend en React + Next.js.",
+        "techStack": ["NestJS", "Prisma", "PostgreSQL", "React", "Next.js", "TypeScript", "Stripe"],
+        "status": "dev",
+        "liveLink": "",
+        "colorTop": "from-emerald-500 to-teal-500",
+        "gradientDark": "group-hover:from-emerald-400 group-hover:to-teal-500",
+        "gradientLight": "group-hover:from-emerald-600 group-hover:to-green-700",
+        "githubLink": ""
+    },
+    {
+        "title": "SaaS Modular para PYMEs",
+        "description": "Plataforma SaaS diseñada para pequeñas y medianas empresas, con arquitectura modular que permite contratar solo los módulos necesarios (stock, punto de venta, reportes, etc.), habilitar o deshabilitar funcionalidades según las necesidades del cliente, y escalar fácilmente a medida que el negocio crece.",
+        "techStack": ["Angular", "NestJS", "PostgreSQL", "Prisma", "Tailwind CSS", "TypeScript"],
+        "liveLink": "",
+        "status": "dev",
+        "colorTop": "from-orange-500 to-red-500",
+        "gradientDark": "group-hover:from-orange-400 group-hover:to-red-500",
+        "gradientLight": "group-hover:from-orange-600 group-hover:to-red-600",
+        "githubLink": ""
+    }
+]

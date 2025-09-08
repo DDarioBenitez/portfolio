@@ -1,0 +1,174 @@
+import { Mail, MapPin, Phone } from "lucide-react";
+import { SiGithub, SiLinkedin } from "react-icons/si";
+
+interface ContactProps {
+    isDarkMode: boolean;
+}
+
+export default function Contact({ isDarkMode }: ContactProps) {
+    return (
+        <section id="contact" className="px-[6%]  pb-10 md:py-20 relative scroll-mt-[15px]">
+            <div className="max-w-4xl mx-auto relative z-10">
+                <h2
+                    className={`text-4xl md:text-5xl font-bold mb-8 pb-2 text-center ${
+                        isDarkMode
+                            ? "bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
+                            : "bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent"
+                    }`}
+                >
+                    Trabajemos juntos
+                </h2>
+
+                <p className="text-2xl text-text-secondary mb-12 max-w-2xl mx-auto text-center">
+                    Siempre estoy abierto a nuevas oportunidades y colaboraciones. Si tienes un proyecto en mente o simplemente quieres saludarme, ¡no
+                    dudes en contactarme!
+                </p>
+
+                <div className="grid md:grid-cols-2 gap-12">
+                    <div className="bg-bg-tech-card border-border-proyect-card p-6 rounded-2xl border backdrop-blur-sm">
+                        <h3 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+                            Enviame un mensaje
+                        </h3>
+                        <form onSubmit={() => {}} className="space-y-4 bg-bg-form">
+                            <div className="flex flex-col gap-2">
+                                <label className="text-[16px] text-text-label font-medium" htmlFor="name">
+                                    Nombre
+                                </label>
+                                <input
+                                    className="bg-bg-input rounded-md text-[16px] text-text-input py-[8px] px-[12px] border border-border-input focus:border-purple-500 focus:ring-purple-500/20 backdrop-blur-sm placeholder:text-gray-400 focus:ring-0 focus:outline-none"
+                                    type="text"
+                                    name="name"
+                                    id="name"
+                                    placeholder="Tu nombre"
+                                />
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <label className="text-[16px] text-text-label font-medium" htmlFor="email">
+                                    Email
+                                </label>
+                                <input
+                                    className="bg-bg-input rounded-md text-[16px] text-text-input py-[8px] px-[12px] border border-border-input focus:border-purple-500 focus:ring-purple-500/20 backdrop-blur-sm w-full placeholder:text-gray-400 focus:ring-0 focus:outline-none"
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    placeholder="Tu email"
+                                />
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <label className="text-[16px] text-text-label font-medium" htmlFor="subject">
+                                    Asunto
+                                </label>
+                                <input
+                                    className="bg-bg-input rounded-md text-[16px] text-text-input py-[8px] px-[12px] border border-border-input focus:border-purple-500 focus:ring-purple-500/20 backdrop-blur-sm w-full placeholder:text-gray-400 focus:ring-0 focus:outline-none"
+                                    type="text"
+                                    name="subject"
+                                    id="subject"
+                                    placeholder="Asunto del mensaje"
+                                />
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <label className="text-[16px] text-text-label font-medium" htmlFor="message">
+                                    Mensaje
+                                </label>
+                                <textarea
+                                    className="bg-bg-input rounded-md text-[16px] text-text-input py-[8px] px-[12px] border border-border-input focus:border-purple-500 focus:ring-purple-500/20 backdrop-blur-sm w-full min-h-[120px] resize-none placeholder:text-gray-400 focus:ring-0 focus:outline-none"
+                                    name="message"
+                                    id="message"
+                                    placeholder="Tu mensaje"
+                                ></textarea>
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <button
+                                    type="submit"
+                                    className="w-full py-3 rounded-xl transition-all duration-300 hover:scale-105 border-0 cursor-pointer text-white text-lg font-medium bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 "
+                                >
+                                    Enviar Mensaje
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div className="flex flex-col justify-center space-y-4 ">
+                        <h3 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">
+                            Informacion de contacto
+                        </h3>
+
+                        <div className="space-y-4">
+                            <div className="flex items-center gap-3 group">
+                                <div className="p-2 rounded-full bg-gradient-to-r from-red-500 to-pink-500 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
+                                    <Mail className="text-white" size={20} />
+                                </div>
+                                <a
+                                    href="mailto:benitez_trabaja@hotmail.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-text-primary hover:text-transparent hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-500 hover:bg-clip-text transition-all duration-300 "
+                                >
+                                    benitez_trabaja@hotmail.com
+                                </a>
+                            </div>
+
+                            <div className="flex items-center gap-3 group">
+                                <div className="p-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
+                                    <SiLinkedin className="text-white" size={20} />
+                                </div>
+                                <a
+                                    href="https://linkedin.com/in/dariobenitez"
+                                    className="text-text-primary hover:text-transparent hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-500 hover:bg-clip-text transition-all duration-300"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    linkedin.com/in/dariobenitez
+                                </a>
+                            </div>
+
+                            <div className="flex items-center gap-3 group">
+                                <div className="p-2 rounded-full bg-gradient-to-r from-gray-700 to-gray-900 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
+                                    <SiGithub className="text-white" size={20} />
+                                </div>
+                                <a
+                                    href="https://github.com/dariobenitez"
+                                    className="text-text-primary hover:text-transparent hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-900 hover:bg-clip-text transition-all duration-300"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    github.com/dariobenitez
+                                </a>
+                            </div>
+
+                            {/* 📞 Teléfono */}
+                            <div className="flex items-center gap-3 group">
+                                <div className="p-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
+                                    <Phone className="text-white" size={20} />
+                                </div>
+                                <a
+                                    href="tel:+543704009882"
+                                    className="text-text-primary hover:text-transparent hover:bg-gradient-to-r hover:from-green-500 hover:to-emerald-500 hover:bg-clip-text transition-all duration-300"
+                                >
+                                    +54 370 4009882
+                                </a>
+                            </div>
+                        </div>
+
+                        <h3 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+                            Ubicacion
+                        </h3>
+                        <div className="flex items-center gap-3 group">
+                            <div className="p-2 rounded-full bg-gradient-to-r from-orange-500 to-red-500 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
+                                <MapPin className="text-white" size={19} />
+                            </div>
+
+                            <a
+                                href="https://www.google.com/maps/place/Argentina"
+                                className="text-text-primary hover:text-transparent hover:bg-gradient-to-r hover:from-green-500 hover:to-emerald-500 hover:bg-clip-text transition-transform duration-300"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Argentina
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
