@@ -7,9 +7,19 @@ Creo aplicaciones web modernas, escalables y orientadas a resultados, con foco e
 
 ---
 
+## 🧠 Sobre mí
+
+Desarrollador **fullstack** con experiencia en producción (**JS/TS y Java**).  
+Me especializo en **arquitecturas robustas**, **lógica de negocio** e **interfaces modernas**.  
+Proactivo, comunicación clara y foco en resolver problemas de forma autónoma o en equipo.  
+Busco consolidarme como **backend o fullstack** aportando soluciones **eficientes y escalables**.
+
+---
+
 ## ✨ Stack principal
 
 -   ⚛️ **React** · ⚡ **Vite** · 🟦 **TypeScript**
+-   ☕ **Java + Spring Boot**
 -   🖌️ **Tailwind CSS** · 🔌 **Node.js / Express**
 -   🗄️ **PostgreSQL / MySQL** · **Sequelize / Prisma**
 -   🔐 **Auth** (Firebase, OAuth) · 🔔 **Socket.IO** · 💳 **Stripe**
@@ -32,6 +42,8 @@ Plataforma web de alquiler de habitaciones:
     🔗 **Live**: www.helloflatmate.com  
     🔗 **Stack**: React, Next.js, Node, Sequelize, PostgreSQL, Socket.IO, Firebase, Tailwind
 
+---
+
 ### Viaje Seguro — Fullstack Developer (Abr 2025 – May 2025, remoto · ES)
 
 Sistema de reservas de viajes y alquiler de vehículos:
@@ -42,20 +54,13 @@ Sistema de reservas de viajes y alquiler de vehículos:
 -   Frontend con **React + Next.js + TypeScript**  
     🔗 **Estado**: en proceso de lanzamiento
 
-## 🧠 Sobre mí
-
-Desarrollador **fullstack** con experiencia en producción (JS/TS y Java).  
-Me especializo en **arquitecturas robustas**, **lógica de negocio** e **interfaces modernas**.  
-Proactivo, comunicación clara y foco en resolver problemas de forma autónoma o en equipo.  
-Busco consolidarme como **backend o fullstack** aportando soluciones **eficientes y escalables**. :contentReference[oaicite:1]{index=1}
-
 ---
 
 ## 🎓 Educación
 
 -   **UTN – Tecnicatura Universitaria en Programación** (2024 – actual, 3°/4 cuatrimestres)
 -   **Fundación Formar (2023–2024)** · **MindHub LA (2023)**
--   **Técnico en Equipos e Instalaciones Electromecánicas – E.P.E.T. N°1** :contentReference[oaicite:2]{index=2}
+-   **Técnico en Equipos e Instalaciones Electromecánicas – E.P.E.T. N°1**
 
 ---
 
@@ -64,10 +69,4 @@ Busco consolidarme como **backend o fullstack** aportando soluciones **eficiente
 -   🌐 Portfolio: _(enlace del deploy si corresponde)_
 -   🐙 GitHub: **https://github.com/DDarioBenitez**
 -   💼 LinkedIn: **https://www.linkedin.com/in/darío-damián-benítez/**
--   ✉️ Email: **benitez_trabaja@hotmail.com** :contentReference[oaicite:3]{index=3}
-
----
-
-```
-
-```
+-   ✉️ Email: **benitez_trabaja@hotmail.com**
