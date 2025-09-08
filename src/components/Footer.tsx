@@ -17,7 +17,7 @@ export default function Footer({ isDarkMode }: FooterProps) {
                             alt="Dario Benitez Logo"
                             className="h-10 w-auto transition-opacity duration-300 mb-3"
                         />
-                        <p className="text-text-muted text-sm max-w-xs">Creating modern web experiences with cutting-edge technologies.</p>
+                        <p className="text-text-muted text-sm max-w-xs">Creando experiencias web modernas con tecnologías de vanguardia.</p>
                     </div>
 
                     {/* Links */}
@@ -95,7 +95,7 @@ export default function Footer({ isDarkMode }: FooterProps) {
 
                 <div className="flex flex-col md:flex-row justify-between items-center gap-3">
                     {/* Copyright */}
-                    <p className="text-text-muted text-sm">© {new Date().getFullYear()} Dario Benitez. All rights reserved.</p>
+                    <p className="text-text-muted text-sm">© {new Date().getFullYear()} Dario Benitez. Todos los derechos reservados.</p>
                     <div className="flex flex-col items-center gap-2 text-xs sm:flex-row sm:gap-4">
                         <span className="text-text-muted flex items-center gap-1 text-center sm:text-left">
                             Construido con
