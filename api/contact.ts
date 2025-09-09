@@ -34,7 +34,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const { name, email, subject, message, website } = (req.body || {}) as ContactBody;
 
-    // Honeypot: responder OK y cortar
+    // Honeypot: responder OK y cortar (silencioso)
     if (website && website.trim() !== "") {
         if (!allowedOrigins.length || allowedOrigins.includes(origin)) {
             res.setHeader("Access-Control-Allow-Origin", origin);
@@ -42,24 +42,21 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         return res.status(200).json({ ok: true });
     }
 
-    // Validaciones básicas
+    // Validaciones
     if (!name || !email || !subject || !message) {
         return res.status(400).json({ ok: false, error: "Faltan campos obligatorios" });
     }
-
     const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRe.test(email)) {
         return res.status(400).json({ ok: false, error: "Email inválido" });
     }
-
-    // Límites de tamaño para evitar abusos
     if (name.length > 120 || subject.length > 200 || email.length > 200 || message.length > 5000) {
         return res.status(413).json({ ok: false, error: "Contenido demasiado largo" });
     }
 
     try {
         const to = process.env.CONTACT_EMAIL_TO!;
-        const from = process.env.RESEND_FROM!; // ej: "Portfolio <no-reply@tudominio.com>"
+        const from = process.env.RESEND_FROM!; // ej: "Portfolio <onboarding@resend.dev>" o tu dominio verificado
 
         const html = `
       <h2>Nuevo contacto</h2>
@@ -70,26 +67,33 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       <pre style="white-space:pre-wrap;font-family:inherit">${escapeHtml(message)}</pre>
     `;
 
-        const sendResult = await resend.emails.send({
-            from, // remitente verificado en Resend (env: RESEND_FROM)
-            to, // destinatario (env: CONTACT_EMAIL_TO)
+        const { data, error } = await resend.emails.send({
+            from,
+            to,
             subject: `📨 ${subject} — ${name}`,
             html,
-            replyTo: email, // <- clave correcta para Resend
+            text: `Nombre: ${name}\nEmail: ${email}\nAsunto: ${subject}\n\n${message}`,
+            replyTo: email,
         });
 
         if (!allowedOrigins.length || allowedOrigins.includes(origin)) {
             res.setHeader("Access-Control-Allow-Origin", origin);
         }
 
-        return res.status(200).json({ ok: true, id: sendResult.data?.id ?? null });
+        if (error) {
+            console.error("Resend error:", error);
+            // Resend suele devolver .name y .message; si es validation error => 400
+            const status = error?.name === "validation_error" ? 400 : 502;
+            return res.status(status).json({ ok: false, error: error.message || "Email provider error" });
+        }
+
+        return res.status(200).json({ ok: true, id: data?.id || null });
     } catch (err: any) {
         console.error(err);
         return res.status(500).json({ ok: false, error: "No se pudo enviar el correo" });
     }
 }
 
-// Utilidad para evitar inyección en HTML
 function escapeHtml(str: string) {
     return str.replace(
         /[&<>"']/g,
