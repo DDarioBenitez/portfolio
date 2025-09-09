@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Suspense fallback={<Spinner />}>
             <App />
             <Toaster
-                position="top-right"
+                position="bottom-right"
                 richColors
                 closeButton
                 toastOptions={{
