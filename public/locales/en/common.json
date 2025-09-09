@@ -1,0 +1,58 @@
+{
+    "hero": {
+        "title": "FullStack developer specialized in modern web technologies",
+        "subTitle": "Look at my work"
+    },
+    "header": {
+        "home": "Home",
+        "about": "About",
+        "projects": "Projects",
+        "contact": "Contact"
+    },
+    "about": {
+        "title": "About Me",
+        "subTitle": "Hello, I'm Dario, nice to meet you.",
+        "text_1": "I'm a full-stack developer with experience working on real-world projects, both in the JavaScript/TypeScript ecosystem (Node.js, React, Next.js, NestJS) and in Java with SpringBoot. I specialize in designing robust architectures, optimizing business logic, and creating modern and functional interfaces.",
+        "text_2": "I'm characterized by proactivity, clear communication, and the ability to solve problems independently or in a team. I enjoy tackling technical challenges with an analytical and results-oriented mindset.",
+        "text_3": "I'm always looking for new projects and opportunities where I can provide scalable and efficient solutions that generate real-world impact.",
+        "subTitle_2": "Technologies I mainly work with"
+    },
+    "projects": {
+        "title": "Featured Projects"
+    },
+    "contact": {
+        "title": "Let's work together",
+        "subTitle": "I'm always open to new opportunities and collaborations. If you have a project in mind or just want to say hello, don't hesitate to contact me!",
+        "subTitle_2": "Send me a message",
+        "name": "Name",
+        "email": "Email",
+        "subject": "Subject",
+        "message": "Message",
+        "button_send": "Send Message",
+        "sending": "Sending message...",
+        "subTitle_3": "Contact information",
+        "location": "Location",
+        "country": "Argentina",
+        "sent": "Message sent successfully",
+        "error": "The message could not be sent",
+        "error_2": "Connection error",
+        "place_name": "Your name",
+        "place_email": "Your email",
+        "place_subject": "Subject of the message",
+        "place_message": "Your message",
+        "form_error_name": "Name is required",
+        "form_error_email": "Email is required",
+        "form_error_subject": "Subject is required",
+        "form_error_message": "Message is required"
+    },
+    "footer": {
+        "title": "Creating modern web experiences with cutting-edge technologies.",
+        "home": "Home",
+        "about": "About",
+        "projects": "Projects",
+        "contact": "Contact",
+        "subTitle": "Contact me",
+        "rights": "All rights reserved.",
+        "stack": "Built with"
+    }
+}

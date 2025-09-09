@@ -1,55 +1,54 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import i18n from "../i18n/i18n";
 import { Menu as MenuIcon, X } from "lucide-react";
+import LangSelect from "./LangSelect";
+import { useTranslation } from "react-i18next";
 
 type Lang = "es" | "en";
+const STORAGE_KEY = "i18nextLng";
 
-function LangSelect({
-    value,
-    onChange,
-    className = "",
-    id = "lang-select",
-}: {
-    value: "es" | "en";
-    onChange: (l: "es" | "en") => void;
-    className?: string;
-    id?: string;
-}) {
-    return (
-        <div className={`inline-flex ${className}`}>
-            <select
-                id={id}
-                aria-label="Language"
-                value={value}
-                onChange={(e) => onChange(e.target.value as "es" | "en")}
-                onClick={(e) => e.stopPropagation()}
-                onTouchStart={(e) => e.stopPropagation()}
-                className="cursor-pointer border border-border-primary text-text-secondary bg-bg-nav rounded-md px-3 py-2 focus:outline-none focus:ring-0"
-            >
-                <option value="es">Español</option>
-                <option value="en">English</option>
-            </select>
-        </div>
-    );
-}
+const getPathWithLang = (lng: Lang) => {
+    const hash = window.location.hash;
+    const newPath = lng === "es" ? "/" : "/en";
+    return newPath + hash;
+};
+
+const getInitialLang = (): Lang => {
+    const seg = window.location.pathname.split("/")[1];
+    if (seg === "en") return "en";
+    // Si no hay /en en el path, probamos localStorage
+    try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored === "en" || stored === "es") return stored as Lang;
+    } catch {}
+    return "es"; // por defecto
+};
 
 export default function Header() {
     const [theme, setTheme] = useState<"light" | "dark">("light");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [lang, setLang] = useState<Lang>("es");
+    const [lang, setLang] = useState<Lang>(getInitialLang);
 
-    // Detecta tema preferido
+    // Init: tema + i18n + sincronizar URL con preferencia guardada
     useEffect(() => {
         const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-        console.log("🎨 Theme initialization:", {
-            preferredTheme,
-            systemPreference: window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light",
-            timestamp: new Date().toISOString(),
-        });
         setTheme(preferredTheme);
         document.documentElement.setAttribute("data-theme", preferredTheme);
-    }, []);
+
+        // fija idioma en i18n
+        void i18n.changeLanguage(lang);
+
+        // asegura que la URL coincide con el idioma elegido
+        const seg = window.location.pathname.split("/")[1];
+        const urlIsEn = seg === "en";
+        const shouldBeEn = lang === "en";
+        if (urlIsEn !== shouldBeEn) {
+            const newUrl = getPathWithLang(lang);
+            window.history.replaceState({}, "", newUrl);
+        }
+    }, []); // solo una vez
 
     // Bloquea scroll al abrir menú
     useEffect(() => {
@@ -66,7 +65,6 @@ export default function Header() {
         const handleKey = (e: KeyboardEvent) => e.key === "Escape" && setIsMenuOpen(false);
         const handleClick = (e: MouseEvent) => {
             const target = e.target as Node;
-            // Si el click NO ocurrió dentro del header, cerrar
             if (!document.querySelector("header")?.contains(target)) {
                 setIsMenuOpen(false);
             }
@@ -82,24 +80,34 @@ export default function Header() {
 
     const toggleTheme = () => {
         const newTheme = theme === "light" ? "dark" : "light";
-        console.log("🔄 Theme toggle:", {
-            from: theme,
-            to: newTheme,
-            timestamp: new Date().toISOString(),
-            trigger: "user_click",
-        });
         setTheme(newTheme);
         document.documentElement.setAttribute("data-theme", newTheme);
     };
 
     const handleLang = (l: Lang) => {
         setLang(l);
-        console.log("🌐 Idioma seleccionado:", l);
+        // guarda preferencia
+        try {
+            localStorage.setItem(STORAGE_KEY, l);
+        } catch {}
+        // cambia idioma en i18n
+        void i18n.changeLanguage(l);
+
+        // reescribe URL manteniendo hash y, si existía, scrollea suave
+        const newUrl = getPathWithLang(l);
+        window.history.pushState({}, "", newUrl);
+
+        if (window.location.hash) {
+            const el = document.getElementById(window.location.hash.slice(1));
+            if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
     };
+
+    const { t } = useTranslation();
 
     return (
         <header className="sticky top-0 z-50 bg-bg-nav/70 border-b border-border-primary backdrop-blur-md transition-all duration-300">
-            <div className="px-6 py-4 flex items-center justify-between lg:grid lg:grid-cols-3">
+            <div className="px-6 py-4 flex justify-between items-center lg:grid lg:grid-cols-[auto_1fr_auto] overflow-x-clip">
                 {/* Logo */}
                 {theme === "dark" ? (
                     <img src="/logo_dario_negro_resized.png" alt="Dario Benitez" className="h-10 w-auto transition-opacity duration-300" />
@@ -108,10 +116,10 @@ export default function Header() {
                 )}
 
                 {/* Controles */}
-                <div className="flex items-center gap-3">
+                <div className="flex justify-end lg:mx-6 gap-4">
                     <button
                         onClick={toggleTheme}
-                        className="bg-border-secondary mx-auto rounded-full p-2 h-12 w-12 hover:bg-hover-theme-btn-accent transition-all duration-300 cursor-pointer hover:scale-110"
+                        className="bg-border-secondary rounded-full p-2 h-12 w-12 hover:bg-hover-theme-btn-accent transition-all duration-300 cursor-pointer hover:scale-110"
                     >
                         {theme === "dark" ? (
                             <img src="/sun_icon.svg" alt="Cambiar a modo claro" className="h-8 w-8" />
@@ -122,7 +130,7 @@ export default function Header() {
 
                     <button
                         onClick={(e) => {
-                            e.stopPropagation(); // evita que el listener global cierre inmediatamente
+                            e.stopPropagation();
                             setIsMenuOpen((v) => !v);
                         }}
                         className="lg:hidden p-2 rounded-md"
@@ -139,23 +147,23 @@ export default function Header() {
                 </div>
 
                 {/* Nav desktop */}
-                <nav className="hidden lg:flex gap-6 items-center">
+                <nav className="hidden lg:flex gap-6 items-center lg:justify-self-end max-w-full">
                     <a
                         href="#home"
                         className="text-lg font-semibold cursor-pointer text-text-secondary transition-colors hover:text-accent-secondary"
                     >
-                        Home
+                        {t("header.home")}
                     </a>
                     <a href="#about" className="text-lg font-semibold cursor-pointer text-text-secondary transition-colors hover:text-cyan-500">
-                        About
+                        {t("header.about")}
                     </a>
                     <a href="#projects" className="text-lg font-semibold cursor-pointer text-text-secondary transition-colors hover:text-pink-500">
-                        Projects
+                        {t("header.projects")}
                     </a>
                     <a href="#contact" className="text-lg font-semibold cursor-pointer text-text-secondary transition-colors hover:text-emerald-500">
-                        Contact
+                        {t("header.contact")}
                     </a>
-                    <LangSelect value={lang} onChange={handleLang} className="ml-4 hidden lg:inline-flex" />
+                    <LangSelect value={lang} onChange={handleLang} className="ml-4 hidden lg:inline-flex shrink-0" />
                 </nav>
             </div>
 
@@ -182,28 +190,28 @@ export default function Header() {
                             onClick={() => setIsMenuOpen(false)}
                             className="px-4 py-3 rounded-xl text-base font-medium text-text-secondary hover:text-accent-secondary"
                         >
-                            Home
+                            {t("header.home")}
                         </a>
                         <a
                             href="#about"
                             onClick={() => setIsMenuOpen(false)}
                             className="px-4 py-3 rounded-xl text-base font-medium text-text-secondary hover:text-cyan-500"
                         >
-                            About
+                            {t("header.about")}
                         </a>
                         <a
                             href="#projects"
                             onClick={() => setIsMenuOpen(false)}
                             className="px-4 py-3 rounded-xl text-base font-medium text-text-secondary hover:text-pink-500"
                         >
-                            Projects
+                            {t("header.projects")}
                         </a>
                         <a
                             href="#contact"
                             onClick={() => setIsMenuOpen(false)}
                             className="px-4 py-3 rounded-xl text-base font-medium text-text-secondary hover:text-emerald-500"
                         >
-                            Contact
+                            {t("header.contact")}
                         </a>
                         <LangSelect value={lang} onChange={handleLang} id="lang-select-mobile" className="mt-3 mx-auto inline-flex lg:hidden" />
                     </nav>

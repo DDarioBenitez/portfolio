@@ -1,0 +1,58 @@
+{
+    "hero": {
+        "title": "Desarrollador FullStack especializado en tecnologías web modernas",
+        "subTitle": "Mira mi trabajo"
+    },
+    "header": {
+        "home": "Inicio",
+        "about": "Sobre mí",
+        "projects": "Proyectos",
+        "contact": "Contacto"
+    },
+    "about": {
+        "title": "Sobre mí",
+        "subTitle": "Hola, soy Darío, un gusto conocerte.",
+        "text_1": "Soy un desarrollador full-stack con experiencia trabajando en proyectos reales, tanto en el ecosistema JavaScript/TypeScript (Node.js, React, Next.js, NestJS) como en Java con SpringBoot. Me especializo en diseñar arquitecturas robustas, optimizar la lógica de negocio y crear interfaces modernas y funcionales.",
+        "text_2": "Me caracterizo por la proactividad, la comunicación clara y la capacidad de resolver problemas de manera independiente o en equipo. Disfruto enfrentar desafíos técnicos con una mentalidad analítica y orientada a resultados.",
+        "text_3": "Siempre estoy buscando nuevos proyectos y oportunidades donde pueda aportar soluciones escalables y eficientes que generen un impacto real.",
+        "subTitle_2": "Tecnologías con las que trabajo principalmente"
+    },
+    "projects": {
+        "title": "Proyectos destacados"
+    },
+    "contact": {
+        "title": "Trabajemos juntos",
+        "subTitle": "Siempre estoy abierto a nuevas oportunidades y colaboraciones. Si tenés un proyecto en mente o simplemente querés saludar, ¡no dudes en contactarme!",
+        "subTitle_2": "Envíame un mensaje",
+        "name": "Nombre",
+        "email": "Correo electrónico",
+        "subject": "Asunto",
+        "message": "Mensaje",
+        "button_send": "Enviar mensaje",
+        "sending": "Enviando mensaje...",
+        "subTitle_3": "Información de contacto",
+        "location": "Ubicación",
+        "country": "Argentina",
+        "sent": "Mensaje enviado con éxito",
+        "error": "El mensaje no pudo ser enviado",
+        "error_2": "Error de conexión",
+        "place_name": "Tu nombre",
+        "place_email": "Tu correo electrónico",
+        "place_subject": "Asunto del mensaje",
+        "place_message": "Tu mensaje",
+        "form_error_name": "El nombre es obligatorio",
+        "form_error_email": "El correo electrónico es obligatorio",
+        "form_error_subject": "El asunto es obligatorio",
+        "form_error_message": "El mensaje es obligatorio"
+    },
+    "footer": {
+        "title": "Creando experiencias web modernas con tecnologías de vanguardia.",
+        "home": "Inicio",
+        "about": "Sobre mí",
+        "projects": "Proyectos",
+        "contact": "Contacto",
+        "subTitle": "Contáctame",
+        "rights": "Todos los derechos reservados.",
+        "stack": "Desarrollado con"
+    }
+}

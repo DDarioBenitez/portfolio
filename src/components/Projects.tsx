@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import projectsData from "../data/projects.json";
 import ProjectCard from "./Projects/ProjectCard";
 interface ProjectsProps {
@@ -6,7 +7,7 @@ interface ProjectsProps {
 
 export default function Projects({ isDarkMode }: ProjectsProps) {
     const projects = projectsData;
-    console.log(projects);
+    const { t } = useTranslation();
 
     return (
         <section id="projects" className="px-[6%] py-20 relative scroll-mt-[15px]">
@@ -18,7 +19,7 @@ export default function Projects({ isDarkMode }: ProjectsProps) {
                             : "bg-gradient-to-r from-pink-600 to-orange-600 bg-clip-text text-transparent"
                     }`}
                 >
-                    Proyectos Destacados
+                    {t("projects.title")}
                 </h2>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -35,6 +36,8 @@ export default function Projects({ isDarkMode }: ProjectsProps) {
                             colorTop={project.colorTop}
                             status={project.status}
                             githubLink={project.githubLink}
+                            description_en={project.description_en}
+                            title_en={project.title_en}
                         />
                     ))}
                 </div>

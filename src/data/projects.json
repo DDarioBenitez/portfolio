@@ -2,6 +2,7 @@
     {
         "title": "HelloFlatmate",
         "description": "Plataforma web para alquiler de habitaciones, con backend en Node.js, chat y notificaciones en tiempo real, autenticación con Firebase, generación de contratos y facturas en PDF, y frontend en React + Next.js + Tailwind CSS.",
+        "description_en": "Web platform for room rentals, with a Node.js backend, real-time chat and notifications, Firebase authentication, PDF contract and invoice generation, and a frontend built with React + Next.js + Tailwind CSS.",
         "techStack": ["Node.js", "Sequelize", "PostgreSQL", "Socket.IO", "Firebase Auth", "Firebase Storage", "React", "Next.js", "Tailwind CSS"],
         "liveLink": "https://www.helloflatmate.com",
         "status": "prod",
@@ -13,6 +14,7 @@
     {
         "title": "Viaje Seguro",
         "description": "Sistema de reservas de viajes y alquiler de vehículos con login y autenticación mediante OAuth, dashboards para usuarios y administradores, registro con Google/email, confirmación por correo, reservas de asiento, pagos con Stripe y frontend en React + Next.js.",
+        "description_en": "Travel booking and vehicle rental system with OAuth login and authentication, dashboards for users and administrators, Google/email registration, email confirmation, seat reservations, Stripe payments, and a frontend built with React + Next.js.",
         "techStack": ["NestJS", "Prisma", "PostgreSQL", "React", "Next.js", "TypeScript", "Stripe"],
         "status": "dev",
         "liveLink": "",
@@ -22,8 +24,10 @@
         "githubLink": ""
     },
     {
-        "title": "SaaS Modular para PYMEs",
+        "title": "SaaS Modular para Pymes",
+        "title_en": "Modular SaaS for Pymes",
         "description": "Plataforma SaaS diseñada para pequeñas y medianas empresas, con arquitectura modular que permite contratar solo los módulos necesarios (stock, punto de venta, reportes, etc.), habilitar o deshabilitar funcionalidades según las necesidades del cliente, y escalar fácilmente a medida que el negocio crece.",
+        "description_en": "SaaS platform designed for small and medium-sized enterprises, with a modular architecture that allows contracting only the required modules (inventory, point of sale, reports, etc.), enabling or disabling features according to client needs, and scaling easily as the business grows.",
         "techStack": ["Angular", "NestJS", "PostgreSQL", "Prisma", "Tailwind CSS", "TypeScript"],
         "liveLink": "",
         "status": "dev",

@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import techData from "../data/technologies.json";
 import AboutMeTechBadge from "./AboutMe/AboutMeTechBadge";
 interface AboutMeProps {
@@ -5,19 +6,19 @@ interface AboutMeProps {
 }
 export default function AboutMe({ isDarkMode }: AboutMeProps) {
     const data = techData;
-
+    const { t } = useTranslation();
     return (
         <section id="about" className="px-[6%] py-20 relative scroll-mt-[15px]">
             <div className="max-w-6xl mx-auto relative z-10">
-                <p
+                <h2
                     className={`text-4xl md:text-5xl font-bold mb-12 text-center ${
                         isDarkMode
                             ? "bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
                             : "bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
                     }`}
                 >
-                    Sobre mi
-                </p>
+                    {t("about.title")}
+                </h2>
                 <div className="grid md:grid-cols-2 gap-12 ">
                     <div>
                         <h3
@@ -25,18 +26,14 @@ export default function AboutMe({ isDarkMode }: AboutMeProps) {
                                 isDarkMode ? "from-cyan-500 to-blue-500" : "from-blue-600 to-indigo-600"
                             } bg-clip-text text-transparent`}
                         >
-                            Hola Soy Dario mucho gusto
+                            {t("about.subTitle")}
                         </h3>
                         <p className="text-lg mt-2 font-regular text-text-secondary leading-relaxed mb-8 mx-auto text-center md:mx-0 md:text-left">
-                            Soy desarrollador fullstack con experiencia en proyectos reales, tanto en el ecosistema JavaScript/TypeScript (Node.js,
-                            React, Next.js, NestJS) como en Java con SpringBoot. Me especializo en diseñar arquitecturas robustas, optimizar lógica de
-                            negocio y crear interfaces modernas y funcionales.
+                            {t("about.text_1")}
                             <br />
-                            Me caracterizo por la proactividad, la comunicación clara y la capacidad de resolver problemas de forma autónoma o en
-                            equipo. Disfruto enfrentar desafíos técnicos con una mentalidad analítica y orientada a resultados.
+                            {t("about.text_2")}
                             <br />
-                            Siempre estoy en busca de nuevos proyectos y oportunidades donde pueda aportar soluciones escalables y eficientes que
-                            generen impacto en el mundo real.
+                            {t("about.text_3")}
                         </p>
                     </div>
                     <article className="flex flex-col gap-8 md:gap-0  mx-auto text-center">
@@ -45,7 +42,7 @@ export default function AboutMe({ isDarkMode }: AboutMeProps) {
                                 isDarkMode ? "from-emerald-500 to-teal-500" : "from-emerald-600 to-green-700"
                             } bg-clip-text text-transparent`}
                         >
-                            Tecnologias con las que trabajo principalmente
+                            {t("about.subTitle_2")}
                         </h3>
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-lg font-medium text-text-primary">
                             {data.languages.map((tech) => {

@@ -82,7 +82,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
         if (error) {
             console.error("Resend error:", error);
-            // Resend suele devolver .name y .message; si es validation error => 400
             const status = error?.name === "validation_error" ? 400 : 502;
             return res.status(status).json({ ok: false, error: error.message || "Email provider error" });
         }
