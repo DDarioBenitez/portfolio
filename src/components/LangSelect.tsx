@@ -10,7 +10,7 @@ export default function LangSelect({
     id?: string;
 }) {
     return (
-        <div className={`inline-flex ${className}`}>
+        <div className={`inline-flex shrink-0 ${className}`}>
             <select
                 id={id}
                 aria-label="Language"
@@ -18,7 +18,7 @@ export default function LangSelect({
                 onChange={(e) => onChange(e.target.value as "es" | "en")}
                 onClick={(e) => e.stopPropagation()}
                 onTouchStart={(e) => e.stopPropagation()}
-                className="cursor-pointer border border-border-primary text-text-secondary bg-bg-nav rounded-md px-3 py-2 focus:outline-none focus:ring-0"
+                className="cursor-pointer border border-border-primary text-text-secondary bg-bg-nav rounded-md px-3 py-2 focus:outline-none focus:ring-0 w-auto whitespace-nowrap"
             >
                 <option value="es">Español</option>
                 <option value="en">English</option>

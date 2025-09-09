@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { SiGithub } from "react-icons/si";
 
 interface ProjectCardProps {
@@ -11,6 +12,8 @@ interface ProjectCardProps {
     colorTop: string;
     status?: string;
     githubLink?: string;
+    description_en: string;
+    title_en?: string;
 }
 
 export default function ProjectCard({
@@ -24,7 +27,15 @@ export default function ProjectCard({
     colorTop,
     status,
     githubLink,
+    description_en,
+    title_en,
 }: ProjectCardProps) {
+    const { i18n } = useTranslation();
+    const currentLang = i18n.language;
+
+    const text = currentLang.startsWith("en") ? description_en : description;
+    const textWithLang = currentLang.startsWith("en") && title_en ? title_en : title;
+
     return (
         <article className="transition-all flex flex-col justify-between items-center duration-300 hover:scale-105 hover:shadow-2xl rounded-2xl border group overflow-hidden bg-bg-tech-card border-border-proyect-card hover:border-hover-proyect-card-border">
             <div className={`h-2 w-full bg-gradient-to-r ${colorTop} transition-all duration-300 group-hover:scale-105`}></div>
@@ -35,11 +46,11 @@ export default function ProjectCard({
                             isDarkMode ? gradientDark : gradientLight
                         }`}
                     >
-                        {title}
+                        {textWithLang}
                     </h3>
                 </div>
 
-                <p className="text-[16px] text-text-secondary leading-relaxed mt-2">{description}</p>
+                <p className="text-[16px] text-text-secondary leading-relaxed mt-2">{text}</p>
                 <div className="flex flex-wrap gap-2 mt-1">
                     {techStack.map((tech, index) => (
                         <p

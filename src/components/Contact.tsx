@@ -1,5 +1,6 @@
 import { Mail, MapPin } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { FaWhatsapp } from "react-icons/fa";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 import { toast } from "sonner";
@@ -23,6 +24,8 @@ export default function Contact({ isDarkMode }: ContactProps) {
         reset,
     } = useForm<ContactFormInputs>();
 
+    const { t } = useTranslation();
+
     const onSubmit = async (data: ContactFormInputs) => {
         try {
             const res = await fetch("/api/contact", {
@@ -33,14 +36,13 @@ export default function Contact({ isDarkMode }: ContactProps) {
             const result = await res.json();
 
             if (result.ok) {
-                toast.success("✅ Mensaje enviado con éxito");
+                toast.success(t("contact.sent"));
                 reset();
             } else {
-                toast.error("❌ No se pudo enviar el mensaje");
+                toast.error(t("contact.error"));
             }
-        } catch (err) {
-            console.error(err);
-            toast.error("⚠️ Error de conexión");
+        } catch {
+            toast.error(t("contact.error_2"));
         }
     };
     return (
@@ -53,31 +55,28 @@ export default function Contact({ isDarkMode }: ContactProps) {
                             : "bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent"
                     }`}
                 >
-                    Trabajemos juntos
+                    {t("contact.title")}
                 </h2>
 
-                <p className="text-2xl text-text-secondary mb-12 max-w-2xl mx-auto text-center">
-                    Siempre estoy abierto a nuevas oportunidades y colaboraciones. Si tienes un proyecto en mente o simplemente quieres saludarme, ¡no
-                    dudes en contactarme!
-                </p>
+                <p className="text-2xl text-text-secondary mb-12 max-w-2xl mx-auto text-center">{t("contact.subTitle")}</p>
 
                 <div className="grid md:grid-cols-2 gap-12">
                     <div className="bg-bg-tech-card border-border-proyect-card p-6 rounded-2xl border backdrop-blur-sm">
                         <h3 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-                            Enviame un mensaje
+                            {t("contact.subTitle_2")}
                         </h3>
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 bg-bg-form">
                             {/* Nombre */}
                             <div className="flex flex-col gap-2">
                                 <label className="text-[16px] text-text-label font-medium" htmlFor="name">
-                                    Nombre
+                                    {t("contact.name")}
                                 </label>
                                 <input
-                                    {...register("name", { required: "El nombre es requerido" })}
+                                    {...register("name", { required: t("contact.form_error_name") })}
                                     className="bg-bg-input rounded-md text-[16px] text-text-input py-[8px] px-[12px] border border-border-input focus:border-purple-500 focus:ring-purple-500/20 backdrop-blur-sm placeholder:text-gray-400 focus:ring-0 focus:outline-none"
                                     type="text"
                                     id="name"
-                                    placeholder="Tu nombre"
+                                    placeholder={t("contact.place_name")}
                                 />
                                 {errors.name && <span className="text-red-500 text-sm">{errors.name.message}</span>}
                             </div>
@@ -85,11 +84,11 @@ export default function Contact({ isDarkMode }: ContactProps) {
                             {/* Email */}
                             <div className="flex flex-col gap-2">
                                 <label className="text-[16px] text-text-label font-medium" htmlFor="email">
-                                    Email
+                                    {t("contact.email")}
                                 </label>
                                 <input
                                     {...register("email", {
-                                        required: "El email es requerido",
+                                        required: t("contact.form_error_email"),
                                         pattern: {
                                             value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                                             message: "Email inválido",
@@ -98,7 +97,7 @@ export default function Contact({ isDarkMode }: ContactProps) {
                                     className="bg-bg-input rounded-md text-[16px] text-text-input py-[8px] px-[12px] border border-border-input focus:border-purple-500 focus:ring-purple-500/20 backdrop-blur-sm placeholder:text-gray-400 focus:ring-0 focus:outline-none"
                                     type="email"
                                     id="email"
-                                    placeholder="Tu email"
+                                    placeholder={t("contact.place_email")}
                                 />
                                 {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
                             </div>
@@ -106,16 +105,16 @@ export default function Contact({ isDarkMode }: ContactProps) {
                             {/* Asunto */}
                             <div className="flex flex-col gap-2">
                                 <label className="text-[16px] text-text-label font-medium" htmlFor="subject">
-                                    Asunto
+                                    {t("contact.subject")}
                                 </label>
                                 <input
                                     {...register("subject", {
-                                        required: "El asunto es requerido",
+                                        required: t("contact.form_error_subject"),
                                     })}
                                     className="bg-bg-input rounded-md text-[16px] text-text-input py-[8px] px-[12px] border border-border-input focus:border-purple-500 focus:ring-purple-500/20 backdrop-blur-sm placeholder:text-gray-400 focus:ring-0 focus:outline-none"
                                     type="text"
                                     id="subject"
-                                    placeholder="Asunto del mensaje"
+                                    placeholder={t("contact.place_subject")}
                                 />
                                 {errors.subject && <span className="text-red-500 text-sm">{errors.subject.message}</span>}
                             </div>
@@ -123,15 +122,15 @@ export default function Contact({ isDarkMode }: ContactProps) {
                             {/* Mensaje */}
                             <div className="flex flex-col gap-2">
                                 <label className="text-[16px] text-text-label font-medium" htmlFor="message">
-                                    Mensaje
+                                    {t("contact.message")}
                                 </label>
                                 <textarea
                                     {...register("message", {
-                                        required: "El mensaje es requerido",
+                                        required: t("contact.form_error_message"),
                                     })}
                                     className="bg-bg-input rounded-md text-[16px] text-text-input py-[8px] px-[12px] border border-border-input focus:border-purple-500 focus:ring-purple-500/20 backdrop-blur-sm w-full min-h-[120px] resize-none placeholder:text-gray-400 focus:ring-0 focus:outline-none"
                                     id="message"
-                                    placeholder="Tu mensaje"
+                                    placeholder={t("contact.place_message")}
                                 ></textarea>
                                 {errors.message && <span className="text-red-500 text-sm">{errors.message.message}</span>}
                             </div>
@@ -146,14 +145,14 @@ export default function Contact({ isDarkMode }: ContactProps) {
                                     disabled={isSubmitting}
                                     className="w-full py-3 rounded-xl transition-all duration-300 hover:scale-105 border-0 cursor-pointer text-white text-lg font-medium bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 disabled:opacity-60"
                                 >
-                                    {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
+                                    {isSubmitting ? t("contact.sending") : t("contact.button_send")}
                                 </button>
                             </div>
                         </form>
                     </div>
                     <div className="flex flex-col justify-center space-y-4 ">
                         <h3 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">
-                            Informacion de contacto
+                            {t("contact.subTitle_3")}
                         </h3>
 
                         <div className="space-y-4">
@@ -214,7 +213,7 @@ export default function Contact({ isDarkMode }: ContactProps) {
                         </div>
 
                         <h3 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-                            Ubicacion
+                            {t("contact.location")}
                         </h3>
                         <div className="flex items-center gap-3 group">
                             <div className="p-2 rounded-full bg-gradient-to-r from-orange-500 to-red-500 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
@@ -227,7 +226,7 @@ export default function Contact({ isDarkMode }: ContactProps) {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Argentina
+                                {t("contact.country")}
                             </a>
                         </div>
                     </div>

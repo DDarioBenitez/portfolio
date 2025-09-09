@@ -1,4 +1,5 @@
 import { Mail } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { FaWhatsapp } from "react-icons/fa";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 
@@ -7,6 +8,7 @@ interface FooterProps {
 }
 
 export default function Footer({ isDarkMode }: FooterProps) {
+    const { t } = useTranslation();
     return (
         <footer className={`bg-bg-nav/70 backdrop-blur-md border-t ${isDarkMode ? "border-gray-700" : "border-[#E5E7EB]"} px-[6%] py-8 relative`}>
             <div className="max-w-6xl mx-auto relative z-10">
@@ -18,7 +20,7 @@ export default function Footer({ isDarkMode }: FooterProps) {
                             alt="Dario Benitez Logo"
                             className="h-10 w-auto transition-opacity duration-300 mb-3"
                         />
-                        <p className="text-text-muted text-sm max-w-xs">Creando experiencias web modernas con tecnologías de vanguardia.</p>
+                        <p className="text-text-muted text-sm max-w-xs">{t("footer.title")}</p>
                     </div>
 
                     {/* Links */}
@@ -31,25 +33,25 @@ export default function Footer({ isDarkMode }: FooterProps) {
                                 className="text-text-muted hover:text-transparent hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:bg-clip-text transition-all duration-300 text-sm font-semibold"
                                 href="#home"
                             >
-                                Inicio
+                                {t("footer.home")}
                             </a>
                             <a
                                 className="text-text-muted hover:text-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:bg-clip-text transition-all duration-300 text-sm font-semibold"
                                 href="#about"
                             >
-                                Sobre mi
+                                {t("footer.about")}
                             </a>
                             <a
                                 className="text-text-muted hover:text-transparent hover:bg-gradient-to-r hover:from-pink-500 hover:to-orange-500 hover:bg-clip-text transition-all duration-300 text-sm font-semibold"
                                 href="#projects"
                             >
-                                Proyectos
+                                {t("footer.projects")}
                             </a>
                             <a
                                 className="text-text-muted hover:text-transparent hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-500 hover:bg-clip-text transition-all duration-300 text-sm font-semibold"
                                 href="#contact"
                             >
-                                Contacto
+                                {t("footer.contact")}
                             </a>
                         </div>
                     </div>
@@ -57,7 +59,7 @@ export default function Footer({ isDarkMode }: FooterProps) {
                     {/* Socials */}
                     <div className="flex flex-col items-center md:items-end">
                         <h4 className="text-lg font-semibold mb-3 bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">
-                            Contactame
+                            {t("footer.subTitle")}
                         </h4>
                         <div className="flex gap-3">
                             <a
@@ -104,10 +106,12 @@ export default function Footer({ isDarkMode }: FooterProps) {
 
                 <div className="flex flex-col md:flex-row justify-between items-center gap-3">
                     {/* Copyright */}
-                    <p className="text-text-muted text-sm">© {new Date().getFullYear()} Dario Benitez. Todos los derechos reservados.</p>
+                    <p className="text-text-muted text-sm">
+                        © {new Date().getFullYear()} Dario Benitez. {t("footer.rights")}
+                    </p>
                     <div className="flex flex-col items-center gap-2 text-xs sm:flex-row sm:gap-4">
                         <span className="text-text-muted flex items-center gap-1 text-center sm:text-left">
-                            Construido con
+                            {t("footer.stack")}
                             <span className="text-transparent bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text font-medium">
                                 React, Vite, TypeScript
                             </span>
