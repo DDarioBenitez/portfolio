@@ -81,14 +81,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         }
 
         if (error) {
-            console.error("Resend error:", error);
             const status = error?.name === "validation_error" ? 400 : 502;
             return res.status(status).json({ ok: false, error: error.message || "Email provider error" });
         }
 
         return res.status(200).json({ ok: true, id: data?.id || null });
     } catch (err: any) {
-        console.error(err);
         return res.status(500).json({ ok: false, error: "No se pudo enviar el correo" });
     }
 }
