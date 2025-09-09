@@ -5,7 +5,7 @@ export default function LangSelect({
     id = "lang-select",
 }: {
     value: "es" | "en";
-    onChange: (l: "es" | "en") => void;
+    onChange: (_l: "es" | "en") => void;
     className?: string;
     id?: string;
 }) {

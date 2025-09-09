@@ -9,10 +9,17 @@ import { useTranslation } from "react-i18next";
 type Lang = "es" | "en";
 const STORAGE_KEY = "i18nextLng";
 
-const getPathWithLang = (lng: Lang) => {
+// Mantiene el hash (para la sincronización inicial)
+const getPathWithLangPreserveHash = (lng: Lang) => {
     const hash = window.location.hash;
     const newPath = lng === "es" ? "/" : "/en";
     return newPath + hash;
+};
+
+// Quita el hash (para cuando el usuario cambia de idioma)
+const getPathWithLangNoHash = (lng: Lang) => {
+    const newPath = lng === "es" ? "/" : "/en";
+    return newPath; // sin hash
 };
 
 const getInitialLang = (): Lang => {
@@ -22,7 +29,9 @@ const getInitialLang = (): Lang => {
     try {
         const stored = localStorage.getItem(STORAGE_KEY);
         if (stored === "en" || stored === "es") return stored as Lang;
-    } catch {}
+    } catch {
+        /* ignore error accessing localStorage */
+    }
     return "es"; // por defecto
 };
 
@@ -45,7 +54,7 @@ export default function Header() {
         const urlIsEn = seg === "en";
         const shouldBeEn = lang === "en";
         if (urlIsEn !== shouldBeEn) {
-            const newUrl = getPathWithLang(lang);
+            const newUrl = getPathWithLangPreserveHash(lang); // 👈 conserva hash
             window.history.replaceState({}, "", newUrl);
         }
     }, []); // solo una vez
@@ -89,18 +98,15 @@ export default function Header() {
         // guarda preferencia
         try {
             localStorage.setItem(STORAGE_KEY, l);
-        } catch {}
+        } catch {
+            /* ignore error setting localStorage */
+        }
         // cambia idioma en i18n
         void i18n.changeLanguage(l);
 
         // reescribe URL manteniendo hash y, si existía, scrollea suave
-        const newUrl = getPathWithLang(l);
+        const newUrl = getPathWithLangNoHash(l);
         window.history.pushState({}, "", newUrl);
-
-        if (window.location.hash) {
-            const el = document.getElementById(window.location.hash.slice(1));
-            if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
     };
 
     const { t } = useTranslation();
