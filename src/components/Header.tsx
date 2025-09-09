@@ -2,37 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { Menu as MenuIcon, X } from "lucide-react";
+import LangSelect from "./LangSelect";
 
 type Lang = "es" | "en";
-
-function LangSelect({
-    value,
-    onChange,
-    className = "",
-    id = "lang-select",
-}: {
-    value: "es" | "en";
-    onChange: (l: "es" | "en") => void;
-    className?: string;
-    id?: string;
-}) {
-    return (
-        <div className={`inline-flex ${className}`}>
-            <select
-                id={id}
-                aria-label="Language"
-                value={value}
-                onChange={(e) => onChange(e.target.value as "es" | "en")}
-                onClick={(e) => e.stopPropagation()}
-                onTouchStart={(e) => e.stopPropagation()}
-                className="cursor-pointer border border-border-primary text-text-secondary bg-bg-nav rounded-md px-3 py-2 focus:outline-none focus:ring-0"
-            >
-                <option value="es">Español</option>
-                <option value="en">English</option>
-            </select>
-        </div>
-    );
-}
 
 export default function Header() {
     const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -144,16 +116,16 @@ export default function Header() {
                         href="#home"
                         className="text-lg font-semibold cursor-pointer text-text-secondary transition-colors hover:text-accent-secondary"
                     >
-                        Home
+                        Inicio
                     </a>
                     <a href="#about" className="text-lg font-semibold cursor-pointer text-text-secondary transition-colors hover:text-cyan-500">
-                        About
+                        Sobre mi
                     </a>
                     <a href="#projects" className="text-lg font-semibold cursor-pointer text-text-secondary transition-colors hover:text-pink-500">
-                        Projects
+                        Proyectos
                     </a>
                     <a href="#contact" className="text-lg font-semibold cursor-pointer text-text-secondary transition-colors hover:text-emerald-500">
-                        Contact
+                        Contacto
                     </a>
                     <LangSelect value={lang} onChange={handleLang} className="ml-4 hidden lg:inline-flex" />
                 </nav>
@@ -182,28 +154,28 @@ export default function Header() {
                             onClick={() => setIsMenuOpen(false)}
                             className="px-4 py-3 rounded-xl text-base font-medium text-text-secondary hover:text-accent-secondary"
                         >
-                            Home
+                            Inicio
                         </a>
                         <a
                             href="#about"
                             onClick={() => setIsMenuOpen(false)}
                             className="px-4 py-3 rounded-xl text-base font-medium text-text-secondary hover:text-cyan-500"
                         >
-                            About
+                            Sobre mi
                         </a>
                         <a
                             href="#projects"
                             onClick={() => setIsMenuOpen(false)}
                             className="px-4 py-3 rounded-xl text-base font-medium text-text-secondary hover:text-pink-500"
                         >
-                            Projects
+                            Proyectos
                         </a>
                         <a
                             href="#contact"
                             onClick={() => setIsMenuOpen(false)}
                             className="px-4 py-3 rounded-xl text-base font-medium text-text-secondary hover:text-emerald-500"
                         >
-                            Contact
+                            Contacto
                         </a>
                         <LangSelect value={lang} onChange={handleLang} id="lang-select-mobile" className="mt-3 mx-auto inline-flex lg:hidden" />
                     </nav>

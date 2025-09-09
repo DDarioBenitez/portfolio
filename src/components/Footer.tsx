@@ -1,4 +1,5 @@
 import { Mail } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 
 interface FooterProps {
@@ -30,13 +31,13 @@ export default function Footer({ isDarkMode }: FooterProps) {
                                 className="text-text-muted hover:text-transparent hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:bg-clip-text transition-all duration-300 text-sm font-semibold"
                                 href="#home"
                             >
-                                Home
+                                Inicio
                             </a>
                             <a
                                 className="text-text-muted hover:text-transparent hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:bg-clip-text transition-all duration-300 text-sm font-semibold"
                                 href="#about"
                             >
-                                About
+                                Sobre mi
                             </a>
                             <a
                                 className="text-text-muted hover:text-transparent hover:bg-gradient-to-r hover:from-pink-500 hover:to-orange-500 hover:bg-clip-text transition-all duration-300 text-sm font-semibold"
@@ -60,7 +61,7 @@ export default function Footer({ isDarkMode }: FooterProps) {
                         </h4>
                         <div className="flex gap-3">
                             <a
-                                href="https://github.com/dariobenitez"
+                                href="https://github.com/DDarioBenitez"
                                 className="p-2.5 rounded-full bg-gradient-to-r from-gray-700 to-gray-900 hover:from-gray-600 hover:to-gray-800 transition-all duration-300 hover:scale-110 group"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -69,7 +70,7 @@ export default function Footer({ isDarkMode }: FooterProps) {
                                 <SiGithub size={18} className="text-white group-hover:rotate-12 transition-transform duration-300" />
                             </a>
                             <a
-                                href="https://linkedin.com/in/dariobenitez"
+                                href="https://linkedin.com/in/darío-damián-benítez"
                                 className="p-2.5 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 hover:scale-110 group"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -85,6 +86,14 @@ export default function Footer({ isDarkMode }: FooterProps) {
                                 aria-label="Email"
                             >
                                 <Mail size={18} className="text-white group-hover:rotate-12 transition-transform duration-300" />
+                            </a>
+                            <a
+                                href=""
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300"
+                            >
+                                <FaWhatsapp className="text-white" size={20} />
                             </a>
                         </div>
                     </div>

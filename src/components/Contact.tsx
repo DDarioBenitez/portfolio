@@ -1,5 +1,6 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { useForm } from "react-hook-form";
+import { FaWhatsapp } from "react-icons/fa";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 import { toast } from "sonner";
 
@@ -175,12 +176,12 @@ export default function Contact({ isDarkMode }: ContactProps) {
                                     <SiLinkedin className="text-white" size={20} />
                                 </div>
                                 <a
-                                    href="https://linkedin.com/in/dariobenitez"
+                                    href="https://linkedin.com/in/darío-damián-benítez"
                                     className="text-text-primary hover:text-transparent hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-500 hover:bg-clip-text transition-all duration-300"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    linkedin.com/in/dariobenitez
+                                    linkedin.com/in/darío-damián-benítez
                                 </a>
                             </div>
 
@@ -189,22 +190,22 @@ export default function Contact({ isDarkMode }: ContactProps) {
                                     <SiGithub className="text-white" size={20} />
                                 </div>
                                 <a
-                                    href="https://github.com/dariobenitez"
+                                    href="https://github.com/DDarioBenitez"
                                     className="text-text-primary hover:text-transparent hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-900 hover:bg-clip-text transition-all duration-300"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    github.com/dariobenitez
+                                    github.com/DDarioBenitez
                                 </a>
                             </div>
 
                             {/* 📞 Teléfono */}
                             <div className="flex items-center gap-3 group">
                                 <div className="p-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
-                                    <Phone className="text-white" size={20} />
+                                    <FaWhatsapp className="text-white" size={20} />
                                 </div>
                                 <a
-                                    href="tel:+543704009882"
+                                    href="https://wa.me/5493704009882"
                                     className="text-text-primary hover:text-transparent hover:bg-gradient-to-r hover:from-green-500 hover:to-emerald-500 hover:bg-clip-text transition-all duration-300"
                                 >
                                     +54 370 4009882
