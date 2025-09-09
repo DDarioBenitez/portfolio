@@ -1,11 +1,47 @@
 import { Mail, MapPin, Phone } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { SiGithub, SiLinkedin } from "react-icons/si";
+import { toast } from "sonner";
 
 interface ContactProps {
     isDarkMode: boolean;
 }
+interface ContactFormInputs {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+    website?: string; // honeypot opcional
+}
 
 export default function Contact({ isDarkMode }: ContactProps) {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitting },
+        reset,
+    } = useForm<ContactFormInputs>();
+
+    const onSubmit = async (data: ContactFormInputs) => {
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            });
+            const result = await res.json();
+
+            if (result.ok) {
+                toast.success("✅ Mensaje enviado con éxito");
+                reset();
+            } else {
+                toast.error("❌ No se pudo enviar el mensaje");
+            }
+        } catch (err) {
+            console.error(err);
+            toast.error("⚠️ Error de conexión");
+        }
+    };
     return (
         <section id="contact" className="px-[6%]  pb-10 md:py-20 relative scroll-mt-[15px]">
             <div className="max-w-4xl mx-auto relative z-10">
@@ -29,60 +65,87 @@ export default function Contact({ isDarkMode }: ContactProps) {
                         <h3 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
                             Enviame un mensaje
                         </h3>
-                        <form onSubmit={() => {}} className="space-y-4 bg-bg-form">
+                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 bg-bg-form">
+                            {/* Nombre */}
                             <div className="flex flex-col gap-2">
                                 <label className="text-[16px] text-text-label font-medium" htmlFor="name">
                                     Nombre
                                 </label>
                                 <input
+                                    {...register("name", { required: "El nombre es requerido" })}
                                     className="bg-bg-input rounded-md text-[16px] text-text-input py-[8px] px-[12px] border border-border-input focus:border-purple-500 focus:ring-purple-500/20 backdrop-blur-sm placeholder:text-gray-400 focus:ring-0 focus:outline-none"
                                     type="text"
-                                    name="name"
                                     id="name"
                                     placeholder="Tu nombre"
                                 />
+                                {errors.name && <span className="text-red-500 text-sm">{errors.name.message}</span>}
                             </div>
+
+                            {/* Email */}
                             <div className="flex flex-col gap-2">
                                 <label className="text-[16px] text-text-label font-medium" htmlFor="email">
                                     Email
                                 </label>
                                 <input
-                                    className="bg-bg-input rounded-md text-[16px] text-text-input py-[8px] px-[12px] border border-border-input focus:border-purple-500 focus:ring-purple-500/20 backdrop-blur-sm w-full placeholder:text-gray-400 focus:ring-0 focus:outline-none"
+                                    {...register("email", {
+                                        required: "El email es requerido",
+                                        pattern: {
+                                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                            message: "Email inválido",
+                                        },
+                                    })}
+                                    className="bg-bg-input rounded-md text-[16px] text-text-input py-[8px] px-[12px] border border-border-input focus:border-purple-500 focus:ring-purple-500/20 backdrop-blur-sm placeholder:text-gray-400 focus:ring-0 focus:outline-none"
                                     type="email"
-                                    name="email"
                                     id="email"
                                     placeholder="Tu email"
                                 />
+                                {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
                             </div>
+
+                            {/* Asunto */}
                             <div className="flex flex-col gap-2">
                                 <label className="text-[16px] text-text-label font-medium" htmlFor="subject">
                                     Asunto
                                 </label>
                                 <input
-                                    className="bg-bg-input rounded-md text-[16px] text-text-input py-[8px] px-[12px] border border-border-input focus:border-purple-500 focus:ring-purple-500/20 backdrop-blur-sm w-full placeholder:text-gray-400 focus:ring-0 focus:outline-none"
+                                    {...register("subject", {
+                                        required: "El asunto es requerido",
+                                    })}
+                                    className="bg-bg-input rounded-md text-[16px] text-text-input py-[8px] px-[12px] border border-border-input focus:border-purple-500 focus:ring-purple-500/20 backdrop-blur-sm placeholder:text-gray-400 focus:ring-0 focus:outline-none"
                                     type="text"
-                                    name="subject"
                                     id="subject"
                                     placeholder="Asunto del mensaje"
                                 />
+                                {errors.subject && <span className="text-red-500 text-sm">{errors.subject.message}</span>}
                             </div>
+
+                            {/* Mensaje */}
                             <div className="flex flex-col gap-2">
                                 <label className="text-[16px] text-text-label font-medium" htmlFor="message">
                                     Mensaje
                                 </label>
                                 <textarea
+                                    {...register("message", {
+                                        required: "El mensaje es requerido",
+                                    })}
                                     className="bg-bg-input rounded-md text-[16px] text-text-input py-[8px] px-[12px] border border-border-input focus:border-purple-500 focus:ring-purple-500/20 backdrop-blur-sm w-full min-h-[120px] resize-none placeholder:text-gray-400 focus:ring-0 focus:outline-none"
-                                    name="message"
                                     id="message"
                                     placeholder="Tu mensaje"
                                 ></textarea>
+                                {errors.message && <span className="text-red-500 text-sm">{errors.message.message}</span>}
                             </div>
+
+                            {/* Honeypot invisible */}
+                            <input type="text" {...register("website")} className="hidden" tabIndex={-1} autoComplete="off" />
+
+                            {/* Botón */}
                             <div className="flex flex-col gap-2">
                                 <button
                                     type="submit"
-                                    className="w-full py-3 rounded-xl transition-all duration-300 hover:scale-105 border-0 cursor-pointer text-white text-lg font-medium bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 "
+                                    disabled={isSubmitting}
+                                    className="w-full py-3 rounded-xl transition-all duration-300 hover:scale-105 border-0 cursor-pointer text-white text-lg font-medium bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 disabled:opacity-60"
                                 >
-                                    Enviar Mensaje
+                                    {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
                                 </button>
                             </div>
                         </form>
