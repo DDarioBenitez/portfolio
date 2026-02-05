@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import i18n from "../i18n/i18n";
 import { Menu as MenuIcon, X } from "lucide-react";
-import LangSelect from "./LangSelect";
+import LanguageToggle from "./Header/LanguageToggle";
 import { useTranslation } from "react-i18next";
 
 type Lang = "es" | "en";
@@ -123,16 +124,25 @@ export default function Header() {
 
                 {/* Controles */}
                 <div className="flex justify-end lg:mx-6 gap-4">
-                    <button
+                    <motion.button
                         onClick={toggleTheme}
-                        className="bg-border-secondary rounded-full p-2 h-12 w-12 hover:bg-hover-theme-btn-accent transition-all duration-300 cursor-pointer hover:scale-110"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        className={`
+                            rounded-full p-2 h-12 w-12 cursor-pointer transition-all duration-300
+                            ${theme === 'dark' 
+                                ? 'bg-transparent hover:bg-slate-700/50' 
+                                : 'bg-white hover:bg-gray-50'
+                            }
+                            ${theme === 'dark' ? 'shadow-slate-900/50' : 'shadow-gray-300/30'} shadow-lg
+                        `}
                     >
                         {theme === "dark" ? (
                             <img src="/sun_icon.svg" alt="Cambiar a modo claro" className="h-8 w-8" />
                         ) : (
                             <img src="/moon_icon.svg" alt="Cambiar a modo oscuro" className="h-8 w-8" />
                         )}
-                    </button>
+                    </motion.button>
 
                     <button
                         onClick={(e) => {
@@ -169,7 +179,11 @@ export default function Header() {
                     <a href="#contact" className="text-lg font-semibold cursor-pointer text-text-secondary transition-colors hover:text-emerald-500">
                         {t("header.contact")}
                     </a>
-                    <LangSelect value={lang} onChange={handleLang} className="ml-4 hidden lg:inline-flex shrink-0" />
+                    <LanguageToggle 
+                        currentLang={lang} 
+                        onToggle={handleLang} 
+                        isDarkMode={theme === "dark"} 
+                    />
                 </nav>
             </div>
 
@@ -219,7 +233,12 @@ export default function Header() {
                         >
                             {t("header.contact")}
                         </a>
-                        <LangSelect value={lang} onChange={handleLang} id="lang-select-mobile" className="mt-3 mx-auto inline-flex lg:hidden" />
+                         <LanguageToggle 
+                            currentLang={lang} 
+                            onToggle={handleLang} 
+                            isDarkMode={theme === "dark"}
+                            className="mt-3 mx-auto lg:hidden" 
+                         />
                     </nav>
                 </div>
             )}

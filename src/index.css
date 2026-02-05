@@ -5,145 +5,239 @@
 @custom-variant light (&:where([data-theme=light], [data-theme=light] *));
 
 /* =========================
-   Base
-   ========================= */
-html {
-    font-family: "Inter", sans-serif;
-}
-* {
-    box-sizing: border-box;
-}
-
-/* =========================
-   Base tokens (solo los usados)
+   PALETA SOBRIA MODERNA - NUEVA
    ========================= */
 :root {
-    /* Neutros / grises */
-    --c-athens-gray: rgb(236 254 255);
-    --c-athens-gray-50: rgba(229, 231, 235, 0.5);
-    --c-mischka: rgb(209 213 219);
-    --c-gray-chateau: rgb(156 163 175);
-    --c-pale-sky: rgb(107 114 128);
-    --c-river-bed: rgb(75 85 99);
+     /* Primarios - Variaciones de Slate */
+     --primary-50: #f8fafc;
+     --primary-100: #f1f5f9;
+     --primary-200: #e2e8f0;
+     --primary-300: #cbd5e1;
 
-    --c-ebony: rgb(17 24 39);
-    --c-ebony-80: rgba(17, 24, 39, 0.8);
-    --c-ebony-clay-50: rgba(31, 41, 55, 0.5);
-    --c-oxford-blue-50: rgba(55, 65, 81, 0.5);
+     /* Acentos profesionales - Sobrios y elegantes */
+     --accent-blue: #3b82f6;
+     --accent-slate: #64748b;
+     --accent-emerald: #10b981;
+     --accent-purple: #9f7aea;
+     --accent-coral: #e07a5f;
 
-    /* Accents usados */
-    --c-royal-blue: rgb(79 70 229);
-    --c-heliotrope: rgb(168 85 247);
-    --c-heliotrope-50: rgba(168, 85, 247, 0.5);
-    --c-dodger-blue-10: rgba(59, 130, 246, 0.1);
-    --c-malibu-50: rgba(96, 165, 250, 0.5);
-    --c-electric-violet-20: rgba(147, 51, 234, 0.2);
+     /* Superficies para glassmorphism */
+     --surface-0: #ffffff;
+     --surface-50: #f8fafc;
+     --surface-100: #f1f5f9;
+     --surface-200: #e2e8f0;
 
-    /* Blancos utilitarios */
-    --c-white: rgb(255 255 255);
-    --c-white-80: rgba(209, 213, 219, 0.8);
-    --c-white-70: rgba(255, 255, 255, 0.7);
-    --c-white-50: rgba(255, 255, 255, 0.5);
-    --c-white-border-tech-card: rgba(229, 231, 235, 0.5);
+     /* Textos con excelente contraste */
+     --text-primary: #0f172a;
+     --text-secondary: #475569;
+     --text-muted: #94a3b8;
+
+     /* Profundidad elegante - Azul slate oscuro */
+     --primary-950: #020617;
+     --primary-900: #0f172a;
+     --primary-800: #1e293b;
+     --primary-700: #334155;
+
+     /* Acentos premium que destacan sobre oscuro */
+     --accent-blue-dark: #60a5fa;
+     --accent-slate-dark: #94a3b8;
+     --accent-emerald-dark: #34d399;
+     --accent-purple-dark: #b794f6;
+     --accent-coral-dark: #f4a261;
+
+     /* Superficies oscuras con glassmorphism */
+     --surface-950: #020617;
+     --surface-900: #0f172a;
+     --surface-800: #1e293b;
+     --surface-700: #334155;
+
+     /* Textos óptimos para tema oscuro */
+     --text-primary-dark: #f8fafc;
+     --text-secondary-dark: #cbd5e1;
+     --text-muted-dark: #94a3b8;
+
+     /* Gradientes adaptables al tema */
+     --gradient-primary: linear-gradient(135deg, var(--accent-blue), var(--accent-coral));
+     --gradient-success: linear-gradient(135deg, var(--accent-emerald), var(--accent-blue));
+     --gradient-warm: linear-gradient(135deg, var(--accent-coral), var(--accent-purple));
+     --gradient-subtle: linear-gradient(135deg, var(--accent-slate), var(--accent-coral));
 }
 
 /* =========================
-   THEME: LIGHT (solo lo usado)
+   THEME: LIGHT - Profesional Corporativo
    ========================= */
 :root[data-theme="light"],
 [data-theme="light"] {
-    --bg-nav: rgba(255, 255, 255, 0.9);
-    --bg-form: var(--c-white-70);
-    --bg-input: var(--c-white-50);
+     /* Navegación y superficies */
+     --bg-nav: rgba(248, 250, 252, 0.9);
+     --bg-form: var(--surface-50);
+     --bg-input: var(--surface-100);
 
-    --text-primary: var(--c-ebony);
-    --text-secondary: var(--c-river-bed);
-    --text-muted: var(--c-pale-sky);
-    --text-proyect-card: var(--c-ebony-80);
-    --text-input: var(--c-ebony);
-    --text-label: var(--c-ebony);
+     /* Textos con excelente contraste */
+     --text-primary: var(--text-primary);
+     --text-secondary: var(--text-secondary);
+     --text-muted: var(--text-muted);
+     --text-proyect-card: var(--text-primary);
+     --text-input: var(--text-primary);
+     --text-label: var(--text-primary);
 
-    --border-primary: var(--c-mischka);
-    --border-secondary: var(--c-athens-gray-50);
-    --border-input: var(--c-white-80);
+     /* Bordes */
+     --border-primary: var(--primary-200);
+     --border-secondary: var(--primary-100);
+     --border-input: var(--primary-200);
+     --border-proyect-card: var(--primary-200);
 
-    /* Hovers & accents usados */
-    --hover-tech-card: var(--c-athens-gray-50); /* FIX: antes apuntaba a var inexistente */
-    --hover-proyect-card-border: var(--c-malibu-50);
-    --hover-theme-btn-accent: var(--c-dodger-blue-10);
-    --hover-menu-btn-accent: var(--c-royal-blue);
+     /* Cards con glassmorphism */
+     --bg-tech-card: var(--surface-0);
+     --bg-proyect-card: var(--surface-0);
 
-    --accent-secondary: var(--c-royal-blue);
+     /* Hovers & accents usados */
+     --hover-tech-card: var(--primary-100);
+     --hover-proyect-card-border: var(--accent-coral);
+     --hover-theme-btn-accent: var(--accent-coral);
+     --hover-menu-btn-accent: var(--accent-coral);
 
-    /* Cards */
-    --bg-tech-card: var(--c-white);
-    --bg-proyect-card: var(--c-white);
-    --border-proyect-card: var(--c-white-border-tech-card);
+     --accent-secondary: var(--accent-coral);
 }
 
 /* =========================
-   THEME: DARK (solo lo usado)
+   THEME: DARK - Elegante Profundo
    ========================= */
 :root[data-theme="dark"],
 [data-theme="dark"] {
-    --bg-nav: #181933;
-    --bg-input: var(--c-ebony-clay-50);
+     /* Navegación y superficies oscuras */
+     --bg-nav: rgba(15, 23, 42, 0.9);
+     --bg-form: var(--surface-900);
+     --bg-input: var(--surface-800);
 
-    --text-primary: var(--c-white);
-    --text-secondary: var(--c-mischka);
-    --text-muted: var(--c-gray-chateau);
-    --text-proyect-card: var(--c-athens-gray);
-    --text-input: var(--c-white);
-    --text-label: var(--c-gray-chateau);
+     /* Textos óptimos para tema oscuro */
+     --text-primary: var(--text-primary-dark);
+     --text-secondary: var(--text-secondary-dark);
+     --text-muted: var(--text-muted-dark);
+     --text-proyect-card: var(--text-primary-dark);
+     --text-input: var(--text-primary-dark);
+     --text-label: var(--text-secondary-dark);
 
-    --border-primary: var(--c-oxford-blue-50);
-    --border-input: var(--c-river-bed);
+     /* Bordes */
+     --border-primary: var(--primary-700);
+     --border-secondary: var(--primary-800);
+     --border-input: var(--primary-700);
+     --border-proyect-card: var(--primary-700);
 
-    /* Hovers & accents usados */
-    --hover-tech-card: var(--c-oxford-blue-50);
-    --hover-proyect-card-border: var(--c-heliotrope-50);
-    --hover-theme-btn-accent: var(--c-electric-violet-20);
-    --hover-menu-btn-accent: var(--c-heliotrope);
+     /* Cards oscuras con glassmorphism */
+     --bg-tech-card: var(--surface-900);
+     --bg-proyect-card: var(--surface-900);
 
-    --accent-secondary: var(--c-heliotrope);
+     /* Hovers & accents premium */
+     --hover-tech-card: var(--surface-800);
+     --hover-proyect-card-border: var(--accent-coral-dark);
+     --hover-theme-btn-accent: var(--accent-coral-dark);
+     --hover-menu-btn-accent: var(--accent-coral-dark);
 
-    /* Cards */
-    --bg-tech-card: var(--c-ebony-clay-50);
-    --bg-proyect-card: var(--c-ebony-clay-50);
-    --border-proyect-card: var(--c-oxford-blue-50);
+     --accent-secondary: var(--accent-coral-dark);
 }
 
 /* =========================
-   Exponer tokens a Tailwind (solo los usados)
+   GLASSMORPHISM STYLES
+   ========================= */
+.glass-card {
+     background: rgba(255, 255, 255, 0.08);
+     backdrop-filter: blur(12px);
+     -webkit-backdrop-filter: blur(12px);
+     border: 1px solid rgba(255, 255, 255, 0.1);
+     border-radius: 16px;
+     box-shadow: 
+       0 8px 32px rgba(0, 0, 0, 0.1),
+       inset 0 1px 0 rgba(255, 255, 255, 0.1);
+     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+     transform: translateY(-8px) scale(1.02);
+     box-shadow: 
+       0 20px 60px rgba(0, 0, 0, 0.15),
+       inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* =========================
+   ANIMATION BASE CLASSES
+   ========================= */
+.fade-in-up {
+     animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+     from {
+          opacity: 0;
+          transform: translateY(30px);
+     }
+     to {
+          opacity: 1;
+          transform: translateY(0);
+     }
+}
+
+/* Gradient backgrounds */
+.gradient-primary {
+     background: var(--gradient-primary);
+}
+
+.gradient-warm {
+     background: var(--gradient-warm);
+}
+
+.gradient-subtle {
+     background: var(--gradient-subtle);
+}
+
+.gradient-success {
+     background: var(--gradient-success);
+}
+
+/* Accent text colors */
+.text-accent-coral {
+     color: var(--accent-coral);
+}
+
+.bg-accent-coral {
+     background-color: var(--accent-coral);
+}
+
+.border-accent-coral {
+     border-color: var(--accent-coral);
+}
+
+/* =========================
+   EXponer tokens a Tailwind (solo los usados)
    ========================= */
 @theme {
-    /* Backgrounds / Surfaces */
-    --color-bg-nav: var(--bg-nav);
-    --color-bg-tech-card: var(--bg-tech-card);
-    --color-bg-proyect-card: var(--bg-proyect-card);
-    --color-bg-input: var(--bg-input);
-    --color-bg-form: var(--bg-form);
+     /* Backgrounds / Surfaces */
+     --color-bg-nav: var(--bg-nav);
+     --color-bg-tech-card: var(--bg-tech-card);
+     --color-bg-proyect-card: var(--bg-proyect-card);
+     --color-bg-input: var(--bg-input);
+     --color-bg-form: var(--bg-form);
 
-    /* Text */
-    --color-text-primary: var(--text-primary);
-    --color-text-secondary: var(--text-secondary);
-    --color-text-muted: var(--text-muted);
-    --color-text-proyect-card: var(--text-proyect-card);
-    --color-text-input: var(--text-input);
-    --color-text-label: var(--text-label);
+     /* Text */
+     --color-text-primary: var(--text-primary);
+     --color-text-secondary: var(--text-secondary);
+     --color-text-muted: var(--text-muted);
+     --color-text-proyect-card: var(--text-proyect-card);
+     --color-text-input: var(--text-input);
+     --color-text-label: var(--text-label);
 
-    /* Borders */
-    --color-border-primary: var(--border-primary);
-    --color-border-secondary: var(--border-secondary);
-    --color-border-proyect-card: var(--border-proyect-card);
-    --color-border-input: var(--border-input);
+     /* Borders */
+     --color-border-primary: var(--border-primary);
+     --color-border-secondary: var(--border-secondary);
+     --color-border-proyect-card: var(--border-proyect-card);
+     --color-border-input: var(--border-input);
 
-    /* Accents / Hovers */
-    --color-accent-secondary: var(--accent-secondary);
-    --color-hover-theme-btn-accent: var(--hover-theme-btn-accent);
-    --color-hover-menu-btn-accent: var(--hover-menu-btn-accent);
-    --color-hover-tech-card: var(--hover-tech-card);
-    --color-hover-proyect-card-border: var(--hover-proyect-card-border);
+     /* Accents / Hovers */
+     --color-accent-secondary: var(--accent-secondary);
+     --color-hover-theme-btn-accent: var(--hover-theme-btn-accent);
+     --color-hover-menu-btn-accent: var(--hover-menu-btn-accent);
+     --color-hover-tech-card: var(--hover-tech-card);
+     --color-hover-proyect-card-border: var(--hover-proyect-card-border);
 }
 
 /* scroll suave y padding superior igual a la altura del header */
