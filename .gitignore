@@ -44,3 +44,6 @@ Thumbs.db
 .npm/
 .yarn/
 .pnpm-store/
+
+# Portfolio transformation plan
+PLAN_TRANSFORMACION_PORTAFOLIO.md
