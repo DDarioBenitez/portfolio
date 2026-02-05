@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useOptimizedAnimations } from '../../hooks/useOptimizedAnimations';
 
 // AnimatedCounter Component
 interface AnimatedCounterProps {
@@ -61,14 +62,24 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
   delay = 0, 
   stagger = 0.03 
 }) => {
+  const { shouldAnimate, animationConfig } = useOptimizedAnimations();
   const words = text.split(' ');
+
+  const duration = animationConfig.transition.duration || 0.5;
+  const ease = animationConfig.transition.ease || 'easeOut';
+  const staggerChildren = animationConfig.transition.staggerChildren || stagger;
+
+  // For very low performance, just show static text
+  if (!shouldAnimate) {
+    return <div className={className}>{text}</div>;
+  }
 
   return (
     <motion.div 
       className={className}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ delay, duration: 0.5 }}
+      transition={{ delay, duration }}
     >
       {words.map((word, wordIndex) => (
         <motion.span
@@ -77,9 +88,9 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ 
-            delay: delay + wordIndex * stagger, 
-            duration: 0.5,
-            ease: 'easeOut' 
+            delay: delay + wordIndex * staggerChildren, 
+            duration,
+            ease
           }}
         >
           {word.split('').map((char, charIndex) => (
@@ -89,9 +100,9 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ 
-                delay: delay + wordIndex * stagger + charIndex * 0.01, 
-                duration: 0.3,
-                ease: 'easeOut' 
+                delay: delay + wordIndex * staggerChildren + charIndex * 0.01, 
+                duration: Math.max(duration * 0.5, 0.2),
+                ease
               }}
             >
               {char === ' ' ? '\u00A0' : char}
@@ -115,17 +126,21 @@ export const AnimatedContainer: React.FC<AnimatedContainerProps> = ({
   className = '', 
   delay = 0 
 }) => {
+  const { shouldAnimate, getScrollAnimationProps } = useOptimizedAnimations();
+
+  if (!shouldAnimate) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      {...getScrollAnimationProps}
       transition={{ 
         duration: 0.8, 
         ease: 'easeOut',
-        delay: delay
+        delay
       }}
-      viewport={{ once: true, amount: 0.2 }}
     >
       {children}
     </motion.div>

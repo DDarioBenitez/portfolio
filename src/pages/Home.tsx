@@ -7,7 +7,7 @@ import AboutMe from "../components/AboutMe";
 import Projects from "../components/Projects";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
-import SimpleShaderBackground from "../components/ShaderBackground";
+import AdaptiveBackground from "../components/AdaptiveBackground";
 
 export default function Home() {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -26,12 +26,7 @@ export default function Home() {
 
     return (
         <>
-            <SimpleShaderBackground 
-                quality="high" 
-                intensity={0.15}
-                speed={0.08}
-                scale={1.2}
-            />
+            <AdaptiveBackground isDarkMode={isDarkMode} />
             <div
                 className={`home min-h-screen transition-all duration-500 isolate ${
                     isDarkMode ? "bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900" : "bg-gradient-to-br from-blue-50 via-white to-cyan-50"

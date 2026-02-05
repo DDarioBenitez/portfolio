@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { SiGithub } from "react-icons/si";
 import { motion } from "framer-motion";
 import TechIcon from "./TechIcon";
-import StatusBadge from "./StatusBadge";
+import { useOptimizedAnimations } from "../../hooks/useOptimizedAnimations";
 
 interface ProjectCardProps {
     isDarkMode: boolean;
@@ -34,6 +34,7 @@ export default function ProjectCard({
     title_en,
 }: ProjectCardProps) {
     const { i18n } = useTranslation();
+    const { getScrollAnimationProps, getHoverProps, shouldAnimate } = useOptimizedAnimations();
     const currentLang = i18n.language;
 
     const text = currentLang.startsWith("en") ? description_en : description;
@@ -41,34 +42,36 @@ export default function ProjectCard({
 
     return (
         <motion.article
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{ 
-                scale: 1.02,
-                y: -8,
-                transition: { duration: 0.3 }
-            }}
+            {...getScrollAnimationProps}
+            {...(shouldAnimate ? getHoverProps : {})}
+            whileHover={
+                shouldAnimate
+                    ? {
+                          scale: 1.02,
+                          y: -8,
+                          transition: { duration: 0.1 },
+                      }
+                    : {}
+            }
             className={`
                 glass-card relative overflow-hidden rounded-2xl
                 bg-bg-proyect-card border-border-proyect-card
-                transition-all duration-300
+                transition-all duration-300 h-full flex flex-col
             `}
         >
             {/* Barra de color superior */}
             <div className={`h-2 w-full bg-gradient-to-r ${colorTop}`} />
-            
+
             <div className="p-6 flex-grow flex flex-col justify-between">
                 {/* Título */}
-                <motion.div 
-                    className="group inline-block"
-                    whileHover={{ scale: 1.05 }}
-                >
+                <motion.div className="group inline-block" {...(shouldAnimate ? { whileHover: { scale: 1.05 } } : {})}>
                     <h3
                         className={`
                             text-text-proyect-card text-xl font-semibold transition-all duration-300
-                            ${isDarkMode 
-                                ? 'text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text'
-                                : 'text-gray-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text'
+                            ${
+                                isDarkMode
+                                    ? "text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text"
+                                    : "text-gray-900 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text"
                             }
                             ${isDarkMode ? gradientDark : gradientLight}
                         `}
@@ -79,11 +82,6 @@ export default function ProjectCard({
 
                 {/* Descripción */}
                 <p className="text-[16px] text-text-secondary leading-relaxed mt-3 mb-4">{text}</p>
-                
-                {/* Badge de estado */}
-                <div className="mb-4">
-                    <StatusBadge status={status as 'development' | 'production' | 'private'} />
-                </div>
 
                 {/* Stack de tecnologías */}
                 <div className="flex flex-wrap gap-2 mb-6">
@@ -94,11 +92,7 @@ export default function ProjectCard({
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ delay: index * 0.1 }}
                         >
-                            <TechIcon 
-                                tech={tech} 
-                                isDarkMode={isDarkMode}
-                                className="scale-75"
-                            />
+                            <TechIcon tech={tech} isDarkMode={isDarkMode} className="scale-100" />
                         </motion.div>
                     ))}
                 </div>
@@ -119,18 +113,40 @@ export default function ProjectCard({
                                 transition-all duration-300
                             `}
                         >
-                            <span>Ver Demo</span>
+                            <span>Visitar Sitio</span>
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                />
                             </svg>
                         </motion.a>
                     ) : (
-                        <motion.div 
-                            className="text-text-muted font-medium italic px-4 py-2"
+                        <motion.div
+                            className={`
+                                px-4 py-2 rounded-lg font-semibold flex items-center gap-2 whitespace-nowrap
+                                ${status === "prod" ? `bg-gradient-to-r ${colorTop} text-white shadow-md` : "text-text-muted italic"}
+                            `}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                         >
-                            En desarrollo
+                            {status === "prod" ? (
+                                <>
+                                    <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                        />
+                                    </svg>
+                                    <span className="text-sm">Producción</span>
+                                </>
+                            ) : (
+                                <span>En desarrollo</span>
+                            )}
                         </motion.div>
                     )}
 
@@ -142,25 +158,22 @@ export default function ProjectCard({
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className={`
-                                flex items-center gap-2 px-4 py-2 rounded-lg
-                                ${isDarkMode 
-                                    ? 'bg-slate-800 text-slate-300 hover:bg-slate-700' 
-                                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                                }
-                                font-semibold transition-all duration-300
-                            `}
+                                 flex items-center gap-2 px-4 py-2 rounded-lg
+                                 ${isDarkMode ? "bg-slate-800 text-slate-300 hover:bg-slate-700" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}
+                                 font-semibold transition-all duration-300
+                             `}
                         >
                             <SiGithub size={16} />
-                            <span>Código</span>
+                            <span>Ver Código</span>
                         </motion.a>
                     ) : (
-                        <motion.div 
+                        <motion.div
                             className="flex items-center gap-2 px-4 py-2 rounded-lg text-text-muted italic"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                         >
                             <SiGithub size={16} />
-                            <span>Privado</span>
+                            <span>Repo Privado</span>
                         </motion.div>
                     )}
                 </div>

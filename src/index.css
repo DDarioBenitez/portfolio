@@ -18,7 +18,8 @@
      --accent-blue: #3b82f6;
      --accent-slate: #64748b;
      --accent-emerald: #10b981;
-     --accent-purple: #8b5cf6;
+     --accent-purple: #9f7aea;
+     --accent-coral: #e07a5f;
 
      /* Superficies para glassmorphism */
      --surface-0: #ffffff;
@@ -41,7 +42,8 @@
      --accent-blue-dark: #60a5fa;
      --accent-slate-dark: #94a3b8;
      --accent-emerald-dark: #34d399;
-     --accent-purple-dark: #a78bfa;
+     --accent-purple-dark: #b794f6;
+     --accent-coral-dark: #f4a261;
 
      /* Superficies oscuras con glassmorphism */
      --surface-950: #020617;
@@ -55,9 +57,10 @@
      --text-muted-dark: #94a3b8;
 
      /* Gradientes adaptables al tema */
-     --gradient-primary: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+     --gradient-primary: linear-gradient(135deg, var(--accent-blue), var(--accent-coral));
      --gradient-success: linear-gradient(135deg, var(--accent-emerald), var(--accent-blue));
-     --gradient-subtle: linear-gradient(135deg, var(--accent-slate), var(--accent-purple));
+     --gradient-warm: linear-gradient(135deg, var(--accent-coral), var(--accent-purple));
+     --gradient-subtle: linear-gradient(135deg, var(--accent-slate), var(--accent-coral));
 }
 
 /* =========================
@@ -90,11 +93,11 @@
 
      /* Hovers & accents usados */
      --hover-tech-card: var(--primary-100);
-     --hover-proyect-card-border: var(--accent-blue);
-     --hover-theme-btn-accent: var(--accent-blue);
-     --hover-menu-btn-accent: var(--accent-blue);
+     --hover-proyect-card-border: var(--accent-coral);
+     --hover-theme-btn-accent: var(--accent-coral);
+     --hover-menu-btn-accent: var(--accent-coral);
 
-     --accent-secondary: var(--accent-blue);
+     --accent-secondary: var(--accent-coral);
 }
 
 /* =========================
@@ -127,11 +130,11 @@
 
      /* Hovers & accents premium */
      --hover-tech-card: var(--surface-800);
-     --hover-proyect-card-border: var(--accent-blue-dark);
-     --hover-theme-btn-accent: var(--accent-blue-dark);
-     --hover-menu-btn-accent: var(--accent-purple-dark);
+     --hover-proyect-card-border: var(--accent-coral-dark);
+     --hover-theme-btn-accent: var(--accent-coral-dark);
+     --hover-menu-btn-accent: var(--accent-coral-dark);
 
-     --accent-secondary: var(--accent-blue-dark);
+     --accent-secondary: var(--accent-coral-dark);
 }
 
 /* =========================
@@ -172,6 +175,36 @@
           opacity: 1;
           transform: translateY(0);
      }
+}
+
+/* Gradient backgrounds */
+.gradient-primary {
+     background: var(--gradient-primary);
+}
+
+.gradient-warm {
+     background: var(--gradient-warm);
+}
+
+.gradient-subtle {
+     background: var(--gradient-subtle);
+}
+
+.gradient-success {
+     background: var(--gradient-success);
+}
+
+/* Accent text colors */
+.text-accent-coral {
+     color: var(--accent-coral);
+}
+
+.bg-accent-coral {
+     background-color: var(--accent-coral);
+}
+
+.border-accent-coral {
+     border-color: var(--accent-coral);
 }
 
 /* =========================

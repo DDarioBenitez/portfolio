@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useOptimizedAnimations } from '../../hooks/useOptimizedAnimations';
 
 interface PremiumButtonProps {
   children: React.ReactNode;
@@ -18,6 +19,8 @@ const PremiumButton: React.FC<PremiumButtonProps> = ({
   className = '',
   type = 'button'
 }) => {
+  const { getHoverProps, shouldAnimate } = useOptimizedAnimations();
+  
   const variants = {
     primary: 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg',
     secondary: 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 shadow-md',
@@ -31,26 +34,21 @@ const PremiumButton: React.FC<PremiumButtonProps> = ({
         transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed
         ${variants[variant]} ${className}
       `}
-      whileHover={{ 
-        scale: disabled ? 1 : 1.02,
-        y: disabled ? 0 : -2
-      }}
-      whileTap={{ 
-        scale: disabled ? 1 : 0.98,
-        y: 0
-      }}
+      {...(shouldAnimate && !disabled ? getHoverProps : {})}
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
       type={type}
     >
-      {/* Efecto de shimmer al hover */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"
-        initial={{ x: '-100%' }}
-        whileHover={disabled ? undefined : { x: '100%' }}
-        transition={{ duration: 0.6 }}
-        style={{ transformOrigin: 'left center' }}
-      />
+      {/* Efecto de shimmer al hover - solo en high/medium performance */}
+      {shouldAnimate && (
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"
+          initial={{ x: '-100%' }}
+          whileHover={disabled ? undefined : { x: '100%' }}
+          transition={{ duration: 0.6 }}
+          style={{ transformOrigin: 'left center' }}
+        />
+      )}
       
       {/* Contenido */}
       <span className="relative z-10">{children}</span>

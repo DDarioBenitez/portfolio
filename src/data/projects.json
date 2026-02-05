@@ -3,7 +3,7 @@
         "title": "HelloFlatmate",
         "description": "Plataforma web para alquiler de habitaciones, con backend en Node.js, chat y notificaciones en tiempo real, autenticación con Firebase, generación de contratos y facturas en PDF, y frontend en React + Next.js + Tailwind CSS.",
         "description_en": "Web platform for room rentals, with a Node.js backend, real-time chat and notifications, Firebase authentication, PDF contract and invoice generation, and a frontend built with React + Next.js + Tailwind CSS.",
-        "techStack": ["Node.js", "Sequelize", "PostgreSQL", "Socket.IO", "Firebase Auth", "Firebase Storage", "React", "Next.js", "Tailwind CSS"],
+        "techStack": ["Node.js", "Sequelize", "PostgreSQL", "Socket.IO", "Firebase", "React", "Next.js", "Tailwind CSS"],
         "liveLink": "https://www.helloflatmate.com",
         "status": "prod",
         "colorTop": "from-purple-500 to-pink-500",
@@ -16,7 +16,7 @@
         "description": "Sistema de reservas de viajes y alquiler de vehículos con login y autenticación mediante OAuth, dashboards para usuarios y administradores, registro con Google/email, confirmación por correo, reservas de asiento, pagos con Stripe y frontend en React + Next.js.",
         "description_en": "Travel booking and vehicle rental system with OAuth login and authentication, dashboards for users and administrators, Google/email registration, email confirmation, seat reservations, Stripe payments, and a frontend built with React + Next.js.",
         "techStack": ["NestJS", "Prisma", "PostgreSQL", "React", "Next.js", "TypeScript", "Stripe"],
-        "status": "dev",
+        "status": "prod",
         "liveLink": "",
         "colorTop": "from-emerald-500 to-teal-500",
         "gradientDark": "group-hover:from-emerald-400 group-hover:to-teal-500",
@@ -34,6 +34,31 @@
         "colorTop": "from-orange-500 to-red-500",
         "gradientDark": "group-hover:from-orange-400 group-hover:to-red-500",
         "gradientLight": "group-hover:from-orange-600 group-hover:to-red-600",
+        "githubLink": ""
+    },
+    {
+        "title": "Nexiafy",
+        "title_en": "Nexiafy",
+        "description": "Plataforma de agentes conversacionales IA con backend en NestJS, gestión de telefonía virtual mediante Zadarma API, sistema de llamadas en tiempo real con Socket.IO, agentes de chat y voz con integración de Retell AI, canvas visual interactivo con React Flow, widget embebible, sistema de horarios para agentes, y frontend en React + Vite + TypeScript.",
+        "description_en": "AI conversational agents platform with NestJS backend, virtual telephony management via Zadarma API, real-time calling system with Socket.IO, chat and voice agents with Retell AI integration, interactive visual canvas with React Flow, embeddable widget, agent scheduling system, and frontend built with React + Vite + TypeScript.",
+        "techStack": [
+            "NestJS",
+            "Prisma",
+            "PostgreSQL",
+            "Socket.IO",
+            "Zadarma",
+            "Retell AI",
+            "React",
+            "Vite",
+            "TypeScript",
+            "React Flow",
+            "Tailwind CSS"
+        ],
+        "liveLink": "",
+        "status": "prod",
+        "colorTop": "from-blue-500 to-indigo-600",
+        "gradientDark": "group-hover:from-blue-400 group-hover:to-indigo-500",
+        "gradientLight": "group-hover:from-blue-600 group-hover:to-indigo-700",
         "githubLink": ""
     }
 ]
