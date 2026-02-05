@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion"; // Comentado para corregir warning temporalmente
 import i18n from "../i18n/i18n";
 import { Menu as MenuIcon, X } from "lucide-react";
 import LanguageToggle from "./Header/LanguageToggle";
@@ -228,7 +228,6 @@ export default function Header() {
                             currentLang={lang} 
                             onToggle={handleLang} 
                             isDarkMode={theme === "dark"}
-                            id="lang-select-mobile" 
                             className="mt-3 mx-auto lg:hidden" 
                          />
                     </nav>

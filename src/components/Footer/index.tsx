@@ -4,7 +4,7 @@ import { Mail } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { FaWhatsapp } from 'react-icons/fa';
 import { SiGithub, SiLinkedin } from 'react-icons/si';
-import { AnimatedCounter } from '../Animated/AnimatedText';
+import AnimatedCounter from '../Animated/AnimatedText';
 import PremiumButton from '../Animated/PremiumButton';
 
 interface FooterProps {

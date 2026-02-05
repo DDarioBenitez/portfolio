@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 interface LanguageToggleProps {
@@ -9,28 +9,21 @@ interface LanguageToggleProps {
   id?: string;
 }
 
-const LanguageToggle: React.FC<LanguageToggleProps> = ({ currentLang, onToggle, isDarkMode, className = '', id = '' }) => {
-  const [isAnimating, setIsAnimating] = useState(false);
+const LanguageToggle: React.FC<LanguageToggleProps> = ({ currentLang, onToggle, isDarkMode }) => {
+  // const [isAnimating, setIsAnimating] = useState(false); // Comentado temporalmente
 
   const handleToggle = () => {
-    if (isAnimating) return;
-    
-    setIsAnimating(true);
-    setTimeout(() => {
-      onToggle(currentLang === 'es' ? 'en' : 'es');
-      setIsAnimating(false);
-    }, 150);
+    onToggle(currentLang === 'es' ? 'en' : 'es');
   };
 
   return (
     <motion.div
-      className={`relative ${className}`}
+      className="relative"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
       <motion.button
         onClick={handleToggle}
-        id={id}
         className={`
           relative w-16 h-8 rounded-full p-1 cursor-pointer transition-colors duration-300
           ${isDarkMode ? 'bg-slate-700' : 'bg-slate-200'}

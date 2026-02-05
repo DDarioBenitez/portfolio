@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+// AnimatedCounter Component
 interface AnimatedCounterProps {
   value: number;
   duration?: number;
@@ -8,7 +9,7 @@ interface AnimatedCounterProps {
   className?: string;
 }
 
-const AnimatedCounter: React.FC<AnimatedCounterProps> = ({ 
+export const AnimatedCounter: React.FC<AnimatedCounterProps> = ({ 
   value, 
   duration = 2, 
   suffix = '+', 
@@ -46,6 +47,7 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   );
 };
 
+// AnimatedText Component
 interface AnimatedTextProps {
   text: string;
   className?: string;
@@ -101,6 +103,7 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
   );
 };
 
+// AnimatedContainer Component
 interface AnimatedContainerProps {
   children: React.ReactNode;
   className?: string;
@@ -129,4 +132,5 @@ export const AnimatedContainer: React.FC<AnimatedContainerProps> = ({
   );
 };
 
+// Default export
 export default AnimatedCounter;
