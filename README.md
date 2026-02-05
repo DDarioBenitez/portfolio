@@ -20,9 +20,10 @@ Busco consolidarme como **backend o fullstack** aportando soluciones **eficiente
 
 -   🟨 **JavaScript** · ⚛️ **React** · 🟦 **TypeScript**
 -   ☕ **Java + Spring Boot**
--   🖌️ **Tailwind CSS** · 🔌 **Node.js / Express**
+-   🖌️ **Tailwind CSS** · 🔌 **Node.js / Express / NestJS**
 -   🗄️ **PostgreSQL / MySQL** · **Sequelize / Prisma**
 -   🔐 **Auth** (Firebase, OAuth) · 🔔 **Socket.IO** · 💳 **Stripe**
+-   🧩 **n8n** · 🧠 **Retell AI** · 📞 **Zadarma** · 🖼️ **React Flow**
 -   🧰 Git, Postman, Scrum, Figma
 
 ---
@@ -53,6 +54,22 @@ Sistema de reservas de viajes y alquiler de vehículos:
 -   **Reservas de asiento**, pagos con **Stripe**
 -   Frontend con **React + Next.js + TypeScript**  
     🔗 **Estado**: en proceso de lanzamiento
+
+---
+
+### Nexiafy — Fullstack Developer (May 2025 – Feb 2026, remoto · ES)
+
+Plataforma de agentes conversacionales IA:
+
+-   Backend con **NestJS + Prisma + PostgreSQL**
+-   Telefonía virtual y llamadas en tiempo real (**Zadarma API + Socket.IO**)
+-   Agentes de chat y voz con integración **Retell AI**
+-   Canvas visual interactivo con **React Flow**
+-   Orquestación de flujos y automatizaciones con **n8n**
+-   Widget embebible y sistema de horarios para agentes
+-   Frontend con **React + Vite + TypeScript + Tailwind CSS**
+    🔗 **Estado**: en producción
+    🔗 **Stack**: React, Vite, NestJS, Prisma, PostgreSQL, Socket.IO, Zadarma, Retell AI, React Flow, n8n, Tailwind
 
 ---
 
