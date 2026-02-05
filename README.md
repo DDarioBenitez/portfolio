@@ -18,13 +18,13 @@ Busco consolidarme como **backend o fullstack** aportando soluciones **eficiente
 
 ## ✨ Stack principal
 
--   🟨 **JavaScript** · ⚛️ **React** · 🟦 **TypeScript**
--   ☕ **Java + Spring Boot**
--   🖌️ **Tailwind CSS** · 🔌 **Node.js / Express / NestJS**
--   🗄️ **PostgreSQL / MySQL** · **Sequelize / Prisma**
--   🔐 **Auth** (Firebase, OAuth) · 🔔 **Socket.IO** · 💳 **Stripe**
--   🧩 **n8n** · 🧠 **Retell AI** · 📞 **Zadarma** · 🖼️ **React Flow**
--   🧰 Git, Postman, Scrum, Figma
+- 🟨 **JavaScript** · ⚛️ **React** · 🟦 **TypeScript**
+- ☕ **Java + Spring Boot**
+- 🖌️ **Tailwind CSS** · 🔌 **Node.js / Express / NestJS**
+- 🗄️ **PostgreSQL / MySQL** · **Sequelize / Prisma**
+- 🔐 **Auth** (Firebase, OAuth) · 🔔 **Socket.IO** · 💳 **Stripe**
+- 🧩 **n8n** · 🧠 **Retell AI** · 📞 **Zadarma** · 🖼️ **React Flow**
+- 🧰 Git, Postman, Scrum, Figma
 
 ---
 
@@ -34,14 +34,14 @@ Busco consolidarme como **backend o fullstack** aportando soluciones **eficiente
 
 Plataforma web de alquiler de habitaciones:
 
--   Backend con **Node.js + Sequelize + PostgreSQL**
--   Chat y **notificaciones en tiempo real con Socket.IO**
--   **Autenticación** (Firebase: Google, Facebook, email/password)
--   **Contratos e invoices en PDF**, **Storage** en Firebase
--   Frontend con **React + Next.js + Tailwind CSS**
--   Middleware, i18n y despliegue  
-    🔗 **Live**: www.helloflatmate.com  
-    🔗 **Stack**: React, Next.js, Node, Sequelize, PostgreSQL, Socket.IO, Firebase, Tailwind
+- Backend con **Node.js + Sequelize + PostgreSQL**
+- Chat y **notificaciones en tiempo real con Socket.IO**
+- **Autenticación** (Firebase: Google, Facebook, email/password)
+- **Contratos e invoices en PDF**, **Storage** en Firebase
+- Frontend con **React + Next.js + Tailwind CSS**
+- Middleware, i18n y despliegue  
+  🔗 **Live**: www.helloflatmate.com  
+  🔗 **Stack**: React, Next.js, Node, Sequelize, PostgreSQL, Socket.IO, Firebase, Tailwind
 
 ---
 
@@ -49,11 +49,11 @@ Plataforma web de alquiler de habitaciones:
 
 Sistema de reservas de viajes y alquiler de vehículos:
 
--   **OAuth** (NestJS + Prisma), registro con Google/email y confirmación por correo
--   Dashboards para **usuarios** y **administración**
--   **Reservas de asiento**, pagos con **Stripe**
--   Frontend con **React + Next.js + TypeScript**  
-    🔗 **Estado**: en proceso de lanzamiento
+- **OAuth** (NestJS + Prisma), registro con Google/email y confirmación por correo
+- Dashboards para **usuarios** y **administración**
+- **Reservas de asiento**, pagos con **Stripe**
+- Frontend con **React + Next.js + TypeScript**  
+  🔗 **Estado**: en proceso de lanzamiento
 
 ---
 
@@ -61,29 +61,29 @@ Sistema de reservas de viajes y alquiler de vehículos:
 
 Plataforma de agentes conversacionales IA:
 
--   Backend con **NestJS + Prisma + PostgreSQL**
--   Telefonía virtual y llamadas en tiempo real (**Zadarma API + Socket.IO**)
--   Agentes de chat y voz con integración **Retell AI**
--   Canvas visual interactivo con **React Flow**
--   Orquestación de flujos y automatizaciones con **n8n**
--   Widget embebible y sistema de horarios para agentes
--   Frontend con **React + Vite + TypeScript + Tailwind CSS**
-    🔗 **Estado**: en producción
-    🔗 **Stack**: React, Vite, NestJS, Prisma, PostgreSQL, Socket.IO, Zadarma, Retell AI, React Flow, n8n, Tailwind
+- Backend con **NestJS + Prisma + PostgreSQL**
+- Telefonía virtual y llamadas en tiempo real (**Zadarma API + Socket.IO**)
+- Agentes de chat y voz con integración **Retell AI**
+- Canvas visual interactivo con **React Flow**
+- Orquestación de flujos y automatizaciones con **n8n**
+- Widget embebible y sistema de horarios para agentes
+- Frontend con **React + Vite + TypeScript + Tailwind CSS**
+  🔗 **Estado**: en producción
+  🔗 **Stack**: React, Vite, NestJS, Prisma, PostgreSQL, Socket.IO, Zadarma, Retell AI, React Flow, n8n, Tailwind
 
 ---
 
 ## 🎓 Educación
 
--   **UTN – Tecnicatura Universitaria en Programación** (2024 – actual, 3°/4 cuatrimestres)
--   **Fundación Formar (2023–2024)** · **MindHub LA (2023)**
--   **Técnico en Equipos e Instalaciones Electromecánicas – E.P.E.T. N°1**
+- **UTN – Tecnicatura Universitaria en Programación** (2024 – actual, 3°/4 cuatrimestres)
+- **Fundación Formar (2023–2024)** · **MindHub LA (2023)**
+- **Técnico en Equipos e Instalaciones Electromecánicas – E.P.E.T. N°1**
 
 ---
 
 ## 🔗 Enlaces
 
--   🌐 Portfolio: _(enlace del deploy si corresponde)_
--   🐙 GitHub: **https://github.com/DDarioBenitez**
--   💼 LinkedIn: **https://www.linkedin.com/in/darío-damián-benítez/**
--   ✉️ Email: **benitez_trabaja@hotmail.com**
+- 🌐 Portfolio: _(enlace del deploy si corresponde)_
+- 🐙 GitHub: **https://github.com/DDarioBenitez**
+- 💼 LinkedIn: **https://www.linkedin.com/in/darío-damián-benítez/**
+- ✉️ Email: **benitez_trabaja@hotmail.com**
