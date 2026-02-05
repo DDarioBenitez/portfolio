@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import i18n from "../i18n/i18n";
 import { Menu as MenuIcon, X } from "lucide-react";
-import LangSelect from "./LangSelect";
+import LanguageToggle from "./Header/LanguageToggle";
 import { useTranslation } from "react-i18next";
 
 type Lang = "es" | "en";
@@ -169,7 +170,11 @@ export default function Header() {
                     <a href="#contact" className="text-lg font-semibold cursor-pointer text-text-secondary transition-colors hover:text-emerald-500">
                         {t("header.contact")}
                     </a>
-                    <LangSelect value={lang} onChange={handleLang} className="ml-4 hidden lg:inline-flex shrink-0" />
+                    <LanguageToggle 
+                        currentLang={lang} 
+                        onToggle={handleLang} 
+                        isDarkMode={theme === "dark"} 
+                    />
                 </nav>
             </div>
 
@@ -219,7 +224,13 @@ export default function Header() {
                         >
                             {t("header.contact")}
                         </a>
-                        <LangSelect value={lang} onChange={handleLang} id="lang-select-mobile" className="mt-3 mx-auto inline-flex lg:hidden" />
+                         <LanguageToggle 
+                            currentLang={lang} 
+                            onToggle={handleLang} 
+                            isDarkMode={theme === "dark"}
+                            id="lang-select-mobile" 
+                            className="mt-3 mx-auto lg:hidden" 
+                         />
                     </nav>
                 </div>
             )}
