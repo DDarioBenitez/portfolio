@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useOptimizedAnimations } from "../../hooks/useOptimizedAnimations";
+import markWhite from "../../assets/mark white.svg";
+import markBlack from "../../assets/mark black.svg";
 import { FaReact, FaNodeJs, FaAngular, FaVuejs, FaGitAlt, FaDocker } from "react-icons/fa";
 import {
     SiTypescript,
@@ -15,34 +17,38 @@ import {
     SiRedis,
     SiAmazon,
     SiGooglecloud,
+    SiSupabase,
+    SiCloudflare,
+    SiVercel,
+    SiResend,
 } from "react-icons/si";
 import { TbBrandNextjs } from "react-icons/tb";
 
 const techIcons: Record<string, React.ReactNode> = {
     // Frontend
-    React: <FaReact className="text-[#61DAFB]" />,
-    "Next.js": <TbBrandNextjs className="text-[#000000]" />,
+    React: <FaReact className="text-[#0E7490]" />,
+    "Next.js": <TbBrandNextjs className="text-black dark:text-white" />,
     "Vue.js": <FaVuejs className="text-[#4FC08D]" />,
-    Angular: <FaAngular className="text-[#DD0031]" />,
+    Angular: <FaAngular className="text-red-500 dark:text-red-600" />,
     TypeScript: <SiTypescript className="text-[#3178C6]" />,
-    "Tailwind CSS": <SiTailwindcss className="text-[#06B6D4]" />,
-    Vite: <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/vite.svg" alt="Vite" className="w-5 h-5" />,
+    "Tailwind CSS": <SiTailwindcss className="text-[#0E7490]" />,
+    Vite: <img src="/icons/vite.svg" alt="Vite" className="w-5 h-5" />,
 
     // Backend
     "Node.js": <FaNodeJs className="text-[#339933]" />,
     NestJS: <SiNestjs className="text-[#E0234E]" />,
     "Express.js": <SiExpress className="text-[#000000]" />,
-    "Socket.IO": <SiSocketdotio className="text-[#010101]" />,
+    "Socket.IO": <SiSocketdotio className="text-black dark:text-white" />,
 
     // Database
     PostgreSQL: <SiPostgresql className="text-[#4169E1]" />,
     MongoDB: <SiMongodb className="text-[#47A248]" />,
-    Prisma: <SiPrisma className="text-[#2D3748]" />,
+    Prisma: <SiPrisma className="text-slate-500 dark:text-gray-300" />,
     Redis: <SiRedis className="text-[#DC382D]" />,
 
     // DevOps & Cloud
     Docker: <FaDocker className="text-[#2496ED]" />,
-    Firebase: <SiFirebase className="text-[#FFCA28]" />,
+    Firebase: <SiFirebase className="text-[#B45309] dark:text-[#FFCA28]" />,
     "Firebase Auth": (
         <img
             src="https://raw.githubusercontent.com/devicons/devicon/master/icons/firebase/firebase-plain.svg"
@@ -61,6 +67,11 @@ const techIcons: Record<string, React.ReactNode> = {
     "Google Cloud": <SiGooglecloud className="text-[#4285F4]" />,
     Azure: <span className="text-[#0078D4]">Azure</span>,
     Git: <FaGitAlt className="text-[#F05032]" />,
+    Supabase: <SiSupabase className="text-[#0E9F6E]" />,
+    "Cloudflare R2": <SiCloudflare className="text-[#C2410C] dark:text-[#F38020]" />,
+    Vercel: <SiVercel className="text-black dark:text-white" />,
+    Resend: <SiResend className="text-black dark:text-white" />,
+    Ably: <img src="/icons/ably.svg" alt="Ably" className="h-5 w-auto" />,
 
     // AI & Telephony
     "React Flow": (
@@ -97,11 +108,7 @@ const techIcons: Record<string, React.ReactNode> = {
         </svg>
     ),
     Zadarma: (
-        <img
-            src="https://cdn.brandfetch.io/idA4ufTn29/w/400/h/400/theme/dark/icon.jpeg?c=1bxid64Mup7aczewSAYMX&t=1764227028117"
-            alt="Zadarma"
-            className="w-5 h-5 rounded"
-        />
+        <img src="/icons/zadarma.svg" alt="Zadarma" className="w-5 h-5" />
     ),
 
     // Payment & ORM
@@ -130,7 +137,7 @@ const TechIcon: React.FC<TechIconProps> = ({ tech, isDarkMode, className = "" })
     // Manejo especial para Retell AI según tema
     const getIcon = () => {
         if (tech === "Retell AI") {
-            return <img src={isDarkMode ? "/src/assets/mark white.svg" : "/src/assets/mark black.svg"} alt="Retell AI" className="w-5 h-5" />;
+            return <img src={isDarkMode ? markWhite : markBlack} alt="Retell AI" className="w-5 h-5" />;
         }
         return techIcons[tech] || techIcons["default"];
     };

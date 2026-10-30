@@ -1,5 +1,18 @@
 [
     {
+        "title": "Fydelix",
+        "title_en": "Fydelix",
+        "description": "Plataforma SaaS de fidelización para comercios: alta de clientes por QR, puntos y visitas, programas con recompensas y promociones, y canje en dos pasos. Incluye panel del negocio (caja, clientes, estadísticas, equipo), app del cliente multi-comercio, panel interno de operaciones con auditoría y actualizaciones en tiempo real. Next.js + Prisma sobre PostgreSQL, imágenes en Cloudflare R2 y despliegue en Vercel.",
+        "description_en": "SaaS loyalty platform for local businesses: QR-based customer onboarding, points and visits, reward and promo programs, and a two-step redemption flow. Includes a business dashboard (checkout, customers, analytics, staff), a multi-business client app, an internal operations panel with auditing, and real-time updates. Next.js + Prisma on PostgreSQL, images on Cloudflare R2, and deployment on Vercel.",
+        "techStack": ["Next.js", "React", "TypeScript", "Prisma", "PostgreSQL", "Supabase", "Tailwind CSS", "Cloudflare R2", "Ably", "Resend", "Vercel"],
+        "liveLink": "https://fydelix.com",
+        "status": "prod",
+        "colorTop": "from-indigo-500 to-emerald-400",
+        "gradientDark": "group-hover:from-indigo-400 group-hover:to-emerald-400",
+        "gradientLight": "group-hover:from-indigo-600 group-hover:to-emerald-600",
+        "githubLink": ""
+    },
+    {
         "title": "HelloFlatmate",
         "description": "Plataforma web para alquiler de habitaciones, con backend en Node.js, chat y notificaciones en tiempo real, autenticación con Firebase, generación de contratos y facturas en PDF, y frontend en React + Next.js + Tailwind CSS.",
         "description_en": "Web platform for room rentals, with a Node.js backend, real-time chat and notifications, Firebase authentication, PDF contract and invoice generation, and a frontend built with React + Next.js + Tailwind CSS.",
