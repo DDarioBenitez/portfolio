@@ -1,58 +1,114 @@
 {
-    "hero": {
-        "title": "FullStack developer specialized in modern web technologies",
-        "subTitle": "Look at my work"
-    },
-    "header": {
-        "home": "Home",
-        "about": "About",
-        "projects": "Projects",
-        "contact": "Contact"
-    },
-    "about": {
-        "title": "About Me",
-        "subTitle": "Hello, I'm Dario, nice to meet you.",
-        "text_1": "I'm a full-stack developer with experience working on real-world projects, both in the JavaScript/TypeScript ecosystem (Node.js, React, Next.js, NestJS) and in Java with SpringBoot. I specialize in designing robust architectures, optimizing business logic, and creating modern and functional interfaces.",
-        "text_2": "I'm characterized by proactivity, clear communication, and the ability to solve problems independently or in a team. I enjoy tackling technical challenges with an analytical and results-oriented mindset.",
-        "text_3": "I'm always looking for new projects and opportunities where I can provide scalable and efficient solutions that generate real-world impact.",
-        "subTitle_2": "Technologies I mainly work with"
-    },
-    "projects": {
-        "title": "Featured Projects"
-    },
-    "contact": {
-        "title": "Let's work together",
-        "subTitle": "I'm always open to new opportunities and collaborations. If you have a project in mind or just want to say hello, don't hesitate to contact me!",
-        "subTitle_2": "Send me a message",
-        "name": "Name",
-        "email": "Email",
-        "subject": "Subject",
-        "message": "Message",
-        "button_send": "Send Message",
-        "sending": "Sending message...",
-        "subTitle_3": "Contact information",
-        "location": "Location",
-        "country": "Argentina",
-        "sent": "Message sent successfully",
-        "error": "The message could not be sent",
-        "error_2": "Connection error",
-        "place_name": "Your name",
-        "place_email": "Your email",
-        "place_subject": "Subject of the message",
-        "place_message": "Your message",
-        "form_error_name": "Name is required",
-        "form_error_email": "Email is required",
-        "form_error_subject": "Subject is required",
-        "form_error_message": "Message is required"
-    },
-    "footer": {
-        "title": "Creating modern web experiences with cutting-edge technologies.",
-        "home": "Home",
-        "about": "About",
-        "projects": "Projects",
-        "contact": "Contact",
-        "subTitle": "Contact me",
-        "rights": "All rights reserved.",
-        "stack": "Built with"
-    }
+  "common": {
+    "skip": "Skip to content"
+  },
+  "meta": {
+    "title": "Dario Benitez — Fullstack Developer | Argentina · Remote",
+    "description": "Dario Benitez, fullstack developer in Argentina. I build web products with React, Node and NestJS. Available for teams and freelance projects.",
+    "ogTitle": "Dario Benitez — Fullstack Developer | Argentina · Remote",
+    "ogDescription": "Web products that scale. Solid architecture, well-solved business logic and considered interfaces. Available to join a team or take on a project.",
+    "ogImageAlt": "Dario Benitez — Fullstack Developer"
+  },
+  "header": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "navigation": "Main navigation",
+    "language": "Language",
+    "lightMode": "Switch to light mode",
+    "darkMode": "Switch to dark mode",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "availability": "Available for new opportunities",
+    "eyebrow": "DARIO BENITEZ — FULLSTACK DEVELOPER",
+    "titleLine1": "Web products",
+    "titleAccent": "that scale.",
+    "description": "React, Node and NestJS end to end: solid architecture, well-solved business logic and interfaces that feel considered. I join teams in motion and also take projects from start to finish.",
+    "ctaProjects": "View projects",
+    "ctaContact": "Let's talk",
+    "panelAvailability": "Availability",
+    "panelAvailabilityValue": "Teams & freelance",
+    "panelStack": "Stack",
+    "panelLocation": "Location",
+    "panelLocationValue": "Argentina — remote",
+    "panelNote": "I reply within 24 hours"
+  },
+  "about": {
+    "label": "About",
+    "title": "Code that holds up over time.",
+    "lead": "Fullstack developer with real product experience. I'm comfortable on both sides: from the data model to the last detail of the interface.",
+    "subtitle": "A little about me",
+    "text1": "I'm a fullstack developer with experience in JavaScript/TypeScript and Java. I've built SaaS platforms, marketplaces and booking systems that are running in production today.",
+    "text2": "I care about the decisions you don't see: modelling data properly, setting clear boundaries between modules and leaving code someone else can follow. Then the front end has to feel fast and considered.",
+    "capabilitiesLabel": "What I bring",
+    "cap1Title": "Architecture and backend",
+    "cap1Text": "APIs with Node and NestJS, PostgreSQL and Prisma modelling, integrations and business logic.",
+    "cap2Title": "Interfaces that work",
+    "cap2Text": "React, Next.js and Tailwind with a focus on performance, accessibility and visual consistency.",
+    "cap3Title": "Real time and AI",
+    "cap3Text": "Socket.IO and Ably for live events; Retell AI and React Flow for conversational agents.",
+    "cap4Title": "Delivery and follow-through",
+    "cap4Text": "From repository to production, with clear communication, reviewable handoffs and follow-through after launch.",
+    "stackLabel": "Stack and tools"
+  },
+  "projects": {
+    "label": "Projects",
+    "title": "Work you can look at.",
+    "lead": "Every project solves a concrete problem. These are the ones that best show how I work: product, architecture and execution.",
+    "featured": "Featured",
+    "others": "Other projects",
+    "visit": "View project",
+    "caseStudy": "View case study",
+    "onRequest": "Available on request",
+    "inProgress": "In development"
+  },
+  "project": {
+    "back": "Back to projects",
+    "notFound": "Project not found",
+    "overview": "The project",
+    "impact": "Impact",
+    "stack": "Stack used",
+    "yearLabel": "Year",
+    "next": "Next project",
+    "workTogether": "Let's work together",
+    "workTogetherCta": "Talk about your project"
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Have something in mind?",
+    "lead": "I'm looking to join a team and to take on freelance work. Tell me what you need and we'll see if it's a good fit.",
+    "direct": "Write to me directly",
+    "location": "Argentina",
+    "remote": "remote",
+    "formTitle": "Or send a message",
+    "name": "Name",
+    "email": "Email",
+    "subject": "Subject",
+    "message": "Message",
+    "placeName": "Your name",
+    "placeEmail": "you@email.com",
+    "placeSubject": "What is it about?",
+    "placeMessage": "Tell me a bit about the project",
+    "requiredName": "Name is required",
+    "requiredEmail": "Email is required",
+    "requiredSubject": "Subject is required",
+    "requiredMessage": "Message is required",
+    "invalidEmail": "Enter a valid email",
+    "send": "Send message",
+    "sending": "Sending…",
+    "sent": "Message sent. I'll get back to you soon.",
+    "error": "The message could not be sent",
+    "error2": "Connection error",
+    "privacy": "Your details are used only to reply to your message. We don't share them or use them for marketing."
+  },
+  "footer": {
+    "label": "Wrap up",
+    "title": "Let's build something worth maintaining.",
+    "navigation": "Footer navigation",
+    "rights": "All rights reserved.",
+    "stack": "Built with"
+  }
 }

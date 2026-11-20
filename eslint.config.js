@@ -33,11 +33,20 @@ export default defineConfig([
         },
         rules: {
             ...js.configs.recommended.rules,
+            "no-unused-vars": "off",
             ...tseslint.configs.recommended.rules,
             ...pluginReact.configs.recommended.rules,
             "react/react-in-jsx-scope": "off",
             "react/jsx-no-target-blank": "warn",
             "@typescript-eslint/no-unused-vars": ["warn"],
+        },
+    },
+    {
+        files: ["api/**/*.ts"],
+        languageOptions: {
+            parserOptions: {
+                project: "./tsconfig.node.json",
+            },
         },
     },
 ]);

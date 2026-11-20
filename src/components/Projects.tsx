@@ -1,64 +1,78 @@
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
 import projectsData from "../data/projects.json";
-import ProjectCard from "./Projects/ProjectCard";
-interface ProjectsProps {
-    isDarkMode: boolean;
-}
+import { projectPath } from "../lib/routes";
+import { localizedProject, type Lang, type Project } from "../types/project";
+import Reveal from "./ui/Reveal";
+import SectionHeading from "./ui/SectionHeading";
+import ProjectRow from "./Projects/ProjectRow";
 
-export default function Projects({ isDarkMode }: ProjectsProps) {
-    const projects = projectsData;
-    const { t } = useTranslation();
+const projects = projectsData as Project[];
 
-    return (
-        <section id="projects" className="px-[6%] py-20 relative scroll-mt-[15px]">
-            <div className="max-w-6xl mx-auto relative z-10">
-                <motion.h2
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className={`
-                        text-4xl md:text-5xl font-bold mb-12 pb-2 text-center
-                        ${isDarkMode
-                            ? "bg-gradient-to-r from-pink-400 to-orange-400 bg-clip-text text-transparent"
-                            : "bg-gradient-to-r from-pink-600 to-orange-600 bg-clip-text text-transparent"
-                        }
-                    `}
-                >
-                    {t("projects.title")}
-                </motion.h2>
+export default function Projects() {
+  const { t, i18n } = useTranslation();
+  const lang: Lang = i18n.language.startsWith("en") ? "en" : "es";
+  const featured = projects.filter((project) => project.featured);
+  const others = projects.filter((project) => !project.featured);
 
-                <motion.div 
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-                >
-                    {projects.map((project, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: index * 0.1 }}
+  return (
+    <section id="projects" className="scroll-mt-24 py-20 md:py-28">
+      <div className="shell">
+        <SectionHeading index="02" label={t("projects.label")} title={t("projects.title")} description={t("projects.lead")} />
+
+        <p className="eyebrow mb-2 border-b border-line pb-4">{t("projects.featured")}</p>
+        <div>
+          {featured.map((project, index) => (
+            <ProjectRow key={project.slug} project={project} index={index} />
+          ))}
+        </div>
+
+        <div className="mt-14 md:mt-20">
+          <p className="eyebrow mb-4 border-b border-line pb-4">{t("projects.others")}</p>
+          <ul className="divide-y divide-line">
+            {others.map((project) => {
+              const { title, category } = localizedProject(project, lang);
+              return (
+                <Reveal key={project.slug}>
+                  <li className="flex flex-wrap items-center gap-x-5 gap-y-2 py-5 sm:flex-nowrap sm:justify-between">
+                    <div className="flex min-w-0 items-center gap-4">
+                      <span className="font-mono text-xs text-accent">{project.year}</span>
+                      <div className="min-w-0">
+                        <h3 className="font-display text-lg font-semibold tracking-tight">
+                          <a href={projectPath(project.slug, lang)} className="transition-colors hover:text-accent">
+                            {title}
+                          </a>
+                        </h3>
+                        <p className="text-sm text-muted">{category}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-5">
+                      <a
+                        href={projectPath(project.slug, lang)}
+                        className="link-accent inline-flex items-center gap-1.5 text-sm font-medium"
+                      >
+                        {t("projects.caseStudy")}
+                        <ArrowRight size={14} aria-hidden="true" />
+                      </a>
+                      {project.liveLink && (
+                        <a
+                          href={project.liveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-ink"
                         >
-                            <ProjectCard
-                                isDarkMode={isDarkMode}
-                                title={project.title}
-                                description={project.description}
-                                techStack={project.techStack}
-                                liveLink={project.liveLink}
-                                gradientDark={project.gradientDark}
-                                gradientLight={project.gradientLight}
-                                colorTop={project.colorTop}
-                                status={project.status}
-                                githubLink={project.githubLink}
-                                description_en={project.description_en}
-                                title_en={project.title_en}
-                            />
-                        </motion.div>
-                    ))}
-                </motion.div>
-            </div>
-        </section>
-    );
+                          {t("projects.visit")}
+                          <ArrowUpRight size={14} aria-hidden="true" />
+                        </a>
+                      )}
+                    </div>
+                  </li>
+                </Reveal>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
 }

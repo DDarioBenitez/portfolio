@@ -1,58 +1,114 @@
 {
-    "hero": {
-        "title": "Desarrollador FullStack especializado en tecnologías web modernas",
-        "subTitle": "Mira mi trabajo"
-    },
-    "header": {
-        "home": "Inicio",
-        "about": "Sobre mí",
-        "projects": "Proyectos",
-        "contact": "Contacto"
-    },
-    "about": {
-        "title": "Sobre mí",
-        "subTitle": "Hola, soy Darío, un gusto conocerte.",
-        "text_1": "Soy un desarrollador full-stack con experiencia trabajando en proyectos reales, tanto en el ecosistema JavaScript/TypeScript (Node.js, React, Next.js, NestJS) como en Java con SpringBoot. Me especializo en diseñar arquitecturas robustas, optimizar la lógica de negocio y crear interfaces modernas y funcionales.",
-        "text_2": "Me caracterizo por la proactividad, la comunicación clara y la capacidad de resolver problemas de manera independiente o en equipo. Disfruto enfrentar desafíos técnicos con una mentalidad analítica y orientada a resultados.",
-        "text_3": "Siempre estoy buscando nuevos proyectos y oportunidades donde pueda aportar soluciones escalables y eficientes que generen un impacto real.",
-        "subTitle_2": "Tecnologías con las que trabajo principalmente"
-    },
-    "projects": {
-        "title": "Proyectos destacados"
-    },
-    "contact": {
-        "title": "Trabajemos juntos",
-        "subTitle": "Siempre estoy abierto a nuevas oportunidades y colaboraciones. Si tenés un proyecto en mente o simplemente querés saludar, ¡no dudes en contactarme!",
-        "subTitle_2": "Envíame un mensaje",
-        "name": "Nombre",
-        "email": "Correo electrónico",
-        "subject": "Asunto",
-        "message": "Mensaje",
-        "button_send": "Enviar mensaje",
-        "sending": "Enviando mensaje...",
-        "subTitle_3": "Información de contacto",
-        "location": "Ubicación",
-        "country": "Argentina",
-        "sent": "Mensaje enviado con éxito",
-        "error": "El mensaje no pudo ser enviado",
-        "error_2": "Error de conexión",
-        "place_name": "Tu nombre",
-        "place_email": "Tu correo electrónico",
-        "place_subject": "Asunto del mensaje",
-        "place_message": "Tu mensaje",
-        "form_error_name": "El nombre es obligatorio",
-        "form_error_email": "El correo electrónico es obligatorio",
-        "form_error_subject": "El asunto es obligatorio",
-        "form_error_message": "El mensaje es obligatorio"
-    },
-    "footer": {
-        "title": "Creando experiencias web modernas con tecnologías de vanguardia.",
-        "home": "Inicio",
-        "about": "Sobre mí",
-        "projects": "Proyectos",
-        "contact": "Contacto",
-        "subTitle": "Contáctame",
-        "rights": "Todos los derechos reservados.",
-        "stack": "Desarrollado con"
-    }
+  "common": {
+    "skip": "Saltar al contenido"
+  },
+  "meta": {
+    "title": "Dario Benitez — Desarrollador Fullstack | Argentina · Remoto",
+    "description": "Dario Benitez, desarrollador fullstack en Argentina. Construyo productos web con React, Node y NestJS. Disponible para equipos y proyectos freelance.",
+    "ogTitle": "Dario Benitez — Desarrollador Fullstack | Argentina · Remoto",
+    "ogDescription": "Productos web que escalan. Arquitectura sólida, lógica de negocio e interfaces cuidadas. Disponible para sumarme a un equipo o tomar un proyecto.",
+    "ogImageAlt": "Dario Benitez — Desarrollador Fullstack"
+  },
+  "header": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "projects": "Proyectos",
+    "contact": "Contacto",
+    "navigation": "Navegación principal",
+    "language": "Idioma",
+    "lightMode": "Activar modo claro",
+    "darkMode": "Activar modo oscuro",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
+  },
+  "hero": {
+    "availability": "Disponible para nuevas oportunidades",
+    "eyebrow": "DARIO BENITEZ — FULLSTACK DEVELOPER",
+    "titleLine1": "Productos web",
+    "titleAccent": "que escalan.",
+    "description": "React, Node y NestJS de punta a punta: arquitectura sólida, lógica de negocio bien resuelta e interfaces que se sienten cuidadas. Me sumo a equipos en marcha y también llevo proyectos de principio a fin.",
+    "ctaProjects": "Ver proyectos",
+    "ctaContact": "Hablemos",
+    "panelAvailability": "Disponibilidad",
+    "panelAvailabilityValue": "Equipos y freelance",
+    "panelStack": "Stack",
+    "panelLocation": "Ubicación",
+    "panelLocationValue": "Argentina — remoto",
+    "panelNote": "Respondo en menos de 24 h"
+  },
+  "about": {
+    "label": "Sobre mí",
+    "title": "Código que se sostiene en el tiempo.",
+    "lead": "Fullstack con experiencia en productos reales. Trabajo cómodo en ambos lados: del esquema de datos al último detalle de la interfaz.",
+    "subtitle": "Un poco sobre mí",
+    "text1": "Soy desarrollador fullstack con experiencia en JavaScript/TypeScript y Java. He construido plataformas SaaS, marketplaces y sistemas de reservas que hoy están en producción.",
+    "text2": "Me importan las decisiones que no se ven: modelar bien los datos, definir límites claros entre módulos y dejar un código que otra persona pueda seguir. Después, el frente tiene que sentirse rápido y cuidado.",
+    "capabilitiesLabel": "Qué aporto",
+    "cap1Title": "Arquitectura y backend",
+    "cap1Text": "APIs con Node y NestJS, modelado en PostgreSQL y Prisma, integraciones y lógica de negocio.",
+    "cap2Title": "Interfaces que funcionan",
+    "cap2Text": "React, Next.js y Tailwind con foco en rendimiento, accesibilidad y consistencia visual.",
+    "cap3Title": "Tiempo real e IA",
+    "cap3Text": "Socket.IO y Ably para eventos en vivo; Retell AI y React Flow para agentes conversacionales.",
+    "cap4Title": "Entrega y acompañamiento",
+    "cap4Text": "Del repositorio a producción, con comunicación clara, entregas revisables y acompañamiento después del deploy.",
+    "stackLabel": "Stack y herramientas"
+  },
+  "projects": {
+    "label": "Proyectos",
+    "title": "Trabajo que podés ver.",
+    "lead": "Cada proyecto resuelve un problema concreto. Acá están los que mejor representan cómo trabajo: producto, arquitectura y ejecución.",
+    "featured": "Destacados",
+    "others": "Otros proyectos",
+    "visit": "Ver proyecto",
+    "caseStudy": "Ver caso",
+    "onRequest": "Disponible a pedido",
+    "inProgress": "En desarrollo"
+  },
+  "project": {
+    "back": "Volver a proyectos",
+    "notFound": "Proyecto no encontrado",
+    "overview": "El proyecto",
+    "impact": "Impacto",
+    "stack": "Stack utilizado",
+    "yearLabel": "Año",
+    "next": "Siguiente proyecto",
+    "workTogether": "¿Trabajamos juntos?",
+    "workTogetherCta": "Hablemos de tu proyecto"
+  },
+  "contact": {
+    "label": "Contacto",
+    "title": "¿Tenés algo en mente?",
+    "lead": "Busco tanto sumarme a un equipo como acompañar proyectos freelance. Contame qué necesitás y vemos si encaja.",
+    "direct": "Escribime directamente",
+    "location": "Argentina",
+    "remote": "remoto",
+    "formTitle": "O mandame un mensaje",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "subject": "Asunto",
+    "message": "Mensaje",
+    "placeName": "Tu nombre",
+    "placeEmail": "tu@correo.com",
+    "placeSubject": "¿De qué se trata?",
+    "placeMessage": "Contame un poco del proyecto",
+    "requiredName": "El nombre es obligatorio",
+    "requiredEmail": "El correo es obligatorio",
+    "requiredSubject": "El asunto es obligatorio",
+    "requiredMessage": "El mensaje es obligatorio",
+    "invalidEmail": "Ingresá un correo válido",
+    "send": "Enviar mensaje",
+    "sending": "Enviando…",
+    "sent": "Mensaje enviado. Te respondo pronto.",
+    "error": "No se pudo enviar el mensaje",
+    "error2": "Error de conexión",
+    "privacy": "Tus datos se usan únicamente para responder a tu mensaje. No los compartimos ni los usamos para marketing."
+  },
+  "footer": {
+    "label": "Cierre",
+    "title": "Construyamos algo que valga la pena mantener.",
+    "navigation": "Navegación del pie de página",
+    "rights": "Todos los derechos reservados.",
+    "stack": "Hecho con"
+  }
 }

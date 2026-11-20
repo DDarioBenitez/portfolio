@@ -1,16 +1,96 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#08090c" />
+    <title>Dario Benitez — Desarrollador Fullstack | Argentina · Remoto</title>
+    <meta
+      name="description"
+      content="Dario Benitez, desarrollador fullstack en Argentina. Construyo productos web con React, Node y NestJS. Disponible para equipos y proyectos freelance."
+    />
+    <link rel="canonical" href="https://dario-benitez-dev.vercel.app/" />
+    <link rel="alternate" hreflang="es" href="https://dario-benitez-dev.vercel.app/" />
+    <link rel="alternate" hreflang="en" href="https://dario-benitez-dev.vercel.app/en" />
+    <link rel="alternate" hreflang="x-default" href="https://dario-benitez-dev.vercel.app/" />
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dario Benitez Dev.</title>
-</head>
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Dario Benitez" />
+    <meta property="og:url" content="https://dario-benitez-dev.vercel.app/" />
+    <meta property="og:title" content="Dario Benitez — Desarrollador Fullstack | Argentina · Remoto" />
+    <meta
+      property="og:description"
+      content="Productos web que escalan. Arquitectura sólida, lógica de negocio e interfaces cuidadas. Disponible para sumarme a un equipo o tomar un proyecto."
+    />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:image" content="https://dario-benitez-dev.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Dario Benitez — Desarrollador Fullstack" />
 
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
-</body>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Dario Benitez — Desarrollador Fullstack | Argentina · Remoto" />
+    <meta
+      name="twitter:description"
+      content="Productos web que escalan. Arquitectura sólida, lógica de negocio e interfaces cuidadas. Disponible para sumarme a un equipo o tomar un proyecto."
+    />
+    <meta name="twitter:image" content="https://dario-benitez-dev.vercel.app/og-image.png" />
 
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
+
+    <script type="application/ld+json" id="seo-schema">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://dario-benitez-dev.vercel.app/#person",
+      "name": "Dario Benitez",
+      "url": "https://dario-benitez-dev.vercel.app/",
+      "jobTitle": "Fullstack Developer",
+      "email": "mailto:benitez_trabaja@hotmail.com",
+      "sameAs": [
+        "https://github.com/DDarioBenitez",
+        "https://www.linkedin.com/in/dar%C3%ADo-dami%C3%A1n-ben%C3%ADtez/"
+      ],
+      "knowsAbout": [
+        "React",
+        "Next.js",
+        "Node.js",
+        "NestJS",
+        "TypeScript",
+        "PostgreSQL",
+        "Prisma",
+        "Socket.IO",
+        "Tailwind CSS"
+      ],
+      "description": "Desarrollador fullstack en Argentina. Construyo productos web con React, Node y NestJS, de la arquitectura al detalle final."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://dario-benitez-dev.vercel.app/#website",
+      "url": "https://dario-benitez-dev.vercel.app/",
+      "name": "Dario Benitez — Fullstack Developer",
+      "inLanguage": "es",
+      "publisher": { "@id": "https://dario-benitez-dev.vercel.app/#person" }
+    }
+  ]
+}
+    </script>
+
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("portfolio-theme");
+          var theme = stored || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+          document.documentElement.dataset.theme = theme;
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

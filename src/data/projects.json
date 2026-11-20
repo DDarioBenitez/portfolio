@@ -1,77 +1,127 @@
 [
-    {
-        "title": "Fydelix",
-        "title_en": "Fydelix",
-        "description": "Plataforma SaaS de fidelización para comercios: alta de clientes por QR, puntos y visitas, programas con recompensas y promociones, y canje en dos pasos. Incluye panel del negocio (caja, clientes, estadísticas, equipo), app del cliente multi-comercio, panel interno de operaciones con auditoría y actualizaciones en tiempo real. Next.js + Prisma sobre PostgreSQL, imágenes en Cloudflare R2 y despliegue en Vercel.",
-        "description_en": "SaaS loyalty platform for local businesses: QR-based customer onboarding, points and visits, reward and promo programs, and a two-step redemption flow. Includes a business dashboard (checkout, customers, analytics, staff), a multi-business client app, an internal operations panel with auditing, and real-time updates. Next.js + Prisma on PostgreSQL, images on Cloudflare R2, and deployment on Vercel.",
-        "techStack": ["Next.js", "React", "TypeScript", "Prisma", "PostgreSQL", "Supabase", "Tailwind CSS", "Cloudflare R2", "Ably", "Resend", "Vercel"],
-        "liveLink": "https://fydelix.com",
-        "status": "prod",
-        "colorTop": "from-indigo-500 to-emerald-400",
-        "gradientDark": "group-hover:from-indigo-400 group-hover:to-emerald-400",
-        "gradientLight": "group-hover:from-indigo-600 group-hover:to-emerald-600",
-        "githubLink": ""
-    },
-    {
-        "title": "HelloFlatmate",
-        "description": "Plataforma web para alquiler de habitaciones, con backend en Node.js, chat y notificaciones en tiempo real, autenticación con Firebase, generación de contratos y facturas en PDF, y frontend en React + Next.js + Tailwind CSS.",
-        "description_en": "Web platform for room rentals, with a Node.js backend, real-time chat and notifications, Firebase authentication, PDF contract and invoice generation, and a frontend built with React + Next.js + Tailwind CSS.",
-        "techStack": ["Node.js", "Sequelize", "PostgreSQL", "Socket.IO", "Firebase", "React", "Next.js", "Tailwind CSS"],
-        "liveLink": "https://www.helloflatmate.com",
-        "status": "prod",
-        "colorTop": "from-purple-500 to-pink-500",
-        "gradientDark": "group-hover:from-[#A855F7] group-hover:to-[#A855F7]",
-        "gradientLight": "group-hover:from-[#A855F7] group-hover:to-[#ec4899]",
-        "githubLink": ""
-    },
-    {
-        "title": "Viaje Seguro",
-        "description": "Sistema de reservas de viajes y alquiler de vehículos con login y autenticación mediante OAuth, dashboards para usuarios y administradores, registro con Google/email, confirmación por correo, reservas de asiento, pagos con Stripe y frontend en React + Next.js.",
-        "description_en": "Travel booking and vehicle rental system with OAuth login and authentication, dashboards for users and administrators, Google/email registration, email confirmation, seat reservations, Stripe payments, and a frontend built with React + Next.js.",
-        "techStack": ["NestJS", "Prisma", "PostgreSQL", "React", "Next.js", "TypeScript", "Stripe"],
-        "status": "prod",
-        "liveLink": "https://viajeseguro.site/",
-        "colorTop": "from-emerald-500 to-teal-500",
-        "gradientDark": "group-hover:from-emerald-400 group-hover:to-teal-500",
-        "gradientLight": "group-hover:from-emerald-600 group-hover:to-green-700",
-        "githubLink": ""
-    },
-    {
-        "title": "SaaS Modular para Pymes",
-        "title_en": "Modular SaaS for Pymes",
-        "description": "Plataforma SaaS diseñada para pequeñas y medianas empresas, con arquitectura modular que permite contratar solo los módulos necesarios (stock, punto de venta, reportes, etc.), habilitar o deshabilitar funcionalidades según las necesidades del cliente, y escalar fácilmente a medida que el negocio crece.",
-        "description_en": "SaaS platform designed for small and medium-sized enterprises, with a modular architecture that allows contracting only the required modules (inventory, point of sale, reports, etc.), enabling or disabling features according to client needs, and scaling easily as the business grows.",
-        "techStack": ["Angular", "NestJS", "PostgreSQL", "Prisma", "Tailwind CSS", "TypeScript"],
-        "liveLink": "",
-        "status": "dev",
-        "colorTop": "from-orange-500 to-red-500",
-        "gradientDark": "group-hover:from-orange-400 group-hover:to-red-500",
-        "gradientLight": "group-hover:from-orange-600 group-hover:to-red-600",
-        "githubLink": ""
-    },
-    {
-        "title": "Nexiafy",
-        "title_en": "Nexiafy",
-        "description": "Plataforma de agentes conversacionales IA con backend en NestJS, gestión de telefonía virtual mediante Zadarma API, sistema de llamadas en tiempo real con Socket.IO, agentes de chat y voz con integración de Retell AI, canvas visual interactivo con React Flow, widget embebible, sistema de horarios para agentes, y frontend en React + Vite + TypeScript.",
-        "description_en": "AI conversational agents platform with NestJS backend, virtual telephony management via Zadarma API, real-time calling system with Socket.IO, chat and voice agents with Retell AI integration, interactive visual canvas with React Flow, embeddable widget, agent scheduling system, and frontend built with React + Vite + TypeScript.",
-        "techStack": [
-            "NestJS",
-            "Prisma",
-            "PostgreSQL",
-            "Socket.IO",
-            "Zadarma",
-            "Retell AI",
-            "React",
-            "Vite",
-            "TypeScript",
-            "React Flow",
-            "Tailwind CSS"
-        ],
-        "liveLink": "",
-        "status": "prod",
-        "colorTop": "from-blue-500 to-indigo-600",
-        "gradientDark": "group-hover:from-blue-400 group-hover:to-indigo-500",
-        "gradientLight": "group-hover:from-blue-600 group-hover:to-indigo-700",
-        "githubLink": ""
-    }
+  {
+    "slug": "fydelix",
+    "title": "Fydelix",
+    "title_en": "Fydelix",
+    "category_es": "SaaS · Fidelización",
+    "category_en": "SaaS · Loyalty",
+    "year": "2026",
+    "featured": true,
+    "previewVariant": "dashboard",
+    "summary_es": "Programa de puntos y recompensas para comercios: alta por QR, canje en dos pasos y panel del negocio con caja, clientes y estadísticas.",
+    "summary_en": "Points and rewards program for local businesses: QR signup, two-step redemption and a business dashboard for checkout, customers and analytics.",
+    "details_es": [
+      "El comercio necesitaba un programa de fidelización que no exigiera integraciones costosas: el cliente se da de alta escaneando un QR y acumula puntos en cada compra.",
+      "Construí tres superficies conectadas por eventos en tiempo real —panel del negocio, app del cliente y operaciones— con canje en dos pasos para evitar errores en caja."
+    ],
+    "details_en": [
+      "The business needed a loyalty program without expensive integrations: customers sign up by scanning a QR code and earn points on every purchase.",
+      "I built three surfaces connected by real-time events —business dashboard, customer app and operations— with a two-step redemption flow to avoid checkout mistakes."
+    ],
+    "impact_es": "Tres superficies conectadas en tiempo real: negocio, cliente y operaciones.",
+    "impact_en": "Three connected surfaces in real time: business, customer and operations.",
+    "techStack": ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Supabase", "Ably", "Cloudflare R2", "Resend", "Vercel"],
+    "liveLink": "https://fydelix.com",
+    "status": "prod"
+  },
+  {
+    "slug": "helloflatmate",
+    "title": "HelloFlatmate",
+    "title_en": "HelloFlatmate",
+    "category_es": "Marketplace · Alquiler",
+    "category_en": "Marketplace · Rentals",
+    "year": "2025",
+    "featured": true,
+    "previewVariant": "chat",
+    "summary_es": "Plataforma de alquiler de habitaciones con chat y notificaciones en tiempo real, autenticación con Firebase y contratos y facturas en PDF.",
+    "summary_en": "Room rental platform with real-time chat and notifications, Firebase authentication and PDF contracts and invoices.",
+    "details_es": [
+      "El flujo iba desde la búsqueda de habitación hasta la firma del contrato, pasando por mensajería entre inquilino y anfitrión.",
+      "Implementé chat y notificaciones con Socket.IO, autenticación con Firebase y generación de contratos y facturas en PDF para cerrar todo dentro de la plataforma."
+    ],
+    "details_en": [
+      "The flow went from searching for a room to signing the contract, with messaging between tenant and host along the way.",
+      "I implemented chat and notifications with Socket.IO, Firebase authentication and PDF generation for contracts and invoices so everything stays inside the platform."
+    ],
+    "impact_es": "De la búsqueda al contrato firmado, sin salir de la plataforma.",
+    "impact_en": "From search to signed contract, without leaving the platform.",
+    "techStack": ["React", "Next.js", "Node.js", "Sequelize", "PostgreSQL", "Socket.IO", "Firebase", "Tailwind CSS"],
+    "liveLink": "https://www.helloflatmate.com",
+    "status": "prod"
+  },
+  {
+    "slug": "nexiafy",
+    "title": "Nexiafy",
+    "title_en": "Nexiafy",
+    "category_es": "IA · Agentes conversacionales",
+    "category_en": "AI · Conversational agents",
+    "year": "2026",
+    "featured": true,
+    "previewVariant": "canvas",
+    "summary_es": "Agentes de chat y voz con Retell AI y telefonía Zadarma, orquestados en un canvas visual con React Flow y automatizaciones con n8n.",
+    "summary_en": "Chat and voice agents with Retell AI and Zadarma telephony, orchestrated on a visual canvas with React Flow and n8n automations.",
+    "details_es": [
+      "Había que hacer que los agentes de chat y voz fueran configurables sin tocar código, y que recibieran llamadas de telefonía real.",
+      "Diseñé un canvas con React Flow para orquestar nodos, integré Retell AI y Zadarma para voz y dejé las automatizaciones en n8n con eventos en vivo vía Socket.IO."
+    ],
+    "details_en": [
+      "The goal was to make chat and voice agents configurable without touching code, including inbound calls from real telephony.",
+      "I designed a React Flow canvas to orchestrate nodes, integrated Retell AI and Zadarma for voice and kept automations in n8n with live events over Socket.IO."
+    ],
+    "impact_es": "Un solo lienzo para diseñar, conectar y monitorear agentes en producción.",
+    "impact_en": "One canvas to design, connect and monitor agents in production.",
+    "techStack": ["React", "Vite", "TypeScript", "NestJS", "Prisma", "PostgreSQL", "Retell AI", "Zadarma", "React Flow", "n8n", "Socket.IO"],
+    "liveLink": "",
+    "status": "prod"
+  },
+  {
+    "slug": "viaje-seguro",
+    "title": "Viaje Seguro",
+    "title_en": "Viaje Seguro",
+    "category_es": "Reservas · Pagos",
+    "category_en": "Bookings · Payments",
+    "year": "2025",
+    "featured": false,
+    "previewVariant": "landing",
+    "summary_es": "Reservas de viajes y vehículos con OAuth, dashboards de usuario y administración y pagos con Stripe.",
+    "summary_en": "Travel and vehicle bookings with OAuth, user and admin dashboards and Stripe payments.",
+    "details_es": [
+      "Reservar un viaje y un vehículo implicaba varios pasos con distintos proveedores y un checkout que debía ser confiable.",
+      "Unifiqué OAuth, dashboards de usuario y administración, y el cobro con Stripe en un solo flujo construido con React y NestJS."
+    ],
+    "details_en": [
+      "Booking a trip and a vehicle involved several steps across different providers and a checkout that had to be reliable.",
+      "I unified OAuth, user and admin dashboards and Stripe payments into a single flow built with React and NestJS."
+    ],
+    "impact_es": "Flujo completo de reserva y pago en React + NestJS.",
+    "impact_en": "End-to-end booking and payment flow in React + NestJS.",
+    "techStack": ["React", "Next.js", "TypeScript", "NestJS", "Prisma", "PostgreSQL", "Stripe"],
+    "liveLink": "https://viajeseguro.site/",
+    "status": "prod"
+  },
+  {
+    "slug": "saas-modular",
+    "title": "SaaS Modular para Pymes",
+    "title_en": "Modular SaaS for SMBs",
+    "category_es": "SaaS · Arquitectura",
+    "category_en": "SaaS · Architecture",
+    "year": "2026",
+    "featured": false,
+    "previewVariant": "dashboard",
+    "summary_es": "Plataforma por módulos —stock, punto de venta, reportes— que se activan según lo que cada negocio necesita.",
+    "summary_en": "Modular platform —inventory, point of sale, reports— enabled according to what each business needs.",
+    "details_es": [
+      "El producto debía adaptarse a negocios de distinto tamaño sin convertirse en una aplicación imposible de mantener.",
+      "Separé stock, punto de venta y reportes en módulos activables, sobre una base de datos compartida y contratos claros entre servicios."
+    ],
+    "details_en": [
+      "The product had to adapt to businesses of different sizes without turning into an application nobody could maintain.",
+      "I split inventory, point of sale and reports into enableable modules over a shared database with clear contracts between services."
+    ],
+    "impact_es": "Arquitectura pensada para crecer sin reescribir el producto.",
+    "impact_en": "Architecture designed to grow without rewriting the product.",
+    "techStack": ["Angular", "NestJS", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS"],
+    "liveLink": "",
+    "status": "dev"
+  }
 ]

@@ -1,237 +1,200 @@
-import { Mail, MapPin } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, Mail, MapPin, MessageCircle } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { FaWhatsapp } from "react-icons/fa";
-import { SiGithub, SiLinkedin } from "react-icons/si";
 import { toast } from "sonner";
+import Reveal from "./ui/Reveal";
+import SectionHeading from "./ui/SectionHeading";
 
-interface ContactProps {
-    isDarkMode: boolean;
-}
 interface ContactFormInputs {
-    name: string;
-    email: string;
-    subject: string;
-    message: string;
-    website?: string; // honeypot opcional
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  website?: string;
 }
 
-export default function Contact({ isDarkMode }: ContactProps) {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors, isSubmitting },
-        reset,
-    } = useForm<ContactFormInputs>();
+const EMAIL = "benitez_trabaja@hotmail.com";
 
-    const { t } = useTranslation();
+export default function Contact() {
+  const { t } = useTranslation();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<ContactFormInputs>();
 
-    const onSubmit = async (data: ContactFormInputs) => {
-        try {
-            const res = await fetch("/api/contact", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data),
-            });
-            const result = await res.json();
+  const onSubmit = async (data: ContactFormInputs) => {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const result = await response.json();
+      if (result.ok) {
+        toast.success(t("contact.sent"));
+        reset();
+      } else {
+        toast.error(t("contact.error"));
+      }
+    } catch {
+      toast.error(t("contact.error2"));
+    }
+  };
 
-            if (result.ok) {
-                toast.success(t("contact.sent"));
-                reset();
-            } else {
-                toast.error(t("contact.error"));
-            }
-        } catch {
-            toast.error(t("contact.error_2"));
-        }
-    };
-    return (
-        <section id="contact" className="px-[6%]  pb-10 md:py-20 relative scroll-mt-[15px]">
-            <div className="max-w-4xl mx-auto relative z-10">
-                <h2
-                    className={`text-4xl md:text-5xl font-bold mb-8 pb-2 text-center ${
-                        isDarkMode
-                            ? "bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
-                            : "bg-gradient-to-r from-emerald-600 to-cyan-600 bg-clip-text text-transparent"
-                    }`}
-                >
-                    {t("contact.title")}
-                </h2>
+  const channels = [
+    { icon: <Mail size={17} aria-hidden="true" />, label: EMAIL, href: `mailto:${EMAIL}` },
+    {
+      icon: <Linkedin size={17} aria-hidden="true" />,
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/dar%C3%ADo-dami%C3%A1n-ben%C3%ADtez/",
+    },
+    { icon: <Github size={17} aria-hidden="true" />, label: "GitHub", href: "https://github.com/DDarioBenitez" },
+    { icon: <MessageCircle size={17} aria-hidden="true" />, label: "+54 370 4009882", href: "https://wa.me/5493704009882" },
+  ];
 
-                <p className="text-2xl text-text-secondary mb-12 max-w-2xl mx-auto text-center">{t("contact.subTitle")}</p>
+  return (
+    <section id="contact" className="scroll-mt-24 py-20 md:py-28">
+      <div className="shell">
+        <SectionHeading index="03" label={t("contact.label")} title={t("contact.title")} description={t("contact.lead")} />
 
-                <div className="grid md:grid-cols-2 gap-12">
-                    <div className="bg-bg-tech-card border-border-proyect-card p-6 rounded-2xl border backdrop-blur-sm">
-                        <h3 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-                            {t("contact.subTitle_2")}
-                        </h3>
-                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 bg-bg-form">
-                            {/* Nombre */}
-                            <div className="flex flex-col gap-2">
-                                <label className="text-[16px] text-text-label font-medium" htmlFor="name">
-                                    {t("contact.name")}
-                                </label>
-                                <input
-                                    {...register("name", { required: t("contact.form_error_name") })}
-                                    className="bg-bg-input rounded-md text-[16px] text-text-input py-[8px] px-[12px] border border-border-input focus:border-purple-500 focus:ring-purple-500/20 backdrop-blur-sm placeholder:text-gray-400 focus:ring-0 focus:outline-none"
-                                    type="text"
-                                    id="name"
-                                    placeholder={t("contact.place_name")}
-                                />
-                                {errors.name && <span className="text-red-500 text-sm">{errors.name.message}</span>}
-                            </div>
+        <div className="grid gap-14 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:gap-20">
+          <Reveal>
+            <p className="eyebrow mb-4">{t("contact.direct")}</p>
+            <a href={`mailto:${EMAIL}`} className="link-accent inline-flex items-center gap-2 break-all font-display text-xl font-semibold tracking-tight md:text-2xl">
+              {EMAIL}
+              <ArrowUpRight size={19} aria-hidden="true" />
+            </a>
 
-                            {/* Email */}
-                            <div className="flex flex-col gap-2">
-                                <label className="text-[16px] text-text-label font-medium" htmlFor="email">
-                                    {t("contact.email")}
-                                </label>
-                                <input
-                                    {...register("email", {
-                                        required: t("contact.form_error_email"),
-                                        pattern: {
-                                            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                                            message: "Email inválido",
-                                        },
-                                    })}
-                                    className="bg-bg-input rounded-md text-[16px] text-text-input py-[8px] px-[12px] border border-border-input focus:border-purple-500 focus:ring-purple-500/20 backdrop-blur-sm placeholder:text-gray-400 focus:ring-0 focus:outline-none"
-                                    type="email"
-                                    id="email"
-                                    placeholder={t("contact.place_email")}
-                                />
-                                {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
-                            </div>
+            <ul className="mt-10 space-y-0 border-t border-line">
+              {channels.map((channel) => (
+                <li key={channel.label}>
+                  <a
+                    href={channel.href}
+                    target={channel.href.startsWith("http") ? "_blank" : undefined}
+                    rel={channel.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="flex items-center gap-3 border-b border-line py-4 text-sm text-muted transition-colors hover:text-accent"
+                  >
+                    <span className="text-ink">{channel.icon}</span>
+                    <span className="truncate">{channel.label}</span>
+                    <ArrowUpRight size={14} className="ml-auto shrink-0 opacity-50" aria-hidden="true" />
+                  </a>
+                </li>
+              ))}
+            </ul>
 
-                            {/* Asunto */}
-                            <div className="flex flex-col gap-2">
-                                <label className="text-[16px] text-text-label font-medium" htmlFor="subject">
-                                    {t("contact.subject")}
-                                </label>
-                                <input
-                                    {...register("subject", {
-                                        required: t("contact.form_error_subject"),
-                                    })}
-                                    className="bg-bg-input rounded-md text-[16px] text-text-input py-[8px] px-[12px] border border-border-input focus:border-purple-500 focus:ring-purple-500/20 backdrop-blur-sm placeholder:text-gray-400 focus:ring-0 focus:outline-none"
-                                    type="text"
-                                    id="subject"
-                                    placeholder={t("contact.place_subject")}
-                                />
-                                {errors.subject && <span className="text-red-500 text-sm">{errors.subject.message}</span>}
-                            </div>
+            <p className="mt-8 flex items-center gap-2 text-sm text-muted">
+              <MapPin size={16} aria-hidden="true" />
+              {t("contact.location")} · {t("contact.remote")}
+            </p>
+          </Reveal>
 
-                            {/* Mensaje */}
-                            <div className="flex flex-col gap-2">
-                                <label className="text-[16px] text-text-label font-medium" htmlFor="message">
-                                    {t("contact.message")}
-                                </label>
-                                <textarea
-                                    {...register("message", {
-                                        required: t("contact.form_error_message"),
-                                    })}
-                                    className="bg-bg-input rounded-md text-[16px] text-text-input py-[8px] px-[12px] border border-border-input focus:border-purple-500 focus:ring-purple-500/20 backdrop-blur-sm w-full min-h-[120px] resize-none placeholder:text-gray-400 focus:ring-0 focus:outline-none"
-                                    id="message"
-                                    placeholder={t("contact.place_message")}
-                                ></textarea>
-                                {errors.message && <span className="text-red-500 text-sm">{errors.message.message}</span>}
-                            </div>
+          <Reveal delay={0.1}>
+            <div className="card p-6 md:p-8">
+              <h3 className="font-display text-xl font-semibold tracking-tight">{t("contact.formTitle")}</h3>
+              <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-5" noValidate>
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="name" className="eyebrow">
+                      {t("contact.name")}
+                    </label>
+                    <input
+                      id="name"
+                      type="text"
+                      autoComplete="name"
+                      placeholder={t("contact.placeName")}
+                      aria-invalid={Boolean(errors.name)}
+                      aria-describedby={errors.name ? "name-error" : undefined}
+                      className="field"
+                      {...register("name", { required: t("contact.requiredName") })}
+                    />
+                    {errors.name && (
+                      <span id="name-error" role="alert" className="error-text text-xs">
+                        {errors.name.message}
+                      </span>
+                    )}
+                  </div>
 
-                            {/* Honeypot invisible */}
-                            <input type="text" {...register("website")} className="hidden" tabIndex={-1} autoComplete="off" />
-
-                            {/* Botón */}
-                            <div className="flex flex-col gap-2">
-                                <button
-                                    type="submit"
-                                    disabled={isSubmitting}
-                                    className="w-full py-3 rounded-xl transition-all duration-300 hover:scale-105 border-0 cursor-pointer text-white text-lg font-medium bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 disabled:opacity-60"
-                                >
-                                    {isSubmitting ? t("contact.sending") : t("contact.button_send")}
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                    <div className="flex flex-col justify-center space-y-4 ">
-                        <h3 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">
-                            {t("contact.subTitle_3")}
-                        </h3>
-
-                        <div className="space-y-4">
-                            <div className="flex items-center gap-3 group">
-                                <div className="p-2 rounded-full bg-gradient-to-r from-red-500 to-pink-500 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
-                                    <Mail className="text-white" size={20} />
-                                </div>
-                                <a
-                                    href="mailto:benitez_trabaja@hotmail.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-text-primary hover:text-transparent hover:bg-gradient-to-r hover:from-red-500 hover:to-pink-500 hover:bg-clip-text transition-all duration-300 "
-                                >
-                                    benitez_trabaja@hotmail.com
-                                </a>
-                            </div>
-
-                            <div className="flex items-center gap-3 group">
-                                <div className="p-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
-                                    <SiLinkedin className="text-white" size={20} />
-                                </div>
-                                <a
-                                    href="https://linkedin.com/in/darío-damián-benítez"
-                                    className="text-text-primary hover:text-transparent hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-500 hover:bg-clip-text transition-all duration-300"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    linkedin.com/in/darío-damián-benítez
-                                </a>
-                            </div>
-
-                            <div className="flex items-center gap-3 group">
-                                <div className="p-2 rounded-full bg-gradient-to-r from-gray-700 to-gray-900 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
-                                    <SiGithub className="text-white" size={20} />
-                                </div>
-                                <a
-                                    href="https://github.com/DDarioBenitez"
-                                    className="text-text-primary hover:text-transparent hover:bg-gradient-to-r hover:from-gray-700 hover:to-gray-900 hover:bg-clip-text transition-all duration-300"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    github.com/DDarioBenitez
-                                </a>
-                            </div>
-
-                            {/* 📞 Teléfono */}
-                            <div className="flex items-center gap-3 group">
-                                <div className="p-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
-                                    <FaWhatsapp className="text-white" size={20} />
-                                </div>
-                                <a
-                                    href="https://wa.me/5493704009882"
-                                    className="text-text-primary hover:text-transparent hover:bg-gradient-to-r hover:from-green-500 hover:to-emerald-500 hover:bg-clip-text transition-all duration-300"
-                                >
-                                    +54 370 4009882
-                                </a>
-                            </div>
-                        </div>
-
-                        <h3 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-                            {t("contact.location")}
-                        </h3>
-                        <div className="flex items-center gap-3 group">
-                            <div className="p-2 rounded-full bg-gradient-to-r from-orange-500 to-red-500 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
-                                <MapPin className="text-white" size={19} />
-                            </div>
-
-                            <a
-                                href="https://www.google.com/maps/place/Argentina"
-                                className="text-text-primary hover:text-transparent hover:bg-gradient-to-r hover:from-green-500 hover:to-emerald-500 hover:bg-clip-text transition-transform duration-300"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                {t("contact.country")}
-                            </a>
-                        </div>
-                    </div>
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="email" className="eyebrow">
+                      {t("contact.email")}
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      autoComplete="email"
+                      placeholder={t("contact.placeEmail")}
+                      aria-invalid={Boolean(errors.email)}
+                      aria-describedby={errors.email ? "email-error" : undefined}
+                      className="field"
+                      {...register("email", {
+                        required: t("contact.requiredEmail"),
+                        pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: t("contact.invalidEmail") },
+                      })}
+                    />
+                    {errors.email && (
+                      <span id="email-error" role="alert" className="error-text text-xs">
+                        {errors.email.message}
+                      </span>
+                    )}
+                  </div>
                 </div>
+
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="subject" className="eyebrow">
+                    {t("contact.subject")}
+                  </label>
+                  <input
+                    id="subject"
+                    type="text"
+                    placeholder={t("contact.placeSubject")}
+                    aria-invalid={Boolean(errors.subject)}
+                    aria-describedby={errors.subject ? "subject-error" : undefined}
+                    className="field"
+                    {...register("subject", { required: t("contact.requiredSubject") })}
+                  />
+                  {errors.subject && (
+                    <span id="subject-error" role="alert" className="error-text text-xs">
+                      {errors.subject.message}
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="message" className="eyebrow">
+                    {t("contact.message")}
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={5}
+                    placeholder={t("contact.placeMessage")}
+                    aria-invalid={Boolean(errors.message)}
+                    aria-describedby={errors.message ? "message-error" : undefined}
+                    className="field resize-none"
+                    {...register("message", { required: t("contact.requiredMessage") })}
+                  />
+                  {errors.message && (
+                    <span id="message-error" role="alert" className="error-text text-xs">
+                      {errors.message.message}
+                    </span>
+                  )}
+                </div>
+
+                <div aria-hidden="true" className="hidden">
+                  <label htmlFor="website">Website</label>
+                  <input id="website" type="text" tabIndex={-1} autoComplete="off" {...register("website")} />
+                </div>
+
+                <button type="submit" disabled={isSubmitting} className="btn btn-primary w-full">
+                  {isSubmitting ? t("contact.sending") : t("contact.send")}
+                </button>
+                <p className="text-center text-xs leading-relaxed text-muted">{t("contact.privacy")}</p>
+              </form>
             </div>
-        </section>
-    );
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
 }

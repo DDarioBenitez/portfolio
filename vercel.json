@@ -1,5 +1,15 @@
 {
-    "rewrites": [{ "source": "/(.*)", "destination": "/" }],
+    "rewrites": [
+        { "source": "/en", "destination": "/en/index.html" },
+        { "source": "/en/", "destination": "/en/index.html" },
+        { "source": "/proyectos/:slug", "destination": "/proyectos/:slug/index.html" },
+        { "source": "/proyectos/:slug/", "destination": "/proyectos/:slug/index.html" },
+        { "source": "/en/projects/:slug", "destination": "/en/projects/:slug/index.html" },
+        { "source": "/en/projects/:slug/", "destination": "/en/projects/:slug/index.html" },
+        { "source": "/proyectos/(.*)", "destination": "/" },
+        { "source": "/en/projects/(.*)", "destination": "/" },
+        { "source": "/(.*)", "destination": "/" }
+    ],
     "headers": [
         {
             "source": "/locales/(.*)",
