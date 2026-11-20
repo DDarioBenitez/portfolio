@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import projectsData from "../data/projects.json";
 import SiteShell from "../components/SiteShell";
-import ProjectPreview from "../components/Projects/ProjectPreview";
+import ProjectVisual from "../components/Projects/ProjectVisual";
 import Reveal from "../components/ui/Reveal";
 import TechChip from "../components/ui/TechChip";
 import { updateProjectMeta } from "../lib/seo";
@@ -29,8 +29,8 @@ export default function ProjectDetail({ slug, lang }: { slug: string; lang: Lang
     return (
       <SiteShell>
         <section className="shell py-32">
-          <p className="eyebrow text-accent">404</p>
-          <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight">{t("project.notFound")}</h1>
+          <p className="meta-index text-accent">404</p>
+          <h1 className="display mt-4">{t("project.notFound")}</h1>
           <a href={home} className="link-accent mt-8 inline-flex items-center gap-2 text-sm font-semibold">
             <ArrowLeft size={15} aria-hidden="true" />
             {t("project.back")}
@@ -48,93 +48,98 @@ export default function ProjectDetail({ slug, lang }: { slug: string; lang: Lang
 
   return (
     <SiteShell>
-      <article className="py-16 md:py-24">
+      <article className="py-10 md:py-14">
         <div className="shell">
-          <a href={homeProjects} className="link-accent eyebrow inline-flex items-center gap-2">
+          <a href={homeProjects} className="label-sm inline-flex items-center gap-2 text-accent-dark hover:text-accent">
             <ArrowLeft size={14} aria-hidden="true" />
             {t("project.back")}
           </a>
 
           <Reveal>
-            <header className="mt-10 border-b border-line pb-12">
-              <p className="eyebrow flex flex-wrap items-center gap-2">
-                <span className="text-accent">{category}</span>
+            <header className="mt-8 border-b border-line pb-8">
+              <p className="meta-index flex flex-wrap items-center gap-2 text-accent-dark">
+                {category.toUpperCase()}
                 <span className="opacity-40">·</span>
                 {project.year}
                 {project.status === "dev" && (
                   <>
                     <span className="opacity-40">·</span>
-                    <span>{t("projects.inProgress")}</span>
+                    <span className="text-muted">{t("projects.inProgress")}</span>
                   </>
                 )}
               </p>
-              <h1 className="mt-5 font-display text-4xl font-semibold leading-tight tracking-tight md:text-6xl">{title}</h1>
-              <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted">{summary}</p>
+              <h1 className="display mt-4">{title}</h1>
+              <p className="body-lg mt-4 max-w-3xl">{summary}</p>
 
-              <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <div className="mt-6 flex flex-wrap items-center gap-4">
                 {project.liveLink ? (
                   <a
                     href={project.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-ink"
+                    className="btn btn-outline"
                   >
                     {t("projects.visit")}
                     <ArrowUpRight size={15} aria-hidden="true" />
                   </a>
                 ) : (
-                  <span className="text-sm text-muted">{t("projects.onRequest")}</span>
+                  <span className="label-md inline-flex items-center gap-1.5 text-muted">
+                    <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                    {t("projects.onRequest")}
+                  </span>
                 )}
               </div>
             </header>
           </Reveal>
 
-          <div className="grid gap-12 py-12 md:grid-cols-[minmax(0,1.4fr)_minmax(0,0.6fr)] md:gap-16">
+          <div className="grid gap-10 py-10 md:grid-cols-[minmax(0,1.4fr)_minmax(0,0.6fr)] md:gap-12">
             <Reveal>
-              <p className="eyebrow mb-5">{t("project.overview")}</p>
-              <div className="space-y-5 text-base leading-relaxed text-muted md:text-lg">
+              <p className="meta-index mb-4 text-muted">{t("project.overview")}</p>
+              <div className="body-md flex flex-col gap-4 md:text-lg">
                 {details.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
               </div>
-              <div className="mt-10 border-l-2 border-accent pl-5">
-                <p className="eyebrow mb-2">{t("project.impact")}</p>
-                <p className="font-display text-xl font-medium tracking-tight">{impact}</p>
+              <div className="mt-8 rounded bg-accent-light p-5">
+                <p className="meta-index mb-2 text-accent-dark">{t("project.impact")}</p>
+                <p className="headline-sm font-medium">{impact}</p>
               </div>
             </Reveal>
 
             <Reveal delay={0.1}>
-              <p className="eyebrow mb-5">{t("project.stack")}</p>
-              <div className="flex flex-wrap gap-2">
+              <p className="meta-index mb-4 text-muted">{t("project.stack")}</p>
+              <div className="flex flex-wrap gap-1.5">
                 {project.techStack.map((tech) => (
                   <TechChip key={tech} name={tech} />
                 ))}
               </div>
-              <div className="mt-8 border-t border-line pt-6">
-                <p className="eyebrow mb-2">{t("project.yearLabel")}</p>
-                <p className="font-mono text-sm text-ink">{project.year}</p>
+              <div className="mt-8 border-t border-line pt-5">
+                <p className="meta-index mb-2 text-muted">{t("project.yearLabel")}</p>
+                <p className="label-md text-ink">{project.year}</p>
               </div>
             </Reveal>
           </div>
 
           <Reveal>
-            <ProjectPreview variant={project.previewVariant} title={title} />
+            <div className="rounded-lg border border-line bg-surface-canvas p-6">
+              <ProjectVisual project={project} title={title} />
+            </div>
           </Reveal>
 
-          <div className="mt-14 grid gap-8 border-t border-line pt-10 md:grid-cols-2">
+          <div className="mt-12 grid gap-6 border-t border-line pt-8 md:grid-cols-2">
             <div>
-              <p className="eyebrow mb-3">{t("project.next")}</p>
+              <p className="meta-index mb-3 text-muted">{t("project.next")}</p>
               <a
                 href={projectPath(nextProject.slug, lang)}
-                className="inline-flex items-center gap-2 font-display text-2xl font-semibold tracking-tight transition-colors hover:text-accent"
+                className="headline-sm inline-flex items-center gap-2 transition-colors hover:text-accent-dark"
               >
                 {nextTitle}
                 <ArrowRight size={18} aria-hidden="true" />
               </a>
             </div>
             <div>
-              <p className="eyebrow mb-3">{t("project.workTogether")}</p>
-              <a href={homeContact} className="link-accent inline-flex items-center gap-1.5 text-base font-semibold">
+              <p className="meta-index mb-3 text-muted">{t("project.workTogether")}</p>
+              <a href={homeContact} className="link-accent label-md inline-flex items-center gap-1.5 font-semibold">
                 {t("project.workTogetherCta")}
                 <ArrowUpRight size={16} aria-hidden="true" />
               </a>

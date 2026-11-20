@@ -59,13 +59,15 @@ const icons: Record<string, ReactNode> = {
   Docker: <FaDocker />,
 };
 
-export default function TechChip({ name }: { name: string }) {
+export const techIcons = icons;
+
+export default function TechChip({ name, label }: { name: string; label?: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-md border border-line bg-surface px-2.5 py-1.5 text-xs font-medium text-muted transition-colors hover:border-accent-line hover:text-accent">
+    <span className="meta-index inline-flex items-center gap-1.5 rounded border border-line bg-surface px-2.5 py-1 text-[11px] normal-case tracking-normal text-ink-secondary transition-colors hover:border-accent-line hover:text-accent-dark">
       <span className="text-sm leading-none" aria-hidden="true">
         {icons[name] ?? <span className="font-mono text-[10px]">•</span>}
       </span>
-      {name}
+      {label ?? name}
     </span>
   );
 }

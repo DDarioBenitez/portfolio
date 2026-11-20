@@ -34,7 +34,14 @@
     "panelStack": "Stack",
     "panelLocation": "Location",
     "panelLocationValue": "Argentina — remote",
-    "panelNote": "I reply within 24 hours"
+    "panelNote": "I reply within 24 hours",
+    "panelExperience": "Experience",
+    "panelExperienceValue": "Senior / Lead Ready",
+    "terminalCommand": "system.ready()",
+    "terminalOutput": "Architecture: modular, typed, event-driven, production verified.",
+    "roleLabel": "Fullstack & Architecture",
+    "version": "v2.6.0",
+    "noteTime": "UTC-3"
   },
   "about": {
     "label": "About",
@@ -52,7 +59,14 @@
     "cap3Text": "Socket.IO and Ably for live events; Retell AI and React Flow for conversational agents.",
     "cap4Title": "Delivery and follow-through",
     "cap4Text": "From repository to production, with clear communication, reviewable handoffs and follow-through after launch.",
-    "stackLabel": "Stack and tools"
+    "text3": "Then the front end needs to feel fast, predictable and visually considered, with zero friction for end users and business operators.",
+    "pillarsLabel": "What I bring to the team",
+    "pillarsCount": "4 key disciplines",
+    "philosophyTitle": "Delivery philosophy",
+    "philosophyText": "Clean architecture + pragmatic testing",
+    "stackLabel": "Stack and tools",
+    "stackHeading": "Production stack and tools",
+    "stackNote": "Modern Dev Standards"
   },
   "projects": {
     "label": "Projects",
@@ -63,7 +77,15 @@
     "visit": "View project",
     "caseStudy": "View case study",
     "onRequest": "Available on request",
-    "inProgress": "In development"
+    "inProgress": "In development",
+    "archiveLabel": "Other selected projects",
+    "archiveYears": "Archive 2025—2026",
+    "production": "IN PRODUCTION",
+    "activePlatform": "ACTIVE PLATFORM",
+    "voiceAgent": "VOICE AGENT ACTIVE",
+    "flowCall": "Inbound Zadarma call",
+    "flowIntent": "Intent classification",
+    "flowCrm": "Update CRM + Calendar"
   },
   "project": {
     "back": "Back to projects",
@@ -86,7 +108,11 @@
     "formTitle": "Or send a message",
     "name": "Name",
     "email": "Email",
-    "subject": "Subject",
+    "subject": "Subject / Project type",
+    "subjectFreelance": "New freelance project",
+    "subjectTeam": "Join a team / Job offer",
+    "subjectConsulting": "Architecture consulting",
+    "subjectOther": "Other matter",
     "message": "Message",
     "placeName": "Your name",
     "placeEmail": "you@email.com",
@@ -109,6 +135,7 @@
     "title": "Let's build something worth maintaining.",
     "navigation": "Footer navigation",
     "rights": "All rights reserved.",
-    "stack": "Built with"
+    "stack": "Built with",
+    "crafted": "Crafted with editorial precision"
   }
 }

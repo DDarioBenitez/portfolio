@@ -6,51 +6,59 @@ const EMAIL = "benitez_trabaja@hotmail.com";
 const NAV = ["home", "about", "projects", "contact"] as const;
 
 export default function Footer() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang: "es" | "en" = i18n.language.startsWith("en") ? "en" : "es";
+  const homeBase = lang === "en" ? "/en" : "/";
+  const isHome = typeof window !== "undefined" && ["/", "/en"].includes(window.location.pathname);
 
   return (
-    <footer className="border-t border-line py-14 md:py-20">
-      <div className="shell">
+    <>
+      <section className="shell pb-12 md:pb-16">
         <Reveal>
-          <div className="flex flex-col gap-12 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="eyebrow mb-5">
-                <span className="text-accent">04</span>
-                <span className="px-2 opacity-40">/</span>
+          <div className="card flex flex-col gap-8 bg-surface-paper p-8 sm:p-12 md:flex-row md:items-center md:justify-between">
+            <div className="flex max-w-xl flex-col gap-2">
+              <p className="meta-index text-accent-dark">
+                04<span className="px-2 opacity-40">/</span>
                 {t("footer.label")}
               </p>
-              <h2 className="max-w-2xl font-display text-3xl font-semibold leading-tight tracking-tight md:text-4xl">{t("footer.title")}</h2>
-              <a href={`mailto:${EMAIL}`} className="link-accent mt-6 inline-flex items-center gap-1.5 text-base font-semibold">
+              <h2 className="headline-lg font-bold">{t("footer.title")}</h2>
+              <a
+                href={`mailto:${EMAIL}`}
+                className="label-md inline-flex items-center gap-1.5 self-start font-semibold text-accent-dark underline decoration-accent underline-offset-4 transition-colors hover:text-accent"
+              >
                 {EMAIL}
                 <ArrowUpRight size={16} aria-hidden="true" />
               </a>
             </div>
 
-            <nav aria-label={t("footer.navigation")}>
-              <ul className="grid grid-cols-2 gap-x-10 gap-y-3 md:grid-cols-1">
-                {NAV.map((id) => (
-                  <li key={id}>
-                    <a href={`#${id}`} className="text-sm text-muted transition-colors hover:text-accent">
-                      {t(`header.${id}`)}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+            <nav aria-label={t("footer.navigation")} className="flex flex-wrap gap-3 md:flex-col md:gap-3">
+              {NAV.map((id) => (
+                <a key={id} href={`${isHome ? "" : homeBase}#${id}`} className="label-md text-muted transition-colors hover:text-ink">
+                  {t(`header.${id}`)}
+                </a>
+              ))}
             </nav>
           </div>
         </Reveal>
+      </section>
 
-        <div className="my-10 h-px bg-line" />
-
-        <div className="flex flex-wrap justify-between gap-x-8 gap-y-2 text-xs text-muted">
-          <p>
-            © {new Date().getFullYear()} Dario Benitez. {t("footer.rights")}
-          </p>
-          <p className="font-mono">
-            {t("footer.stack")} · React · TypeScript · Vite
-          </p>
+      <footer className="border-t border-line bg-surface-paper py-8">
+        <div className="shell flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left">
+          <div className="flex flex-col gap-0.5">
+            <span className="label-md font-semibold text-ink">Dario Benitez — Fullstack Architecture</span>
+            <span className="label-sm text-muted">
+              © {new Date().getFullYear()} Dario Benitez. {t("footer.rights")}
+            </span>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a href={`mailto:${EMAIL}`} className="label-sm text-accent-dark underline decoration-line-strong underline-offset-4">
+              {EMAIL}
+            </a>
+            <span className="hidden text-muted sm:inline">•</span>
+            <span className="label-sm hidden text-muted sm:inline">{t("footer.crafted")}</span>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 }

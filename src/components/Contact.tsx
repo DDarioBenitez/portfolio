@@ -25,11 +25,17 @@ export default function Contact() {
   } = useForm<ContactFormInputs>();
 
   const onSubmit = async (data: ContactFormInputs) => {
+    const subjectLabels: Record<string, string> = {
+      freelance: t("contact.subjectFreelance"),
+      team: t("contact.subjectTeam"),
+      consulting: t("contact.subjectConsulting"),
+      other: t("contact.subjectOther"),
+    };
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, subject: subjectLabels[data.subject] ?? data.subject }),
       });
       const result = await response.json();
       if (result.ok) {
@@ -44,61 +50,64 @@ export default function Contact() {
   };
 
   const channels = [
-    { icon: <Mail size={17} aria-hidden="true" />, label: EMAIL, href: `mailto:${EMAIL}` },
+    { icon: <Mail size={18} aria-hidden="true" />, label: EMAIL, href: `mailto:${EMAIL}` },
     {
-      icon: <Linkedin size={17} aria-hidden="true" />,
+      icon: <Linkedin size={18} aria-hidden="true" />,
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/dar%C3%ADo-dami%C3%A1n-ben%C3%ADtez/",
     },
-    { icon: <Github size={17} aria-hidden="true" />, label: "GitHub", href: "https://github.com/DDarioBenitez" },
-    { icon: <MessageCircle size={17} aria-hidden="true" />, label: "+54 370 4009882", href: "https://wa.me/5493704009882" },
+    { icon: <Github size={18} aria-hidden="true" />, label: "GitHub", href: "https://github.com/DDarioBenitez" },
+    { icon: <MessageCircle size={18} aria-hidden="true" />, label: "+54 370 4009882", href: "https://wa.me/5493704009882" },
   ];
 
   return (
-    <section id="contact" className="scroll-mt-24 py-20 md:py-28">
+    <section id="contact" className="scroll-mt-20 py-16 md:py-24">
       <div className="shell">
         <SectionHeading index="03" label={t("contact.label")} title={t("contact.title")} description={t("contact.lead")} />
 
-        <div className="grid gap-14 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:gap-20">
-          <Reveal>
-            <p className="eyebrow mb-4">{t("contact.direct")}</p>
-            <a href={`mailto:${EMAIL}`} className="link-accent inline-flex items-center gap-2 break-all font-display text-xl font-semibold tracking-tight md:text-2xl">
-              {EMAIL}
-              <ArrowUpRight size={19} aria-hidden="true" />
-            </a>
+        <div className="mt-2 grid gap-8 lg:grid-cols-12 lg:gap-10">
+          <Reveal className="lg:col-span-5">
+            <div className="card flex flex-col gap-5 p-6">
+              <span className="meta-index text-muted">{t("contact.direct")}</span>
+              <a
+                href={`mailto:${EMAIL}`}
+                className="headline-sm inline-flex items-center gap-1 break-all font-bold text-accent-dark transition-colors hover:text-accent"
+              >
+                {EMAIL}
+                <ArrowUpRight size={20} className="shrink-0" aria-hidden="true" />
+              </a>
 
-            <ul className="mt-10 space-y-0 border-t border-line">
-              {channels.map((channel) => (
-                <li key={channel.label}>
-                  <a
-                    href={channel.href}
-                    target={channel.href.startsWith("http") ? "_blank" : undefined}
-                    rel={channel.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="flex items-center gap-3 border-b border-line py-4 text-sm text-muted transition-colors hover:text-accent"
-                  >
-                    <span className="text-ink">{channel.icon}</span>
-                    <span className="truncate">{channel.label}</span>
-                    <ArrowUpRight size={14} className="ml-auto shrink-0 opacity-50" aria-hidden="true" />
-                  </a>
-                </li>
-              ))}
-            </ul>
+              <ul className="flex flex-col divide-y divide-line border-t border-line pt-2">
+                {channels.map((channel) => (
+                  <li key={channel.label}>
+                    <a
+                      href={channel.href}
+                      target={channel.href.startsWith("http") ? "_blank" : undefined}
+                      rel={channel.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="label-md flex items-center gap-2.5 py-3 text-ink-secondary transition-colors hover:text-accent-dark"
+                    >
+                      <span className="text-accent" aria-hidden="true">{channel.icon}</span>
+                      <span className="truncate">{channel.label}</span>
+                      <ArrowUpRight size={16} className="ml-auto shrink-0" aria-hidden="true" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
 
-            <p className="mt-8 flex items-center gap-2 text-sm text-muted">
-              <MapPin size={16} aria-hidden="true" />
-              {t("contact.location")} · {t("contact.remote")}
-            </p>
+              <p className="label-sm flex items-center gap-2 text-muted">
+                <MapPin size={16} className="text-accent" aria-hidden="true" />
+                {t("contact.location")} · {t("contact.remote")}
+              </p>
+            </div>
           </Reveal>
 
-          <Reveal delay={0.1}>
-            <div className="card p-6 md:p-8">
-              <h3 className="font-display text-xl font-semibold tracking-tight">{t("contact.formTitle")}</h3>
-              <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-5" noValidate>
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="name" className="eyebrow">
-                      {t("contact.name")}
-                    </label>
+          <Reveal delay={0.1} className="lg:col-span-7">
+            <div className="card p-6 sm:p-8">
+              <h3 className="headline-sm">{t("contact.formTitle")}</h3>
+              <form onSubmit={handleSubmit(onSubmit)} className="mt-6 flex flex-col gap-4" noValidate>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="name" className="meta-index text-[11px] text-muted">{t("contact.name")}</label>
                     <input
                       id="name"
                       type="text"
@@ -110,16 +119,12 @@ export default function Contact() {
                       {...register("name", { required: t("contact.requiredName") })}
                     />
                     {errors.name && (
-                      <span id="name-error" role="alert" className="error-text text-xs">
-                        {errors.name.message}
-                      </span>
+                      <span id="name-error" role="alert" className="error-text text-xs">{errors.name.message}</span>
                     )}
                   </div>
 
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="email" className="eyebrow">
-                      {t("contact.email")}
-                    </label>
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="email" className="meta-index text-[11px] text-muted">{t("contact.email")}</label>
                     <input
                       id="email"
                       type="email"
@@ -134,40 +139,29 @@ export default function Contact() {
                       })}
                     />
                     {errors.email && (
-                      <span id="email-error" role="alert" className="error-text text-xs">
-                        {errors.email.message}
-                      </span>
+                      <span id="email-error" role="alert" className="error-text text-xs">{errors.email.message}</span>
                     )}
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="subject" className="eyebrow">
-                    {t("contact.subject")}
-                  </label>
-                  <input
-                    id="subject"
-                    type="text"
-                    placeholder={t("contact.placeSubject")}
-                    aria-invalid={Boolean(errors.subject)}
-                    aria-describedby={errors.subject ? "subject-error" : undefined}
-                    className="field"
-                    {...register("subject", { required: t("contact.requiredSubject") })}
-                  />
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="subject" className="meta-index text-[11px] text-muted">{t("contact.subject")}</label>
+                  <select id="subject" className="field" {...register("subject", { required: t("contact.requiredSubject") })}>
+                    <option value="freelance">{t("contact.subjectFreelance")}</option>
+                    <option value="team">{t("contact.subjectTeam")}</option>
+                    <option value="consulting">{t("contact.subjectConsulting")}</option>
+                    <option value="other">{t("contact.subjectOther")}</option>
+                  </select>
                   {errors.subject && (
-                    <span id="subject-error" role="alert" className="error-text text-xs">
-                      {errors.subject.message}
-                    </span>
+                    <span role="alert" className="error-text text-xs">{errors.subject.message}</span>
                   )}
                 </div>
 
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="message" className="eyebrow">
-                    {t("contact.message")}
-                  </label>
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="message" className="meta-index text-[11px] text-muted">{t("contact.message")}</label>
                   <textarea
                     id="message"
-                    rows={5}
+                    rows={4}
                     placeholder={t("contact.placeMessage")}
                     aria-invalid={Boolean(errors.message)}
                     aria-describedby={errors.message ? "message-error" : undefined}
@@ -175,9 +169,7 @@ export default function Contact() {
                     {...register("message", { required: t("contact.requiredMessage") })}
                   />
                   {errors.message && (
-                    <span id="message-error" role="alert" className="error-text text-xs">
-                      {errors.message.message}
-                    </span>
+                    <span id="message-error" role="alert" className="error-text text-xs">{errors.message.message}</span>
                   )}
                 </div>
 
@@ -186,10 +178,11 @@ export default function Contact() {
                   <input id="website" type="text" tabIndex={-1} autoComplete="off" {...register("website")} />
                 </div>
 
-                <button type="submit" disabled={isSubmitting} className="btn btn-primary w-full">
+                <button type="submit" disabled={isSubmitting} className="btn btn-primary mt-2 w-full">
                   {isSubmitting ? t("contact.sending") : t("contact.send")}
+                  <ArrowUpRight size={18} aria-hidden="true" />
                 </button>
-                <p className="text-center text-xs leading-relaxed text-muted">{t("contact.privacy")}</p>
+                <p className="text-center text-[12px] leading-relaxed text-muted">{t("contact.privacy")}</p>
               </form>
             </div>
           </Reveal>

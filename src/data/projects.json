@@ -8,6 +8,7 @@
     "year": "2026",
     "featured": true,
     "previewVariant": "dashboard",
+    "image": "/projects/fydelix.png",
     "summary_es": "Programa de puntos y recompensas para comercios: alta por QR, canje en dos pasos y panel del negocio con caja, clientes y estadísticas.",
     "summary_en": "Points and rewards program for local businesses: QR signup, two-step redemption and a business dashboard for checkout, customers and analytics.",
     "details_es": [
@@ -33,6 +34,7 @@
     "year": "2025",
     "featured": true,
     "previewVariant": "chat",
+    "image": "/projects/helloflatmate.png",
     "summary_es": "Plataforma de alquiler de habitaciones con chat y notificaciones en tiempo real, autenticación con Firebase y contratos y facturas en PDF.",
     "summary_en": "Room rental platform with real-time chat and notifications, Firebase authentication and PDF contracts and invoices.",
     "details_es": [
@@ -57,7 +59,7 @@
     "category_en": "AI · Conversational agents",
     "year": "2026",
     "featured": true,
-    "previewVariant": "canvas",
+    "previewVariant": "flow",
     "summary_es": "Agentes de chat y voz con Retell AI y telefonía Zadarma, orquestados en un canvas visual con React Flow y automatizaciones con n8n.",
     "summary_en": "Chat and voice agents with Retell AI and Zadarma telephony, orchestrated on a visual canvas with React Flow and n8n automations.",
     "details_es": [
@@ -83,6 +85,7 @@
     "year": "2025",
     "featured": false,
     "previewVariant": "landing",
+    "image": "/projects/viaje-seguro.png",
     "summary_es": "Reservas de viajes y vehículos con OAuth, dashboards de usuario y administración y pagos con Stripe.",
     "summary_en": "Travel and vehicle bookings with OAuth, user and admin dashboards and Stripe payments.",
     "details_es": [

@@ -9,6 +9,7 @@ export interface Project {
   year: string;
   featured: boolean;
   previewVariant: string;
+  image?: string;
   summary_es: string;
   summary_en: string;
   details_es: string[];

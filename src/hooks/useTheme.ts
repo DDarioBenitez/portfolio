@@ -5,14 +5,14 @@ export type Theme = "dark" | "light";
 const STORAGE_KEY = "portfolio-theme";
 
 function getInitialTheme(): Theme {
-  if (typeof window === "undefined") return "dark";
+  if (typeof window === "undefined") return "light";
   try {
     const stored = window.localStorage.getItem(STORAGE_KEY);
     if (stored === "dark" || stored === "light") return stored;
   } catch {
     /* localStorage puede no estar disponible */
   }
-  return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
 export function useTheme() {
@@ -20,7 +20,7 @@ export function useTheme() {
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
-    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "dark" ? "#08090c" : "#f6f7f4");
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "dark" ? "#141712" : "#f9faf7");
     try {
       window.localStorage.setItem(STORAGE_KEY, theme);
     } catch {

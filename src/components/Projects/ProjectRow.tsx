@@ -1,78 +1,83 @@
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Network, PenTool, Workflow } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Reveal from "../ui/Reveal";
 import TechChip from "../ui/TechChip";
 import { projectPath } from "../../lib/routes";
 import { localizedProject, type Lang, type Project } from "../../types/project";
-import ProjectPreview from "./ProjectPreview";
+import ProjectVisual from "./ProjectVisual";
+
+const impactIcons = [Network, PenTool, Workflow];
 
 export default function ProjectRow({ project, index }: { project: Project; index: number }) {
   const { t, i18n } = useTranslation();
   const lang: Lang = i18n.language.startsWith("en") ? "en" : "es";
   const { title, category, summary, impact } = localizedProject(project, lang);
+  const ImpactIcon = impactIcons[index % impactIcons.length];
 
   return (
     <Reveal>
-      <article className="grid gap-8 border-t border-line py-10 md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] md:items-center md:gap-14">
-        <div className={index % 2 === 1 ? "md:order-2" : ""}>
-          <p className="eyebrow mb-4 flex flex-wrap items-center gap-2">
-            <span className="text-accent">{String(index + 1).padStart(2, "0")}</span>
-            <span className="opacity-40">/</span>
-            {category}
-            <span className="opacity-40">·</span>
-            {project.year}
-          </p>
+      <article className="card card-hover grid overflow-hidden lg:grid-cols-2">
+        <div className={`flex flex-col justify-between gap-6 p-6 sm:p-8 ${index % 2 === 1 ? "lg:order-2" : ""}`}>
+          <div className="flex flex-col gap-3">
+            <p className="meta-index text-muted">
+              {String(index + 1).padStart(2, "0")} / {category.toUpperCase()} · {project.year}
+            </p>
+            <h3 className="headline-lg">
+              <a href={projectPath(project.slug, lang)} className="transition-colors hover:text-accent-dark">
+                {title}
+              </a>
+            </h3>
+            <p className="body-md max-w-xl">{summary}</p>
 
-          <h3 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">
-            <a href={projectPath(project.slug, lang)} className="transition-colors hover:text-accent">
-              {title}
-            </a>
-          </h3>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-muted">{summary}</p>
+            <div className="flex items-start gap-2 rounded bg-accent-light p-3">
+              <ImpactIcon size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
+              <span className="body-sm font-medium text-accent-dark">{impact}</span>
+            </div>
 
-          <p className="mt-5 flex gap-2 text-sm text-ink">
-            <span className="text-accent" aria-hidden="true">
-              ↗
-            </span>
-            {impact}
-          </p>
-
-          <div className="mt-6 flex flex-wrap gap-2">
-            {project.techStack.slice(0, 7).map((tech) => (
-              <TechChip key={tech} name={tech} />
-            ))}
-            {project.techStack.length > 7 && (
-              <span className="px-1 py-1.5 font-mono text-xs text-muted">+{project.techStack.length - 7}</span>
-            )}
+            <div className="flex flex-wrap gap-1.5 pt-2">
+              {project.techStack.slice(0, 7).map((tech) => (
+                <TechChip key={tech} name={tech} />
+              ))}
+              {project.techStack.length > 7 && (
+                <span className="meta-index rounded bg-surface-soft px-2 py-1 text-[11px] text-muted">
+                  +{project.techStack.length - 7}
+                </span>
+              )}
+            </div>
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-4">
             <a
               href={projectPath(project.slug, lang)}
-              className="link-accent inline-flex items-center gap-1.5 text-sm font-semibold"
+              className="label-md inline-flex items-center gap-1.5 font-semibold text-accent-dark transition-colors hover:text-accent"
             >
               {t("projects.caseStudy")}
-              <ArrowRight size={15} aria-hidden="true" />
+              <ArrowRight size={16} aria-hidden="true" />
             </a>
             {project.liveLink ? (
               <a
                 href={project.liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-ink"
+                className="label-md inline-flex items-center gap-1 text-muted transition-colors hover:text-ink"
               >
                 {t("projects.visit")}
                 <ArrowUpRight size={15} aria-hidden="true" />
               </a>
             ) : (
-              <span className="text-sm text-muted">{t("projects.onRequest")}</span>
+              <span className="label-md inline-flex items-center gap-1.5 text-muted">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                {t("projects.onRequest")}
+              </span>
             )}
-            {project.status === "dev" && <span className="eyebrow">{t("projects.inProgress")}</span>}
+            {project.status === "dev" && <span className="meta-index text-muted">{t("projects.inProgress")}</span>}
           </div>
         </div>
 
-        <div className={index % 2 === 1 ? "md:order-1" : ""}>
-          <ProjectPreview variant={project.previewVariant} title={title} />
+        <div className={`flex items-center justify-center bg-surface-canvas p-6 ${index % 2 === 1 ? "lg:order-1" : ""}`}>
+          <div className="w-full">
+            <ProjectVisual project={project} title={title} />
+          </div>
         </div>
       </article>
     </Reveal>

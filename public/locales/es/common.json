@@ -34,7 +34,14 @@
     "panelStack": "Stack",
     "panelLocation": "Ubicación",
     "panelLocationValue": "Argentina — remoto",
-    "panelNote": "Respondo en menos de 24 h"
+    "panelNote": "Respondo en menos de 24 h",
+    "panelExperience": "Experiencia",
+    "panelExperienceValue": "Senior / Lead Ready",
+    "terminalCommand": "system.ready()",
+    "terminalOutput": "Architecture: modular, typed, event-driven, production verified.",
+    "roleLabel": "Fullstack & Arquitectura",
+    "version": "v2.6.0",
+    "noteTime": "UTC-3"
   },
   "about": {
     "label": "Sobre mí",
@@ -52,7 +59,14 @@
     "cap3Text": "Socket.IO y Ably para eventos en vivo; Retell AI y React Flow para agentes conversacionales.",
     "cap4Title": "Entrega y acompañamiento",
     "cap4Text": "Del repositorio a producción, con comunicación clara, entregas revisables y acompañamiento después del deploy.",
-    "stackLabel": "Stack y herramientas"
+    "text3": "Después, el frente tiene que sentirse rápido, predecible y estéticamente cuidado, con cero fricción para los usuarios finales y los operadores de negocio.",
+    "pillarsLabel": "Qué aporto al equipo",
+    "pillarsCount": "4 disciplinas clave",
+    "philosophyTitle": "Filosofía de entrega",
+    "philosophyText": "Clean architecture + testing pragmático",
+    "stackLabel": "Stack y herramientas",
+    "stackHeading": "Stack y Herramientas de Producción",
+    "stackNote": "Modern Dev Standards"
   },
   "projects": {
     "label": "Proyectos",
@@ -63,7 +77,15 @@
     "visit": "Ver proyecto",
     "caseStudy": "Ver caso",
     "onRequest": "Disponible a pedido",
-    "inProgress": "En desarrollo"
+    "inProgress": "En desarrollo",
+    "archiveLabel": "Otros Proyectos Seleccionados",
+    "archiveYears": "Archivo 2025—2026",
+    "production": "EN PRODUCCIÓN",
+    "activePlatform": "PLATAFORMA ACTIVA",
+    "voiceAgent": "VOICE AGENT ACTIVE",
+    "flowCall": "Llamada Entrante Zadarma",
+    "flowIntent": "Clasificación de Intención",
+    "flowCrm": "Actualizar CRM + Calendario"
   },
   "project": {
     "back": "Volver a proyectos",
@@ -86,7 +108,11 @@
     "formTitle": "O mandame un mensaje",
     "name": "Nombre",
     "email": "Correo electrónico",
-    "subject": "Asunto",
+    "subject": "Asunto / Tipo de proyecto",
+    "subjectFreelance": "Proyecto Freelance nuevo",
+    "subjectTeam": "Sumarme a equipo / Propuesta laboral",
+    "subjectConsulting": "Consultoría técnica de arquitectura",
+    "subjectOther": "Otro asunto",
     "message": "Mensaje",
     "placeName": "Tu nombre",
     "placeEmail": "tu@correo.com",
@@ -109,6 +135,7 @@
     "title": "Construyamos algo que valga la pena mantener.",
     "navigation": "Navegación del pie de página",
     "rights": "Todos los derechos reservados.",
-    "stack": "Hecho con"
+    "stack": "Hecho con",
+    "crafted": "Crafted with editorial precision"
   }
 }

@@ -16,40 +16,59 @@ export default function Projects() {
   const others = projects.filter((project) => !project.featured);
 
   return (
-    <section id="projects" className="scroll-mt-24 py-20 md:py-28">
+    <section id="projects" className="scroll-mt-20 py-16 md:py-24">
       <div className="shell">
         <SectionHeading index="02" label={t("projects.label")} title={t("projects.title")} description={t("projects.lead")} />
 
-        <p className="eyebrow mb-2 border-b border-line pb-4">{t("projects.featured")}</p>
-        <div>
+        <div className="flex flex-col gap-8 md:gap-12">
           {featured.map((project, index) => (
             <ProjectRow key={project.slug} project={project} index={index} />
           ))}
         </div>
 
-        <div className="mt-14 md:mt-20">
-          <p className="eyebrow mb-4 border-b border-line pb-4">{t("projects.others")}</p>
-          <ul className="divide-y divide-line">
+        <div className="mt-12 flex flex-col gap-3">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line pb-2">
+            <span className="meta-index text-muted">{t("projects.archiveLabel")}</span>
+            <span className="meta-index text-muted">{t("projects.archiveYears")}</span>
+          </div>
+          <ul className="card divide-y divide-line">
             {others.map((project) => {
-              const { title, category } = localizedProject(project, lang);
+              const { title, category, summary } = localizedProject(project, lang);
               return (
                 <Reveal key={project.slug}>
-                  <li className="flex flex-wrap items-center gap-x-5 gap-y-2 py-5 sm:flex-nowrap sm:justify-between">
-                    <div className="flex min-w-0 items-center gap-4">
-                      <span className="font-mono text-xs text-accent">{project.year}</span>
-                      <div className="min-w-0">
-                        <h3 className="font-display text-lg font-semibold tracking-tight">
-                          <a href={projectPath(project.slug, lang)} className="transition-colors hover:text-accent">
+                  <li className="flex flex-col gap-5 p-4 transition-colors hover:bg-surface-paper sm:p-6 lg:flex-row lg:items-center lg:justify-between">
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+                      {project.image && (
+                        <div className="h-24 w-full shrink-0 overflow-hidden rounded border border-line bg-surface-canvas sm:w-36">
+                          <img
+                            src={project.image}
+                            alt=""
+                            width={1440}
+                            height={900}
+                            loading="lazy"
+                            className="h-full w-full object-cover object-top"
+                          />
+                        </div>
+                      )}
+                      <div>
+                        <div className="mb-1 flex flex-wrap items-center gap-2">
+                          <span className="meta-index rounded bg-accent-light px-1.5 py-0.5 text-[11px] text-accent-dark">
+                            {project.year}
+                          </span>
+                          <span className="meta-index text-[11px] text-muted">{category.toUpperCase()}</span>
+                        </div>
+                        <h4 className="headline-sm font-bold">
+                          <a href={projectPath(project.slug, lang)} className="transition-colors hover:text-accent-dark">
                             {title}
                           </a>
-                        </h3>
-                        <p className="text-sm text-muted">{category}</p>
+                        </h4>
+                        <p className="body-sm mt-0.5 max-w-xl">{summary}</p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-5">
+                    <div className="flex shrink-0 items-center gap-4 lg:ml-auto">
                       <a
                         href={projectPath(project.slug, lang)}
-                        className="link-accent inline-flex items-center gap-1.5 text-sm font-medium"
+                        className="label-sm inline-flex items-center gap-1 font-medium text-accent-dark hover:underline"
                       >
                         {t("projects.caseStudy")}
                         <ArrowRight size={14} aria-hidden="true" />
@@ -59,10 +78,10 @@ export default function Projects() {
                           href={project.liveLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-ink"
+                          className="label-sm inline-flex items-center gap-1.5 rounded border border-line bg-surface px-3 py-1.5 text-ink transition-colors hover:border-line-strong hover:bg-surface-canvas"
                         >
                           {t("projects.visit")}
-                          <ArrowUpRight size={14} aria-hidden="true" />
+                          <ArrowUpRight size={14} className="text-accent" aria-hidden="true" />
                         </a>
                       )}
                     </div>
