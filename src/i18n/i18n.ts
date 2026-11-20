@@ -12,7 +12,7 @@ void i18n
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
-        backend: { loadPath: "/locales/{{lng}}/{{ns}}.json" },
+        backend: { loadPath: `/locales/{{lng}}/{{ns}}.json?v=${import.meta.env.VITE_LOCALES_VERSION}` },
         lng: initialLng,
         fallbackLng: "es",
         supportedLngs: ["es", "en"],
